@@ -1,5 +1,5 @@
 {
-    "hash": "a3f680a8180b65073d97927f93318583",
+    "hash": "569b2a32852a121ff7ca7ce08900a913",
     "packages": [
         {
             "name": "doctrine/common",
@@ -355,25 +355,40 @@
         },
         {
             "name": "jms/di-extra-bundle",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "target-dir": "JMS/DiExtraBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSDiExtraBundle",
-                "reference": "1.1.0"
+                "reference": "1.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/schmittjoh/JMSDiExtraBundle/zipball/1.1.0",
-                "reference": "1.1.0",
+                "url": "https://github.com/schmittjoh/JMSDiExtraBundle/zipball/1.1.1",
+                "reference": "1.1.1",
                 "shasum": ""
             },
             "require": {
                 "symfony/framework-bundle": "2.1.*",
+                "symfony/process": "2.1.*",
+                "symfony/finder": "2.1.*",
                 "jms/aop-bundle": "1.0.*",
                 "jms/metadata": "1.1.*"
             },
-            "time": "2012-09-06 16:07:54",
+            "require-dev": {
+                "symfony/validator": "*",
+                "symfony/form": "*",
+                "symfony/class-loader": "*",
+                "symfony/yaml": "*",
+                "symfony/browser-kit": "*",
+                "symfony/security-bundle": "*",
+                "symfony/twig-bundle": "*",
+                "sensio/framework-extra-bundle": "*",
+                "jms/security-extra-bundle": "1.*",
+                "doctrine/doctrine-bundle": "*",
+                "doctrine/orm": "*"
+            },
+            "time": "2012-09-21 08:56:32",
             "type": "symfony-bundle",
             "installation-source": "dist",
             "autoload": {
@@ -388,7 +403,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -624,6 +639,57 @@
                 "log",
                 "logging"
             ]
+        },
+        {
+            "name": "orkestra/application-bundle",
+            "version": "dev-master",
+            "target-dir": "Orkestra/Bundle/ApplicationBundle",
+            "source": {
+                "type": "git",
+                "url": "git@titanwebdev.com:OrkestraApplicationBundle.git",
+                "reference": "3069a23cd5f73f3b87a84c3518f5ddee0d8202c6"
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "orkestra/common": ">=0.1.10"
+            },
+            "time": "1349391869",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Orkestra\\Bundle\\ApplicationBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Provides useful base functionality for any Symfony 2 application"
+        },
+        {
+            "name": "orkestra/common",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@gitlounge.com:orkestra-common.git",
+                "reference": "385ce1d7a4d6bb7c1f08347355ae51bad072f809"
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "ext-curl": "*",
+                "ext-soap": "*",
+                "doctrine/orm": ">=2.2.3,<2.4.x-dev",
+                "symfony/http-foundation": ">=2.0.12,<=2.2.x-dev"
+            },
+            "time": "1349123797",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Orkestra\\Common": "lib/"
+                }
+            },
+            "description": "Provides common functionality useful for any project"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -1128,26 +1194,26 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.9.2",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "v1.9.2"
+                "reference": "v1.10.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/zipball/v1.9.2",
-                "reference": "v1.9.2",
+                "url": "https://github.com/fabpot/Twig/zipball/v1.10.0",
+                "reference": "v1.10.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-08-25 17:32:57",
+            "time": "2012-09-28 20:11:39",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.10-dev"
                 }
             },
             "installation-source": "dist",
@@ -1181,7 +1247,8 @@
 
     ],
     "minimum-stability": "alpha",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "orkestra/common": 20,
+        "orkestra/application-bundle": 20
+    }
 }
