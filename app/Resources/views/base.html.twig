@@ -35,12 +35,14 @@
                     </ul>
                     <div class="pull-right">
                         <ul class="nav sign-in">
+                            {% if not app.user %}
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Sign in <b class="caret"></b></a>
                                 <div class="login-box dropdown-menu pull-right">
                                     <a href="{{ path('login') }}">Login with username and password.</a>
                                 </div>
                             </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
