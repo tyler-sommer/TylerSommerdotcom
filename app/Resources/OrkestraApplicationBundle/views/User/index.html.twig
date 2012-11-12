@@ -1,0 +1,37 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Active</th>
+            <th>Date Modified</th>
+            <th>Date Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('orkestra_user_show', { 'id': entity.id }) }}">{{ entity.firstName }}</a></td>
+            <td>{{ entity.lastName }}</td>
+            <td>{{ entity.username }}</td>
+            <td>{{ entity.active }}</td>
+            <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
+            <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
+            <td>
+                <a class="btn btn-mini" href="{{ path('orkestra_user_edit', { 'id': entity.id }) }}">EDIT</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-primary" href="{{ path('orkestra_user_new') }}">
+    New User
+</a>
+{% endblock %}

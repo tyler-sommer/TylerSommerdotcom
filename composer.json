@@ -28,6 +28,9 @@
         "sensio/generator-bundle": "2.1.*",
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "fp/lightopenid": "dev-master",
+        "fp/openid-bundle": "dev-master",
         "orkestra/common": "dev-master",
         "orkestra/application-bundle": "dev-master"
     },

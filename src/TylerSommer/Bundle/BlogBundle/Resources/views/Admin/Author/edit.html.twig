@@ -1,0 +1,42 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% block title %}Edit Author{% endblock %}
+
+{% block content %}
+    <div class="well">
+    <form action="{{ path('manage_author_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        <div class="user">
+        {{ form_row(form.user) }}
+        </div>
+        <div class="no-user">
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.lastName) }}
+            {{ form_row(form.email) }}
+        </div>
+        <div class="spacer"></div>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block additional_javascripts %}
+    <script type="text/javascript">
+    $(function() {
+        $('#{{ form.user.get('id') }}').change(function() {
+            if ($(this).val() != '') {
+                $('.no-user').slideUp('fast');
+                $(this).attr('disabled', true);
+            } else {
+                $('.no-user').slideDown('fast');
+                $('.user').hide();
+            }
+        }).change();
+    });
+</script>
+{% endblock %}

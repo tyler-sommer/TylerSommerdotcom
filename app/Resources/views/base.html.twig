@@ -2,12 +2,75 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Tyler Sommer dot com{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite, ?yui_css'
+                'bundles/orkestraapplication/css/bootstrap-responsive.css'
+                'bundles/tylersommerblog/css/*.css'
+            %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% block head_javascripts %}
+            {% javascripts filter='?yui_js'
+                'bundles/orkestraapplication/js/jquery.js'
+                'bundles/orkestraapplication/js/bootstrap.js'
+                'bundles/tylersommerblog/js/*.js'
+            %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">Tyler Sommer dot com</a>
+                    <ul class="nav">
+                        <li{% if is_current_route('home') %} class="active"{% endif %}><a href="{{ path('home') }}">Home</a></li>
+                        <li{% if is_current_route('about') %} class="active"{% endif %}><a href="{{ path('about') }}">About</a></li>
+                        <li{% if is_current_route('contact') %} class="active"{% endif %}><a href="{{ path('contact') }}">Contact</a></li>
+                        {#<li class="dropdown">#}
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>#}
+                            {#<ul class="dropdown-menu">#}
+                                {#<li><a href="#">Action</a></li>#}
+                                {#<li><a href="#">Another action</a></li>#}
+                                {#<li><a href="#">Something else here</a></li>#}
+                                {#<li class="divider"></li>#}
+                                {#<li class="nav-header">Nav header</li>#}
+                                {#<li><a href="#">Separated link</a></li>#}
+                                {#<li><a href="#">One more separated link</a></li>#}
+                            {#</ul>#}
+                        {#</li>#}
+                    </ul>
+                    <div class="pull-right">
+                        <ul class="nav sign-in">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Sign in <b class="caret"></b></a>
+                                <div class="login-box dropdown-menu">
+                                    <a href="{{ path('login') }}">Login with username and password.</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container container-fluid" style="padding-top: 50px">
+            {% block container %}
+            <div class="span8 content-box">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="span3 well pull-right">
+                {% block right_side %}
+                {% endblock %}
+            </div>
+            {% endblock %}
+        </div>
+        {% endblock %}
+        {% block additional_javascripts %}{% endblock %}
     </body>
 </html>

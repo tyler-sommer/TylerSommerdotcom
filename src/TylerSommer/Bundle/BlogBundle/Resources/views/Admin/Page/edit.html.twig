@@ -1,0 +1,27 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% block title %}Edit Page{% endblock %}
+
+{% block content %}
+    <div class="well">
+    <form action="{{ path('manage_page_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.slug) }}
+        {{ form_row(form.author) }}
+        {{ form_row(form.body, { attr: { class: 'input-xxlarge', style: 'height: 100px' } }) }}
+        <div class="checkbox inline">
+            {{ form_widget(form.active) }}
+            {{ form_label(form.active, null, { label: 'Published' }) }}
+        </div>
+        <div class="spacer"></div>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Save Changes</button> &nbsp;
+            <a href="{{ path('manage_page_preview', { id: entity.id }) }}" target="_blank">Preview</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

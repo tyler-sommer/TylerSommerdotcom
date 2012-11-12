@@ -1,0 +1,14 @@
+{% extends 'TylerSommerBlogBundle::base.html.twig' %}
+
+{% block content %}
+{% for entity in entities %}
+    {% if loop.first %}
+<h1>{{ entity.title }}</h1>
+    {% else %}
+<h2>{{ entity.title }}</h2>
+    {% endif %}
+<p class="post-author">Posted{% if entity.active %} on {{ entity.datePublished.format('F j \\a\\t h:i A') }}{% endif %} by {{ entity.author }}</p>
+{{ entity.body|raw }}
+<div class="spacer"></div>
+{% endfor %}
+{% endblock %}

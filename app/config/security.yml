@@ -3,41 +3,48 @@ jms_security_extra:
     expressions: true
 
 security:
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
-
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+      ROLE_USER_WRITE:  ROLE_USER_READ
+      ROLE_GROUP_WRITE: ROLE_GROUP_READ
+
+      ROLE_ADMIN:       [ ROLE_USER, ROLE_USER_WRITE, ROLE_GROUP_WRITE ]
+      ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+
+    encoders:
+      Orkestra\Bundle\ApplicationBundle\Entity\User: sha512
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+      entity:
+        entity: { class: Orkestra\Bundle\ApplicationBundle\Entity\User }
 
     firewalls:
-        dev:
+        dev_and_assets:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern:  ^/demo/secured/login$
-            security: false
+        manage_login:
+          pattern: ^/manage/login$
+          security: false
 
-        secured_area:
-            pattern:    ^/demo/secured/
-            form_login:
-                check_path: /demo/secured/login_check
-                login_path: /demo/secured/login
-            logout:
-                path:   /demo/secured/logout
-                target: /demo/
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
+        manage_area:
+          provider: entity
+          pattern: ^/manage
+          form_login:
+            login_path: /manage/login
+            check_path: /manage/login_check
+            username_parameter: "form[username]"
+            password_parameter: "form[password]"
+            default_target_path: /manage/posts
+
+        comments_area:
+          pattern:    ^/
+          fp_openid: ~
+          logout: true
+          anonymous: true
 
     access_control:
+      - { path: ^/login_openid$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/comment, role: IS_AUTHENTICATED_OPENID }
+      - { path: ^/manage, role: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

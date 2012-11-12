@@ -1,7 +1,30 @@
+fp_openid_security:
+    resource: "@FpOpenIdBundle/Resources/config/routing/security.xml"
+
+# Bundle routes
+OrkestraBundle_routes:
+  resource: "@OrkestraApplicationBundle/Controller"
+  type:     annotation
+  prefix: /manage
+
 tyler_sommer_blog:
     resource: "@TylerSommerBlogBundle/Controller/"
     type:     annotation
     prefix:   /
+
+# Authentication routes
+login:
+  pattern: /manage/login
+  defaults: { _controller: OrkestraApplicationBundle:Auth:login }
+
+login_check:
+  pattern: /manage/login_check
+
+
+logout:
+  pattern: /manage/logout
+
+
 
 # Internal routing configuration to handle ESI
 #_internal:

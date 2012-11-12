@@ -1,0 +1,33 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% block title %}Authors{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Last Modified</th>
+            <th>Date Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('manage_author_show', { 'id': entity.id }) }}">{{ entity }}</a></td>
+            <td>{{ entity.email }}</td>
+            <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
+            <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
+            <td>
+                <a class="btn btn-mini" href="{{ path('manage_author_edit', { 'id': entity.id }) }}">EDIT</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-primary" href="{{ path('manage_author_new') }}">
+    New Author
+</a>
+{% endblock %}

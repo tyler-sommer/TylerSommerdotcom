@@ -1,0 +1,15 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+<form action="{{ path('orkestra_user_update', { 'id': user.id }) }}" method="post" {{ form_enctype(form) }}>
+<div class="well">
+    {{ form_widget(form) }}
+    <p class="form-buttons">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </p>
+</div>
+</form>
+{% endblock %}

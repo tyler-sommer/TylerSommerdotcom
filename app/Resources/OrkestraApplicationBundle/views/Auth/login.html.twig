@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+<h2>Login</h2>
+<div class="well">
+    <form action="{{ path('login_check')}}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_row(form.username, { attr: { class: 'input-medium' } }) }}
+        {{ form_row(form.password, { attr: { class: 'input-medium' } }) }}
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}
