@@ -37,7 +37,7 @@
                         <ul class="nav sign-in">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Sign in <b class="caret"></b></a>
-                                <div class="login-box dropdown-menu">
+                                <div class="login-box dropdown-menu pull-right">
                                     <a href="{{ path('login') }}">Login with username and password.</a>
                                 </div>
                             </li>
@@ -49,9 +49,25 @@
         <div class="container container-fluid" style="padding-top: 50px">
             {% block container %}
             <div class="span8 content-box">
+                {% if app.session.hasFlash('success') %}
+                    <div class="alert alert-success">
+                        {{ app.session.flash('success') }}
+                    </div>
+                {% endif %}
+                {% if app.session.hasFlash('alert') %}
+                    <div class="alert">
+                        {{ app.session.flash('alert') }}
+                    </div>
+                {% endif %}
+                {% if app.session.hasFlash('error') %}
+                    <div class="alert alert-error">
+                        {{ app.session.flash('error') }}
+                    </div>
+                {% endif %}
                 {% block content %}
                 {% endblock %}
             </div>
+            <div class="spacer"></div>
             <div class="span3 well pull-right">
                 {% block right_side %}
                 {% endblock %}

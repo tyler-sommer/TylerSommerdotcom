@@ -26,6 +26,21 @@
         {% endblock %}
     </div>
     <div class="span10">
+        {% if app.session.hasFlash('success') %}
+            <div class="alert alert-success">
+                {{ app.session.flash('success') }}
+            </div>
+        {% endif %}
+        {% if app.session.hasFlash('alert') %}
+            <div class="alert">
+                {{ app.session.flash('alert') }}
+            </div>
+        {% endif %}
+        {% if app.session.hasFlash('error') %}
+            <div class="alert alert-error">
+                {{ app.session.flash('error') }}
+            </div>
+        {% endif %}
         {% block content %}
         {% endblock %}
     </div>
