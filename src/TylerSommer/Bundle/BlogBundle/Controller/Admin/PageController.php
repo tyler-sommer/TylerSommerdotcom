@@ -151,7 +151,7 @@ class PageController extends Controller
      *
      * @Route("/{id}/update", name="manage_page_update")
      * @Method("POST")
-     * @Template("TylerSommerBlogBundle:Page:edit.html.twig")
+     * @Template("TylerSommerBlogBundle:Admin/Page:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

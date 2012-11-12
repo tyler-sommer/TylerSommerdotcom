@@ -151,7 +151,7 @@ class PostController extends Controller
      *
      * @Route("/{id}/update", name="manage_post_update")
      * @Method("POST")
-     * @Template("TylerSommerBlogBundle:Post:edit.html.twig")
+     * @Template("TylerSommerBlogBundle:Admin/Post:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
