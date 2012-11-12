@@ -13,7 +13,7 @@ class PageType extends AbstractType
         $builder
             ->add('title')
             ->add('slug')
-            ->add('body')
+            ->add('body', 'ckeditor')
             ->add('author')
             ->add('active', null, array('required' => false, 'label' => 'Publish'));
     }
