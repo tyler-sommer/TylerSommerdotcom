@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
-            new Fp\OpenIdBundle\FpOpenIdBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Orkestra\Bundle\ApplicationBundle\OrkestraApplicationBundle(),
             new TylerSommer\Bundle\BlogBundle\TylerSommerBlogBundle(),

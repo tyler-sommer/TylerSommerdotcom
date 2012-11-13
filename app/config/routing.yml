@@ -1,6 +1,3 @@
-fp_openid_security:
-    resource: "@FpOpenIdBundle/Resources/config/routing/security.xml"
-
 # Bundle routes
 OrkestraBundle_routes:
   resource: "@OrkestraApplicationBundle/Controller"
