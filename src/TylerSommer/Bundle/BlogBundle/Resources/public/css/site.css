@@ -1,4 +1,6 @@
-.login-box { color: black; }
+.login-box { color: black; text-align: center; width: 250px; padding-top: 20px !important; }
+.login-box hr { width: 50%; margin: 10px auto; }
+.login-box .zocial { width: 200px; font-weight: normal; }
 .container > .content-box { margin-left: 0; }
 .navbar .sign-in.nav { margin-right: 0; }
 .spacer { height: 10px; }

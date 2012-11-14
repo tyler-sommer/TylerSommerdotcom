@@ -1,3 +1,13 @@
+hwi_oauth_redirect:
+  resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+  prefix:   /connect
+
+twitter_login:
+  pattern: /login/check-twitter
+
+github_login:
+  pattern: /login/check-github
+
 # Bundle routes
 OrkestraBundle_routes:
   resource: "@OrkestraApplicationBundle/Controller"

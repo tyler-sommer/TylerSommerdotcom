@@ -12,6 +12,7 @@ use Orkestra\Common\Entity\EntityBase;
  *
  * @ORM\Entity
  * @ORM\Table(name="posts")
+ * @ORM\HasLifecycleCallbacks
  */
 class Post extends EntityBase
 {
@@ -182,5 +183,25 @@ class Post extends EntityBase
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        parent::prePersist();
+
+        $this->datePublished = $this->active ? new DateTime() : new NullDateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        parent::preUpdate();
+
+        $this->datePublished = $this->active ? new DateTime() : new NullDateTime();
     }
 }

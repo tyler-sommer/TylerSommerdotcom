@@ -16,6 +16,8 @@ security:
     providers:
       entity:
         entity: { class: Orkestra\Bundle\ApplicationBundle\Entity\User }
+      oauth:
+        id: tylersommer.oauth.user_provider
 
     firewalls:
         dev_and_assets:
@@ -35,6 +37,17 @@ security:
             username_parameter: "form[username]"
             password_parameter: "form[password]"
             default_target_path: /manage/posts
+
+        user_area:
+          anonymous: true
+          logout: ~
+          oauth:
+            login_path: /
+            resource_owners:
+              twitter:  "/login/check-twitter"
+              github:   "/login/check-github"
+            oauth_user_provider:
+              service:  tylersommer.oauth.user_provider
 
     access_control:
       - { path: ^/manage, role: ROLE_ADMIN }

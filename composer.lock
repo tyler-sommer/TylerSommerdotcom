@@ -1,5 +1,5 @@
 {
-    "hash": "3bced907339c8443707f76754fc4593e",
+    "hash": "41fa00cc44411065b25cbf9b4885fc54",
     "packages": [
         {
             "name": "Trsteel/ckeditor-bundle",
@@ -408,80 +408,43 @@
             ]
         },
         {
-            "name": "fp/lightopenid",
+            "name": "hwi/oauth-bundle",
             "version": "dev-master",
+            "target-dir": "HWI/Bundle/OAuthBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/formapro/LightOpenID",
-                "reference": "ad14146f9c93e90699888e150427aca431dc3c18"
+                "url": "https://github.com/hwi/HWIOAuthBundle",
+                "reference": "8397d4b0dd878bbac4abd60ab22480ce9ca7bb28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/formapro/LightOpenID/archive/ad14146f9c93e90699888e150427aca431dc3c18.zip",
-                "reference": "ad14146f9c93e90699888e150427aca431dc3c18",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2"
-            },
-            "time": "1333528791",
-            "type": "library",
-            "installation-source": "source",
-            "autoload": {
-                "classmap": [
-                    "openid.php",
-                    "provider/provider.php"
-                ]
-            },
-            "authors": [
-                {
-                    "name": "Mewp",
-                    "email": "mewp151+gitorious.org@gmail.com"
-                }
-            ],
-            "description": "A PHP 5 library for easy openid authentication",
-            "homepage": "https://github.com/formapro/LightOpenID",
-            "keywords": [
-                "security",
-                "OpenId",
-                "Authentication"
-            ]
-        },
-        {
-            "name": "fp/openid-bundle",
-            "version": "dev-master",
-            "target-dir": "Fp/OpenIdBundle",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/formapro/FpOpenIdBundle.git",
-                "reference": "093acfd6a2672ef7833273566269efda3f9abe2d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/formapro/FpOpenIdBundle/archive/093acfd6a2672ef7833273566269efda3f9abe2d.zip",
-                "reference": "093acfd6a2672ef7833273566269efda3f9abe2d",
+                "url": "https://github.com/hwi/HWIOAuthBundle/archive/8397d4b0dd878bbac4abd60ab22480ce9ca7bb28.zip",
+                "reference": "8397d4b0dd878bbac4abd60ab22480ce9ca7bb28",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "fp/lightopenid": "dev-master",
-                "symfony/symfony": ">=2.1,<2.3-dev"
+                "symfony/framework-bundle": ">=2.0,<2.2-dev",
+                "symfony/security-bundle": ">=2.0,<2.2-dev",
+                "kriswallsmith/buzz": "0.7"
+            },
+            "require-dev": {
+                "doctrine/orm": "*",
+                "friendsofsymfony/user-bundle": "*",
+                "symfony/twig-bundle": "*",
+                "symfony/validator": ">=2.0,<2.2-dev"
             },
             "suggest": {
-                "doctrine/orm": "If you want store identities to database",
-                "doctrine/mongodb-odm": "If you want store identities to mongodb"
+                "friendsofsymfony/user-bundle": "to connect FOSUB with this bundle",
+                "symfony/twig-bundle": "to use the Twig hwi_oauth_* functions",
+                "doctrine/doctrine-bundle": "to use Doctrine user provider"
             },
-            "time": "1351076855",
+            "time": "1346424865",
             "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3-dev"
-                }
-            },
             "installation-source": "source",
             "autoload": {
                 "psr-0": {
-                    "Fp\\OpenIdBundle": ""
+                    "HWI\\Bundle\\OAuthBundle": ""
                 }
             },
             "license": [
@@ -489,20 +452,35 @@
             ],
             "authors": [
                 {
-                    "name": "Kotlyar Maksim",
-                    "email": "kotlyar.maksim@gmail.com"
+                    "name": "Geoffrey Bachelet",
+                    "email": "geoffrey.bachelet@gmail.com",
+                    "homepage": "https://github.com/ubermuda"
                 },
                 {
-                    "name": "Community",
-                    "homepage": "https://github.com/formapro/FpOpenIdBundle/contributors"
+                    "name": "Alexander",
+                    "email": "alexander@hardware.info"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/hwi/HWIOAuthBundle/contributors"
                 }
             ],
-            "description": "Symfony2 OpenID security extension",
-            "homepage": "https://github.com/formapro/FpOpenIdBundle",
+            "description": "Support for authenticating users via oauth in Symfony2.",
+            "homepage": "http://github.com/hwi/HWIOAuthBundle",
             "keywords": [
                 "security",
-                "OpenId",
-                "Authentication"
+                "oauth",
+                "oauth2",
+                "github",
+                "twitter",
+                "firewall",
+                "google",
+                "facebook",
+                "linkedin",
+                "windows live",
+                "vkontakte",
+                "oauth1",
+                "sensio connect"
             ]
         },
         {
@@ -822,6 +800,51 @@
             ]
         },
         {
+            "name": "kriswallsmith/buzz",
+            "version": "v0.7",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/kriswallsmith/Buzz.git",
+                "reference": "v0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kriswallsmith/Buzz/zipball/v0.7",
+                "reference": "v0.7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "time": "2012-06-25 12:01:38",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ]
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.2.1",
             "source": {
@@ -884,7 +907,7 @@
             "source": {
                 "type": "git",
                 "url": "git@titanwebdev.com:OrkestraApplicationBundle.git",
-                "reference": "b7ee925e654c17c8bf986c2ad218e76a50d4dd61"
+                "reference": "bdf1f77a48962b6ae15e094032962d43afaa33b1"
             },
             "require": {
                 "php": ">=5.3.0",
@@ -893,7 +916,7 @@
             "suggest": {
                 "doctrine/doctrine-fixtures-bundle": "Allows easy initial database population"
             },
-            "time": "1352398749",
+            "time": "1352758299",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -1491,8 +1514,7 @@
     "stability-flags": {
         "doctrine/doctrine-fixtures-bundle": 20,
         "trsteel/ckeditor-bundle": 20,
-        "fp/lightopenid": 20,
-        "fp/openid-bundle": 20,
+        "hwi/oauth-bundle": 20,
         "orkestra/common": 20,
         "orkestra/application-bundle": 20
     }

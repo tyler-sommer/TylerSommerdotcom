@@ -69,3 +69,17 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+
+# OAuth configuration
+hwi_oauth:
+  firewall_name: user_area
+  resource_owners:
+    github:
+      type:           github
+      client_id:      %github_client_id%
+      client_secret:  %github_client_secret%
+    twitter:
+      type:           twitter
+      client_id:      %twitter_client_id%
+      client_secret:  %twitter_client_secret%
