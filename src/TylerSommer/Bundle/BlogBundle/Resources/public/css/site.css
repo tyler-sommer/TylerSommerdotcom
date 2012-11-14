@@ -7,3 +7,4 @@
 .well form { margin-bottom: 0; }
 .post-author { font-size: 11px; }
 .clear { clear: both; }
+ul.errors { list-style-type: none; margin: 0; }

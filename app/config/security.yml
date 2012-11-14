@@ -1,56 +1,44 @@
 jms_security_extra:
-    secure_all_services: false
-    expressions: true
+  secure_all_services: false
+  expressions: true
 
 security:
-    role_hierarchy:
-      ROLE_USER_WRITE:  ROLE_USER_READ
-      ROLE_GROUP_WRITE: ROLE_GROUP_READ
+  role_hierarchy:
+    ROLE_USER_WRITE:  ROLE_USER_READ
+    ROLE_GROUP_WRITE: ROLE_GROUP_READ
 
-      ROLE_ADMIN:       [ ROLE_USER, ROLE_USER_WRITE, ROLE_GROUP_WRITE ]
-      ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+    ROLE_ADMIN:       [ ROLE_USER, ROLE_USER_WRITE, ROLE_GROUP_WRITE ]
+    ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
 
-    encoders:
-      Orkestra\Bundle\ApplicationBundle\Entity\User: sha512
+  encoders:
+    Orkestra\Bundle\ApplicationBundle\Entity\User: sha512
 
-    providers:
-      #entity:
-      #  entity: { class: Orkestra\Bundle\ApplicationBundle\Entity\User }
+  providers:
+    oauth:
+      id: tylersommer.oauth.user_provider
+
+  firewalls:
+    dev_and_assets:
+        pattern:  ^/(_(profiler|wdt)|css|images|js)/
+        security: false
+
+    user_area:
+      anonymous: true
+      logout: ~
+      form_login:
+        login_path: /connect
+        check_path: /login/check
+        username_parameter: "form[username]"
+        password_parameter: "form[password]"
       oauth:
-        id: tylersommer.oauth.user_provider
-
-    firewalls:
-        dev_and_assets:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        manage_login:
-          pattern: ^/manage/login$
-          security: false
-
-        manage_area:
-          provider: oauth
-          pattern: ^/manage
-          form_login:
-            login_path: /manage/login
-            check_path: /manage/login_check
-            username_parameter: "form[username]"
-            password_parameter: "form[password]"
-            default_target_path: /manage/posts
-
-        user_area:
-          anonymous: true
-          logout: ~
-          oauth:
-            login_path: /
-            resource_owners:
-              twitter:  "/login/check-twitter"
-              github:   "/login/check-github"
-            oauth_user_provider:
-              service: tylersommer.oauth.user_provider
+        login_path: /connect
+        failure_path: /connect
+        resource_owners:
+          twitter:  "/login/check-twitter"
+          github:   "/login/check-github"
+        oauth_user_provider:
+          service: tylersommer.oauth.user_provider
 
 
-    access_control:
-      - { path: ^/manage, role: ROLE_ADMIN }
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+  access_control:
+    - { path: ^/manage, role: ROLE_ADMIN }

@@ -32,6 +32,9 @@
                         <li{% if is_current_route('home') %} class="active"{% endif %}><a href="{{ path('home') }}">Home</a></li>
                         <li{% if is_current_route('about') %} class="active"{% endif %}><a href="{{ path('about') }}">About</a></li>
                         <li{% if is_current_route('contact') %} class="active"{% endif %}><a href="{{ path('contact') }}">Contact</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li{% if is_current_route('manage_posts') %} class="active"{% endif %}><a href="{{ path('manage_posts') }}">Posts</a></li>
+                        {% endif %}
                     </ul>
                     <div class="pull-right">
                         <ul class="nav sign-in">
@@ -50,7 +53,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {{ app.user }} <b class="caret"></b></a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="#">Logout</a></li>
+                                    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('orkestra_profile') }}">My Profile</a></li>{% endif %}
+                                    <li><a href="{{ path('logout') }}">Logout</a></li>
                                 </ul>
                             </li>
                             {% endif %}

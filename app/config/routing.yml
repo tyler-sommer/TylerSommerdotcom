@@ -2,11 +2,22 @@ hwi_oauth_redirect:
   resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
   prefix:   /connect
 
+# Authentication routes
+login:
+  pattern: /connect
+  defaults: { _controller: OrkestraApplicationBundle:Auth:login }
+
+login_check:
+  pattern: /login/check
+
 twitter_login:
   pattern: /login/check-twitter
 
 github_login:
   pattern: /login/check-github
+
+logout:
+  pattern: /logout
 
 # Bundle routes
 OrkestraBundle_routes:
@@ -18,20 +29,6 @@ tyler_sommer_blog:
     resource: "@TylerSommerBlogBundle/Controller/"
     type:     annotation
     prefix:   /
-
-# Authentication routes
-login:
-  pattern: /manage/login
-  defaults: { _controller: OrkestraApplicationBundle:Auth:login }
-
-login_check:
-  pattern: /manage/login_check
-
-
-logout:
-  pattern: /manage/logout
-
-
 
 # Internal routing configuration to handle ESI
 #_internal:
