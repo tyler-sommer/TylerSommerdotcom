@@ -1,4 +1,4 @@
 services:
   tylersommer.oauth.user_provider:
-    class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider #TylerSommer\Bundle\BlogBundle\Security\OAuthUserProvider
-    arguments: [ @doctrine.orm.entity_manager ]
+    class: TylerSommer\Bundle\BlogBundle\Security\OAuthUserProvider
+    arguments: [ @doctrine.orm.entity_manager, @security.encoder_factory ]

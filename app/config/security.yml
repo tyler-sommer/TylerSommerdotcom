@@ -14,8 +14,8 @@ security:
       Orkestra\Bundle\ApplicationBundle\Entity\User: sha512
 
     providers:
-      entity:
-        entity: { class: Orkestra\Bundle\ApplicationBundle\Entity\User }
+      #entity:
+      #  entity: { class: Orkestra\Bundle\ApplicationBundle\Entity\User }
       oauth:
         id: tylersommer.oauth.user_provider
 
@@ -29,7 +29,7 @@ security:
           security: false
 
         manage_area:
-          provider: entity
+          provider: oauth
           pattern: ^/manage
           form_login:
             login_path: /manage/login
@@ -47,7 +47,8 @@ security:
               twitter:  "/login/check-twitter"
               github:   "/login/check-github"
             oauth_user_provider:
-              service:  tylersommer.oauth.user_provider
+              service: tylersommer.oauth.user_provider
+
 
     access_control:
       - { path: ^/manage, role: ROLE_ADMIN }

@@ -14,29 +14,8 @@ use Orkestra\Common\Entity\EntityBase;
  * @ORM\Entity
  * @ORM\Table(name="authors")
  */
-class Author extends EntityBase implements UserInterface
+class Author extends EntityBase
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="first_name", type="string")
-     */
-    protected $firstName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="last_name", type="string")
-     */
-    protected $lastName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string")
-     */
-    protected $email;
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -54,8 +33,8 @@ class Author extends EntityBase implements UserInterface
     /**
      * @var \Orkestra\Bundle\ApplicationBundle\Entity\User
      *
-     * @ORM\OneToOne(targetEntity="Orkestra\Bundle\ApplicationBundle\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     * @ORM\OneToOne(targetEntity="Orkestra\Bundle\ApplicationBundle\Entity\User", cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
@@ -73,11 +52,7 @@ class Author extends EntityBase implements UserInterface
      */
     public function __toString()
     {
-        if ($this->user) {
-            return $this->user->__toString();
-        } else {
-            return sprintf('%s %s', $this->firstName, $this->lastName);
-        }
+        return $this->user ? $this->user->__toString() : '';
     }
 
     /**
@@ -102,54 +77,6 @@ class Author extends EntityBase implements UserInterface
     public function getComments()
     {
         return $this->comments;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $firstName
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param string $lastName
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
     }
 
     /**
@@ -190,74 +117,5 @@ class Author extends EntityBase implements UserInterface
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     *     return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return Role[] The user roles
-     */
-    public function getRoles()
-    {
-        return array('ROLE_AUTHOR');
-    }
-
-    /**
-     * Returns the password used to authenticate the user.
-     *
-     * This should be the encoded password. On authentication, a plain-text
-     * password will be salted, encoded, and then compared to this value.
-     *
-     * @return string The password
-     */
-    public function getPassword()
-    {
-        return '';
-    }
-
-    /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
-     *
-     * @return string The salt
-     */
-    public function getSalt()
-    {
-        return '';
-    }
-
-    /**
-     * Returns the username used to authenticate the user.
-     *
-     * @return string The username
-     */
-    public function getUsername()
-    {
-        return $this->getEmail();
-    }
-
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     *
-     * @return void
-     */
-    public function eraseCredentials()
-    {
-
     }
 }
