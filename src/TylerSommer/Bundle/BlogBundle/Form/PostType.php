@@ -15,7 +15,15 @@ class PostType extends AbstractType
             ->add('slug')
             ->add('body', 'ckeditor')
             ->add('author')
-            ->add('active', null, array('required' => false, 'label' => 'Publish'));
+            ->add('active', null, array('required' => false, 'label' => 'Publish'))
+            ->add('tags', 'tag', array(
+                'class' => 'TylerSommer\Bundle\BlogBundle\Entity\Tag',
+                'required' => false
+            ))
+            ->add('categories', 'tag', array(
+                'class' => 'TylerSommer\Bundle\BlogBundle\Entity\Category',
+                'required' => false
+            ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

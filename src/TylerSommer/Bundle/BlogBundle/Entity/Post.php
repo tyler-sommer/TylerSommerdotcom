@@ -3,6 +3,7 @@
 namespace TylerSommer\Bundle\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Orkestra\Common\Type\NullDateTime;
 use Orkestra\Common\Type\DateTime;
 use Orkestra\Common\Entity\EntityBase;
@@ -13,6 +14,12 @@ use Orkestra\Common\Entity\EntityBase;
  * @ORM\Entity
  * @ORM\Table(name="posts")
  * @ORM\HasLifecycleCallbacks
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *   "Post" = "TylerSommer\Bundle\BlogBundle\Entity\Post",
+ *   "Page" = "TylerSommer\Bundle\BlogBundle\Entity\Page"
+ * })
  */
 class Post extends EntityBase
 {
@@ -60,10 +67,35 @@ class Post extends EntityBase
     protected $author;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="TylerSommer\Bundle\BlogBundle\Entity\Tag", cascade={"persist"})
+     * @ORM\JoinTable(name="posts_tags",
+     *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
+     * )
+     */
+    protected $tags;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="TylerSommer\Bundle\BlogBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinTable(name="posts_categories",
+     *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     * )
+     */
+    protected $categories;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
+        $this->comments      = new ArrayCollection();
+        $this->tags          = new ArrayCollection();
+        $this->categories    = new ArrayCollection();
         $this->datePublished = new NullDateTime();
     }
 
@@ -183,6 +215,39 @@ class Post extends EntityBase
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags->clear();
+        $this->tags = $tags;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 
     /**

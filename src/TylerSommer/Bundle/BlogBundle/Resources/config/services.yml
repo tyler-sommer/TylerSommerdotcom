@@ -2,3 +2,9 @@ services:
   tylersommer.oauth.user_provider:
     class: TylerSommer\Bundle\BlogBundle\Security\OAuthUserProvider
     arguments: [ @doctrine.orm.entity_manager, @security.encoder_factory ]
+
+  tylersommer.form.tag_type:
+    class: TylerSommer\Bundle\BlogBundle\Form\TagType
+    arguments: [ @doctrine.orm.entity_manager ]
+    tags:
+      - { name: form.type, alias: tag }

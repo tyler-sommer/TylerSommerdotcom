@@ -15,3 +15,11 @@
         {% endif %}
     {% endspaceless %}
 {% endblock form_errors %}
+
+
+{% block tag_widget %}
+    {% spaceless %}
+        {% set attr = attr|merge({ 'data-values': values }) %}
+        {{ block('form_widget_simple') }}
+    {% endspaceless %}
+{% endblock %}

@@ -7,7 +7,7 @@
     {% else %}
 <h2>{{ entity.title }}</h2>
     {% endif %}
-<p class="post-author">Posted{% if entity.active %} on {{ entity.datePublished.format('F j \\a\\t h:i A') }}{% endif %} by {{ entity.author }}</p>
+<p class="post-author">Posted{% if entity.active %} on {{ entity.datePublished.toUserTime.format('F j \\a\\t h:i A') }}{% endif %} by {{ entity.author }}</p>
 {{ entity.body|raw }}
 <div class="spacer"></div>
 {% endfor %}
