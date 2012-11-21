@@ -8,6 +8,8 @@
         {{ form_errors(form) }}
         {{ form_row(form.title) }}
         {{ form_row(form.slug) }}
+        {{ form_row(form.tags) }}
+        {{ form_row(form.categories) }}
         {{ form_row(form.author) }}
         {{ form_row(form.body, { attr: { class: 'input-xxlarge', style: 'height: 100px' } }) }}
         <div class="checkbox inline">
@@ -33,6 +35,9 @@
                     .replace(/ /g,'-')
                     .replace(/[^\w-]+/g,''));
         });
+
+        $('#{{ form.tags.get('id') }}').sf2select2();
+        $('#{{ form.categories.get('id') }}').sf2select2();
     });
 </script>
 {% endblock %}
