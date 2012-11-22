@@ -1,0 +1,33 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% block title %}Categorys{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Last Modified</th>
+            <th>Date Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity }}</td>
+            <td>{{ entity.active ? 'Active' : 'Inactive' }}</td>
+            <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
+            <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
+            <td>
+                <a class="btn btn-mini" href="{{ path('manage_category_edit', { id: entity.id }) }}">EDIT</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-primary" href="{{ path('manage_category_new') }}">
+    New Category
+</a>
+{% endblock %}

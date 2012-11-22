@@ -8,7 +8,7 @@ use Orkestra\Common\Entity\EntityBase;
 /**
  * A tag
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TylerSommer\Bundle\BlogBundle\Repository\TagRepository")
  * @ORM\Table(name="tags")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="type", type="string")
@@ -25,6 +25,14 @@ class Tag extends EntityBase
      * @ORM\Column(name="name", type="string", unique=true)
      */
     protected $name;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string)$this->name;
+    }
 
     /**
      * @param string $name

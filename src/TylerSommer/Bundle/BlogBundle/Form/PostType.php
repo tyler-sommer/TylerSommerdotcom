@@ -16,11 +16,11 @@ class PostType extends AbstractType
             ->add('body', 'ckeditor')
             ->add('author')
             ->add('active', null, array('required' => false, 'label' => 'Publish'))
-            ->add('tags', 'tag', array(
+            ->add('tags', 'select2_tag', array(
                 'class' => 'TylerSommer\Bundle\BlogBundle\Entity\Tag',
                 'required' => false
             ))
-            ->add('categories', 'tag', array(
+            ->add('categories', 'select2_tag', array(
                 'class' => 'TylerSommer\Bundle\BlogBundle\Entity\Category',
                 'required' => false
             ));

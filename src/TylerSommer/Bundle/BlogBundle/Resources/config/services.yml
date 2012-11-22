@@ -4,7 +4,7 @@ services:
     arguments: [ @doctrine.orm.entity_manager, @security.encoder_factory ]
 
   tylersommer.form.tag_type:
-    class: TylerSommer\Bundle\BlogBundle\Form\TagType
+    class: TylerSommer\Bundle\BlogBundle\Form\Select2TagType
     arguments: [ @doctrine.orm.entity_manager ]
     tags:
-      - { name: form.type, alias: tag }
+      - { name: form.type, alias: select2_tag }
