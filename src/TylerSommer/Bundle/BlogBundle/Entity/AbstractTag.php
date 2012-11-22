@@ -8,7 +8,7 @@ use Orkestra\Common\Entity\EntityBase;
 /**
  * A tag
  *
- * @ORM\Entity(repositoryClass="TylerSommer\Bundle\BlogBundle\Repository\TagRepository")
+ * @ORM\Entity
  * @ORM\Table(name="tags")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="type", type="string")

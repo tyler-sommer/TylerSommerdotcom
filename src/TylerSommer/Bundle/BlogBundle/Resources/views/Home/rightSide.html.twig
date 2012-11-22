@@ -1,19 +1,26 @@
 <h5>Tags</h5>
-<div>
-Some tags
-</div>
+<ul class="tags">
+{% for tag in tags %}
+    <li><a href="{{ path('search_tag', { name: tag.name }) }}">{{ tag }}</a></li>
+{% endfor %}
+</ul>
 
 <div class="clear spacer"></div>
 <h5>Categories</h5>
-<div>
-Some categories
-</div>
+<ul class="tags">
+{% for category in categories %}
+    <li><a href="{{ path('search_category', { name: category.name }) }}">{{ category }}</a></li>
+{% endfor %}
+</ul>
 
 <div class="clear spacer"></div>
 <h5>Search</h5>
 <div>
-    <form method="post" class="form-inline">
-        <input type="text" class="input-medium" /> <button class="btn btn-primary">GO</button>
+    <form method="post" action="{{ path('search') }}" class="form-inline">
+        {{ form_widget(form.search, { attr: { class: 'input-medium' } }) }} <button class="btn btn-primary">GO</button>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
     </form>
 </div>
 

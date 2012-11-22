@@ -25,10 +25,8 @@ OrkestraBundle_routes:
   type:     annotation
   prefix: /manage
 
-tyler_sommer_blog:
-    resource: "@TylerSommerBlogBundle/Controller/"
-    type:     annotation
-    prefix:   /
+tylersommer_blog:
+    resource: "@TylerSommerBlogBundle/Resources/config/routing.yml"
 
 # Internal routing configuration to handle ESI
 #_internal:

@@ -2,7 +2,8 @@
 
 namespace TylerSommer\Bundle\BlogBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Orkestra\Bundle\ApplicationBundle\Controller\Controller;
+use TylerSommer\Bundle\BlogBundle\Form\SearchType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -42,6 +43,14 @@ class HomeController extends Controller
      */
     public function rightSideAction()
     {
-        return array();
+        $tags = $this->getRepository('TylerSommerBlogBundle:Tag')->getSidebarData();
+        $categories = $this->getRepository('TylerSommerBlogBundle:Category')->getSidebarData();
+        $form = $this->createForm(new SearchType());
+
+        return array(
+            'tags' => $tags,
+            'categories' => $categories,
+            'form' => $form->createView()
+        );
     }
 }

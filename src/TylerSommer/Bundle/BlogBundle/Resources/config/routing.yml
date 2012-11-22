@@ -1,0 +1,14 @@
+tylersommer_search:
+    resource: "@TylerSommerBlogBundle/Controller/SearchController.php"
+    type:     annotation
+    prefix:   /
+
+tylersommer_home:
+    resource: "@TylerSommerBlogBundle/Controller/HomeController.php"
+    type:     annotation
+    prefix:   /
+
+tylersommer_manage:
+    resource: "@TylerSommerBlogBundle/Controller/Admin/"
+    type:     annotation
+    prefix:   /
