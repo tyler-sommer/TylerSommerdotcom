@@ -6,10 +6,11 @@ use Doctrine\ORM\EntityRepository;
 
 class TagRepository extends EntityRepository
 {
-    public function findAll()
+    public function getSidebarData()
     {
         return $this->createQueryBuilder('t')
-            ->where('t INSTANCE OF ' . $this->getClassName())
+            ->where('t.active = true')
+            ->setMaxResults(10)
             ->getQuery()
             ->getResult();
     }

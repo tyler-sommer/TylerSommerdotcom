@@ -12,7 +12,7 @@ use Orkestra\Common\Entity\EntityBase;
  *
  * @ORM\Entity
  */
-class Page extends Post
+class Page extends AbstractPost
 {
 
 }
