@@ -1,4 +1,4 @@
-{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+{% extends 'TylerSommerBlogBundle:Admin/Page:new.html.twig' %}
 
 {% block title %}Edit Page{% endblock %}
 
@@ -26,19 +26,4 @@
         </div>
     </form>
 </div>
-{% endblock %}
-
-{% block additional_javascripts %}
-<script type="text/javascript">
-    $(function() {
-        $('#{{ form.title.get('id') }}').change(function() {
-            $('#{{ form.slug.get('id') }}').val($(this).val().toLowerCase()
-                    .replace(/ /g,'-')
-                    .replace(/[^\w-]+/g,''));
-        });
-
-        $('#{{ form.tags.get('id') }}').sf2select2();
-        $('#{{ form.categories.get('id') }}').sf2select2();
-    });
-</script>
 {% endblock %}

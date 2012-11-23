@@ -11,3 +11,4 @@ ul.errors { list-style-type: none; margin: 0; }
 .select2-container { margin-bottom: 9px; }
 ul.tags { list-style-type: none; margin-left: 0; }
 ul.tags li { float: left; padding-right: 8px; }
+.unique-slug.alert { display: inline; padding: 3px 10px; margin-left: 10px; margin-top: -4px }

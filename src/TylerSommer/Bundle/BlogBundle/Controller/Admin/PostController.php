@@ -3,6 +3,7 @@
 namespace TylerSommer\Bundle\BlogBundle\Controller\Admin;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Orkestra\Bundle\ApplicationBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -178,6 +179,19 @@ class PostController extends Controller
         return array(
             'entity'      => $entity,
             'form'   => $form->createView(),
+        );
+    }
+
+    /**
+     * Returns a JSON response describing if the given slug is unique
+     *
+     * @Route("/is-slug-unique", name="manage_post_is_slug_unique")
+     * @Method("POST")
+     */
+    public function isSlugUniqueAction(Request $request)
+    {
+        return new JsonResponse(array(
+            'unique' => $this->getRepository('TylerSommerBlogBundle:Post')->isSlugUnique($request->get('slug')))
         );
     }
 }

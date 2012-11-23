@@ -28,13 +28,47 @@
 {% endblock %}
 
 {% block additional_javascripts %}
-    <script type="text/javascript">
+<script type="text/javascript">
     $(function() {
+        var _$slug = $('#{{ form.slug.get('id') }}'),
+            _$slugLabel = $('label[for="{{ form.slug.get('id') }}"]'),
+            _$slugMessage = $('<span class="unique-slug alert" />').appendTo(_$slugLabel),
+            _existingValue = _$slug.val(),
+            _changed = false;
+
         $('#{{ form.title.get('id') }}').change(function() {
-            $('#{{ form.slug.get('id') }}').val($(this).val().toLowerCase()
-                    .replace(/ /g,'-')
-                    .replace(/[^\w-]+/g,''));
+            if (!_changed) {
+                _$slug.val($(this).val().toLowerCase()
+                        .replace(/ /g,'-')
+                        .replace(/[^\w-]+/g,'')).change();
+            }
         });
+
+        _$slug.change(function() {
+            var value = $(this).val();
+
+            if (!value || value == _existingValue) {
+                _$slugMessage.hide();
+                _changed = false;
+            } else {
+                _$slugMessage.show();
+                _changed = true;
+            }
+
+            $.ajax({
+                url: '{{ path('manage_post_is_slug_unique') }}',
+                data: { slug: $(this).val() },
+                type: 'post',
+                dataType: 'json',
+                success: function(data) {
+                    if (!data.unique) {
+                        _$slugMessage.removeClass('alert-success').addClass('alert-error').html('This slug is in use.');
+                    } else {
+                        _$slugMessage.removeClass('alert-error').addClass('alert-success').html('This slug is not in use.');
+                    }
+                }
+            });
+        }).change();
 
         $('#{{ form.tags.get('id') }}').sf2select2();
         $('#{{ form.categories.get('id') }}').sf2select2();
