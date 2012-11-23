@@ -5,11 +5,9 @@
 <div class="well">
     <p>Use your Twitter or GitHub account to login. Only your full name and OAuth identifier are stored.</p>
     <div class="row-fluid">
-        <div class="span3 login-box">
-            <p><a href="{{ path('hwi_oauth_service_redirect', { service: 'twitter' }) }}" class="zocial twitter">Sign in with Twitter</a></p>
-            <hr/>
-            <p><a href="{{ path('hwi_oauth_service_redirect', { service: 'github' }) }}" class="zocial github">Sign in with GitHub</a></p>
-            <hr/>
+        <div class="span6">
+            <p><a href="{{ path('hwi_oauth_service_redirect', { service: 'twitter' }) }}" class="zocial twitter">Sign in with Twitter</a> &nbsp; or &nbsp;
+            <a href="{{ path('hwi_oauth_service_redirect', { service: 'github' }) }}" class="zocial github">Sign in with GitHub</a></p>
         </div>
     </div>
     <h5>Sign in with Password</h5>
