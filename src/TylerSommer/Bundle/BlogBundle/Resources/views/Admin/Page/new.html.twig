@@ -31,28 +31,39 @@
 <script type="text/javascript">
     $(function() {
         var _$slug = $('#{{ form.slug.get('id') }}'),
-            _$slugLabel = $('label[for="{{ form.slug.get('id') }}"]'),
-            _$slugMessage = $('<span class="unique-slug alert" />').appendTo(_$slugLabel),
-            _existingValue = _$slug.val(),
+            _$slugControls = _$slug.closest('.control-group'),
+            _existingValue = '{{ form.slug.get('value') }}',
+            _generatedValue = _existingValue,
             _changed = false;
+
+        var _$slugMessage = _$slugControls.find('.help-block');
+
+        if (_$slugMessage.length == 0) {
+            _$slugMessage = $('<span class="help-block" />').insertAfter(_$slug);
+        }
 
         $('#{{ form.title.get('id') }}').change(function() {
             if (!_changed) {
-                _$slug.val($(this).val().toLowerCase()
+                _generatedValue = $(this).val().toLowerCase()
                         .replace(/ /g,'-')
-                        .replace(/[^\w-]+/g,'')).change();
+                        .replace(/[^\w-]+/g,'');
+
+                _$slug.val(_generatedValue).change();
             }
         });
 
         _$slug.change(function() {
             var value = $(this).val();
 
-            if (!value || value == _existingValue) {
+            _changed = value != '' && value != _generatedValue;
+        }).change(function() {
+            var value = $(this).val();
+
+            if (value == '' || value == _existingValue) {
+                _$slugControls.removeClass('success').removeClass('error');
                 _$slugMessage.hide();
-                _changed = false;
-            } else {
-                _$slugMessage.show();
-                _changed = true;
+
+                return;
             }
 
             $.ajax({
@@ -62,9 +73,11 @@
                 dataType: 'json',
                 success: function(data) {
                     if (!data.unique) {
-                        _$slugMessage.removeClass('alert-success').addClass('alert-error').html('This slug is in use.');
+                        _$slugControls.removeClass('success').addClass('error');
+                        _$slugMessage.html('This slug is in use.').fadeIn('fast');
                     } else {
-                        _$slugMessage.removeClass('alert-error').addClass('alert-success').html('This slug is not in use.');
+                        _$slugControls.removeClass('error').addClass('success');
+                        _$slugMessage.html('This slug is not in use.').fadeIn('fast');
                     }
                 }
             });
