@@ -414,12 +414,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle",
-                "reference": "8397d4b0dd878bbac4abd60ab22480ce9ca7bb28"
+                "reference": "f7d2134d16b51ee1a5874b829c97a3e3c4b3e884"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/hwi/HWIOAuthBundle/archive/8397d4b0dd878bbac4abd60ab22480ce9ca7bb28.zip",
-                "reference": "8397d4b0dd878bbac4abd60ab22480ce9ca7bb28",
+                "url": "https://github.com/hwi/HWIOAuthBundle/archive/f7d2134d16b51ee1a5874b829c97a3e3c4b3e884.zip",
+                "reference": "f7d2134d16b51ee1a5874b829c97a3e3c4b3e884",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +439,7 @@
                 "symfony/twig-bundle": "to use the Twig hwi_oauth_* functions",
                 "doctrine/doctrine-bundle": "to use Doctrine user provider"
             },
-            "time": "1346424865",
+            "time": "1353498317",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
