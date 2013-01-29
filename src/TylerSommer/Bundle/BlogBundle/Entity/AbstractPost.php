@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Orkestra\Common\Type\NullDateTime;
 use Orkestra\Common\Type\DateTime;
-use Orkestra\Common\Entity\EntityBase;
+use Orkestra\Common\Entity\AbstractEntity;
 
 /**
  * A post
@@ -21,7 +21,7 @@ use Orkestra\Common\Entity\EntityBase;
  *   "Page" = "TylerSommer\Bundle\BlogBundle\Entity\Page"
  * })
  */
-abstract class AbstractPost extends EntityBase
+abstract class AbstractPost extends AbstractEntity
 {
     /**
      * @var string

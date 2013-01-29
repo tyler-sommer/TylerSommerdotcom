@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Orkestra\Bundle\ApplicationBundle\Entity\User;
-use Orkestra\Common\Entity\EntityBase;
+use Orkestra\Common\Entity\AbstractEntity;
 
 /**
  * An author
@@ -14,7 +14,7 @@ use Orkestra\Common\Entity\EntityBase;
  * @ORM\Entity
  * @ORM\Table(name="authors")
  */
-class Author extends EntityBase
+class Author extends AbstractEntity
 {
     /**
      * @var \Doctrine\Common\Collections\Collection

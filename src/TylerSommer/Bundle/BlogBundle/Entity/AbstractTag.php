@@ -3,7 +3,7 @@
 namespace TylerSommer\Bundle\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Orkestra\Common\Entity\EntityBase;
+use Orkestra\Common\Entity\AbstractEntity;
 
 /**
  * A tag
@@ -17,7 +17,7 @@ use Orkestra\Common\Entity\EntityBase;
  *   "Category" = "TylerSommer\Bundle\BlogBundle\Entity\Category"
  * })
  */
-abstract class AbstractTag extends EntityBase
+abstract class AbstractTag extends AbstractEntity
 {
     /**
      * @var string

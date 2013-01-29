@@ -3,7 +3,7 @@
 namespace TylerSommer\Bundle\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Orkestra\Common\Entity\EntityBase;
+use Orkestra\Common\Entity\AbstractEntity;
 
 /**
  * A comment
@@ -11,7 +11,7 @@ use Orkestra\Common\Entity\EntityBase;
  * @ORM\Entity
  * @ORM\Table(name="comments")
  */
-class Comment extends EntityBase
+class Comment extends AbstractEntity
 {
     /**
      * @var string
