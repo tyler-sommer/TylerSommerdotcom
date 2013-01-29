@@ -4,20 +4,10 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@gitlounge.com:orkestra-common.git"
-        },
-        {
-            "type": "git",
-            "url": "git@titanwebdev.com:OrkestraApplicationBundle.git"
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.1.*",
-        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/orm": "2.3.*",
         "doctrine/doctrine-bundle": "1.0.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.1.*",
@@ -31,8 +21,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "trsteel/ckeditor-bundle": "dev-master",
         "hwi/oauth-bundle": "dev-master",
-        "orkestra/common": "dev-master",
-        "orkestra/application-bundle": "dev-master"
+        "orkestra/common": "1.0.*",
+        "orkestra/application-bundle": "dev-develop"
     },
     "scripts": {
         "post-install-cmd": [
