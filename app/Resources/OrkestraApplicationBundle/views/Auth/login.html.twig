@@ -2,7 +2,7 @@
 
 {% block container %}
 <h2>Login</h2>
-<div class="well">
+<div>
     <p>Use your Twitter or GitHub account to login. Only your full name and OAuth identifier are stored.</p>
     <div class="row-fluid">
         <div class="span12">
@@ -17,7 +17,7 @@
                 {{ form_errors(form) }}
                 {{ form_row(form.username, { attr: { class: 'input-medium' } }) }}
                 {{ form_row(form.password, { attr: { class: 'input-medium' } }) }}
-                <button class="btn btn-primary" type="submit">Login</button>
+                <button class="btn btn-inverse" type="submit">Login</button>
             </form>
         </div>
     </div>

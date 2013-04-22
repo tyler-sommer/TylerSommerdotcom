@@ -23,6 +23,7 @@
         <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
+        <script src="//use.edgefonts.net/lobster.js"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -31,43 +32,32 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="{{ path('home') }}">Tyler Sommer dot com</a>
-                    <ul class="nav">
+                    <ul class="pull-right nav">
                         <li{% if is_current_route('home') %} class="active"{% endif %}><a href="{{ path('home') }}">Home</a></li>
                         <li{% if is_current_route('about') %} class="active"{% endif %}><a href="{{ path('about') }}">About</a></li>
                         <li{% if is_current_route('contact') %} class="active"{% endif %}><a href="{{ path('contact') }}">Contact</a></li>
                         {% if is_granted('ROLE_ADMIN') %}
                         <li{% if is_current_route('manage_posts') %} class="active"{% endif %}><a href="{{ path('manage_posts') }}">Manage</a></li>
+                        {% else %}
+                        <li{% if is_current_route('login') %} class="active"{% endif %}><a href="{{ path('login') }}">Login</a></li>
                         {% endif %}
                     </ul>
-                    <div class="pull-right">
-                        <ul class="nav sign-in">
-                            {% if not app.user %}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Sign in <b class="caret"></b></a>
-                                <div class="login-box dropdown-menu pull-right">
-                                    <p><a href="{{ path('hwi_oauth_service_redirect', { service: 'twitter' }) }}" class="zocial twitter">Sign in with Twitter</a></p>
-                                    <hr/>
-                                    <p><a href="{{ path('hwi_oauth_service_redirect', { service: 'github' }) }}" class="zocial github">Sign in with GitHub</a></p>
-                                    <hr/>
-                                    <p><a href="{{ path('login') }}" class="zocial guest">Sign in with Password</a></p>
-                                </div>
-                            </li>
-                            {% else %}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {{ app.user }} <b class="caret"></b></a>
-                                <ul class="dropdown-menu pull-right">
-                                    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('orkestra_profile') }}">My Profile</a></li>{% endif %}
-                                    <li><a href="{{ path('logout') }}">Logout</a></li>
-                                </ul>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="container container-fluid" style="padding-top: 50px">
+        <div class="container container-fluid">
             {% block container %}
+            <div class="span left-side">
+                <ul class="sidebar">
+                    <li class="active"><a href="#">This is a post</a></li>
+                    <li><a href="#">Whoa dude, another one?!</a></li>
+                    <li><a href="#">A title, this is what that is</a></li>
+                    <li><a href="#">On Grammar and The Efficacy of the Nazi Regime</a></li>
+                    <li><a href="#">What is this I dont even</a></li>
+                    <li><a href="#">Damnit all to hell</a></li>
+                    <li><a href="#">The Final Postdown</a></li>
+                </ul>
+            </div>
             <div class="span8 content-box">
                 {% if app.session.hasFlash('success') %}
                     <div class="alert alert-success">
@@ -85,11 +75,6 @@
                     </div>
                 {% endif %}
                 {% block content %}
-                {% endblock %}
-            </div>
-            <div class="spacer"></div>
-            <div class="span3 well pull-right">
-                {% block right_side %}
                 {% endblock %}
             </div>
             {% endblock %}
