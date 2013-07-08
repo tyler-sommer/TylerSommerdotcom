@@ -3,32 +3,23 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Tyler Sommer dot com{% endblock %}</title>
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300|Lobster+Two:400,700" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
         {% block stylesheets %}
             {% stylesheets filter='cssrewrite, ?yui_css'
-                'bundles/orkestraapplication/css/bootstrap-responsive.css'
-                'bundles/tylersommerblog/css/united.css'
-                'bundles/tylersommerblog/css/site.css'
-                'bundles/tylersommerblog/css/zocial.css'
+                'bundles/tylersommerblog/css/bootstrap.css'
+                'bundles/tylersommerblog/css/bootstrap-responsive.css'
                 'bundles/tylersommerblog/css/select2.css'
+                'bundles/tylersommerblog/css/application.css'
             %}
         <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
-        {% block head_javascripts %}
-            {% javascripts filter='?yui_js'
-                'bundles/orkestraapplication/js/jquery.js'
-                'bundles/orkestraapplication/js/bootstrap.js'
-                'bundles/tylersommerblog/js/*.js'
-            %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-        {% endblock %}
-        <script src="//use.edgefonts.net/lobster.js"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}
-        <div class="navbar navbar-fixed-top">
+        <div class="navbar navbar-static-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="{{ path('home') }}">Tyler Sommer dot com</a>
@@ -39,13 +30,13 @@
                         {% if is_granted('ROLE_ADMIN') %}
                         <li{% if is_current_route('manage_posts') %} class="active"{% endif %}><a href="{{ path('manage_posts') }}">Manage</a></li>
                         {% else %}
-                        <li{% if is_current_route('login') %} class="active"{% endif %}><a href="{{ path('login') }}">Login</a></li>
+                        <li{% if is_current_route('login') %} class="active"{% endif %}><a href="{{ path('login') }}"><i class="icon-user"></i> Login</a></li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="container container-fluid">
+        <div id="main" class="container container-fluid">
             {% block container %}
             <div class="span left-side">
                 <ul class="sidebar">
@@ -59,19 +50,19 @@
                 </ul>
             </div>
             <div class="span8 content-box">
-                {% if app.session.hasFlash('success') %}
+                {% if app.session.flashBag.has('success') %}
                     <div class="alert alert-success">
-                        {{ app.session.flash('success') }}
+                        {{ app.session.flashBag.get('success') }}
                     </div>
                 {% endif %}
-                {% if app.session.hasFlash('alert') %}
+                {% if app.session.flashBag.has('alert') %}
                     <div class="alert">
-                        {{ app.session.flash('alert') }}
+                        {{ app.session.flashBag.get('alert') }}
                     </div>
                 {% endif %}
-                {% if app.session.hasFlash('error') %}
+                {% if app.session.flashBag.has('error') %}
                     <div class="alert alert-error">
-                        {{ app.session.flash('error') }}
+                        {{ app.session.flashBag.get('error') }}
                     </div>
                 {% endif %}
                 {% block content %}
@@ -79,6 +70,15 @@
             </div>
             {% endblock %}
         </div>
+        {% endblock %}
+        {% block main_javascripts %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+            {% javascripts filter='?yui_js'
+                'bundles/tylersommerblog/js/*.js'
+            %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
         {% endblock %}
         {% block additional_javascripts %}{% endblock %}
     </body>
