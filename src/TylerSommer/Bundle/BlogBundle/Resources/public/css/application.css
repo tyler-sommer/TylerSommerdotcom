@@ -1,6 +1,12 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+  background-color: #FEFDFE;
+  color: #333;
+}
+
+label, input, button, select, textarea {
+  font-weight: 300;
 }
 
 .navbar {
@@ -24,3 +30,57 @@ body {
   border-top: 5px solid #0088cc;
   background-color: #D5D5D5;
 }
+
+#main h1, #main h2 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D5D5D5;
+}
+
+#main {
+  margin-top: 20px;
+}
+
+#main .date-posted {
+  border-top: 5px solid #0088cc;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.date-posted p {
+  margin: 0;
+  padding: 5px;
+}
+
+.date-posted .month {
+  font-size: 14px;
+  background-color: #333333;
+  color: white;
+}
+
+.date-posted .day {
+  font-size: 20px;
+  background-color: #D5D5D5;
+}
+
+.label {
+  font-size: 13px;
+  line-height: 16px;
+  padding: 4px 8px;
+  font-weight: 400;
+}
+
+.label[href] {
+  background-color: #0088cc;
+  color: white;
+}
+
+.label[href]:hover {
+  background-color: #D5D5D5;
+  color: #333;
+}
+
+
+.post-spacer {
+  height: 50px;
+}
+
