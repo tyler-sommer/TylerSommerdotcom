@@ -10,12 +10,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class HomeController extends Controller
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home", defaults={"slug"=null})
      * @Route("/about", name="about", defaults={"slug"="about"})
      * @Route("/contact", name="contact", defaults={"slug"="contact"})
      * @Route("/{slug}", name="page_or_post")
      */
-    public function indexAction($slug = '')
+    public function indexAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
