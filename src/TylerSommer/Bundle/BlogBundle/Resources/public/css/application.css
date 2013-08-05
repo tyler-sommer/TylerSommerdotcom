@@ -9,6 +9,10 @@ label, input, button, select, textarea {
   font-weight: 300;
 }
 
+.well {
+  background-color: #FAFAFA;
+}
+
 .navbar {
   border-top: 5px solid #333333;
 }
