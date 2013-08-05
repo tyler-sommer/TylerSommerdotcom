@@ -27,7 +27,7 @@
 {% block additional_javascripts %}
 <script type="text/javascript">
     $(function() {
-        $('#{{ form.user.get('id') }}').change(function() {
+        $('#{{ form.user.vars.id }}').change(function() {
             if ($(this).val() != '') {
                 $('.no-user').slideUp('fast');
             } else {

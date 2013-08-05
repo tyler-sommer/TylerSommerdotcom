@@ -30,9 +30,9 @@
 {% block additional_javascripts %}
 <script type="text/javascript">
     $(function() {
-        var _$slug = $('#{{ form.slug.get('id') }}'),
+        var _$slug = $('#{{ form.slug.vars.id }}'),
             _$slugControls = _$slug.closest('.control-group'),
-            _existingValue = '{{ form.slug.get('value') }}',
+            _existingValue = '{{ form.slug.vars.value }}',
             _generatedValue = _existingValue,
             _changed = false;
 
@@ -42,7 +42,7 @@
             _$slugMessage = $('<span class="help-block" />').insertAfter(_$slug);
         }
 
-        $('#{{ form.title.get('id') }}').change(function() {
+        $('#{{ form.title.vars.id }}').change(function() {
             if (!_changed) {
                 _generatedValue = $(this).val().toLowerCase()
                         .replace(/ /g,'-')
@@ -83,8 +83,8 @@
             });
         }).change();
 
-        $('#{{ form.tags.get('id') }}').sf2select2();
-        $('#{{ form.categories.get('id') }}').sf2select2();
+        $('#{{ form.tags.vars.id }}').sf2select2();
+        $('#{{ form.categories.vars.id }}').sf2select2();
     });
 </script>
 {% endblock %}

@@ -7,6 +7,7 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Form\Util\PropertyPath;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class TagTransformer implements DataTransformerInterface
 {
@@ -18,7 +19,7 @@ class TagTransformer implements DataTransformerInterface
 
     protected $property;
 
-    protected $propertyPath;
+    protected $propertyAccessor;
 
     /**
      * @param \Doctrine\ORM\EntityManager $entityManager
@@ -31,7 +32,7 @@ class TagTransformer implements DataTransformerInterface
         $this->repository = $entityManager->getRepository($class);
         $this->class = $class;
         $this->property = $property;
-        $this->propertyPath = new PropertyPath($this->property);
+        $this->propertyAccessor = PropertyAccess::getPropertyAccessor();
     }
 
     /**
@@ -52,9 +53,10 @@ class TagTransformer implements DataTransformerInterface
             throw new TransformationFailedException('TagTransformer expects to transform an array or Collection value');
         }
 
-        $propertyPath = $this->propertyPath;
-        $values = array_map(function($value) use ($propertyPath) {
-            return $propertyPath->getValue($value);
+        $propertyAccessor = $this->propertyAccessor;
+        $property = $this->property;
+        $values = array_map(function($value) use ($propertyAccessor, $property) {
+            return $propertyAccessor->getValue($value, $property);
         }, $values);
 
         return implode(',', $values);
@@ -79,7 +81,7 @@ class TagTransformer implements DataTransformerInterface
             $entity = $this->repository->findOneBy(array($this->property => $name));
             if (!$entity) {
                 $entity = new $class();
-                $this->propertyPath->setValue($entity, $name);
+                $this->propertyAccessor->setValue($entity, $this->property, $name);
             }
 
             $tags[] = $entity;

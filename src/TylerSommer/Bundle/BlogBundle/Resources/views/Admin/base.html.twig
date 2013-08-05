@@ -28,19 +28,19 @@
         {% endblock %}
     </div>
     <div class="span10">
-        {% if app.session.hasFlash('success') %}
+        {% if app.session.flashBag.has('success') %}
             <div class="alert alert-success">
-                {{ app.session.flash('success') }}
+                {{ app.session.flashBag.get('success')[0] }}
             </div>
         {% endif %}
-        {% if app.session.hasFlash('alert') %}
+        {% if app.session.flashBag.has('alert') %}
             <div class="alert">
-                {{ app.session.flash('alert') }}
+                {{ app.session.flashBag.get('alert')[0] }}
             </div>
         {% endif %}
-        {% if app.session.hasFlash('error') %}
+        {% if app.session.flashBag.has('error') %}
             <div class="alert alert-error">
-                {{ app.session.flash('error') }}
+                {{ app.session.flashBag.get('error')[0] }}
             </div>
         {% endif %}
         {% block content %}

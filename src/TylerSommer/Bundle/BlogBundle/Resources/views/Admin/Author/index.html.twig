@@ -17,7 +17,7 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('manage_author_show', { 'id': entity.id }) }}">{{ entity }}</a></td>
-            <td>{{ entity.email }}</td>
+            <td>{{ entity.user.email|default('n/a') }}</td>
             <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
             <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
             <td>

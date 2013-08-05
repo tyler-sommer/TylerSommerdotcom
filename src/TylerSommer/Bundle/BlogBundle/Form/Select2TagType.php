@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use TylerSommer\Bundle\BlogBundle\Form\Transformer\TagTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -38,11 +39,12 @@ class Select2TagType extends AbstractType
         ));
 
         $entityManager = $this->entityManager;
+        $propertyAccessor = PropertyAccess::getPropertyAccessor();
 
         $resolver->setDefaults(array(
             'property' => 'name',
-            'values' => function(Options $options) use ($entityManager) {
-                $propertyPath = new PropertyPath($options['property']);
+            'values' => function(Options $options) use ($entityManager, $propertyAccessor) {
+                $propertyPath = $options['property'];
                 $class = $options['class'];
 
                 $repository = $entityManager->getRepository($class);
@@ -53,8 +55,8 @@ class Select2TagType extends AbstractType
                     ->getQuery()
                     ->getResult();
 
-                $values = array_map(function($value) use ($propertyPath) {
-                    return $propertyPath->getValue($value);
+                $values = array_map(function($value) use ($propertyAccessor, $propertyPath) {
+                    return $propertyAccessor->getValue($value, $propertyPath);
                 }, $entities);
 
                 return implode(',', $values);
