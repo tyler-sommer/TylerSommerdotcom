@@ -84,3 +84,35 @@ label, input, button, select, textarea {
   height: 50px;
 }
 
+.right-side.social span {
+  font-size: 24px;
+}
+
+div.right-side {
+  margin-bottom: 25px;
+}
+
+.right-side.social .label[href] {
+  border-top: 5px solid #333333;
+}
+
+.right-side.social .label[href]:hover {
+  border-top: 5px solid #0088CC;
+}
+
+.right-side.archive dt {
+  font-weight: 300;
+  background-color: #D5D5D5;
+  color: #333;
+  line-height: 30px;
+  padding-left: 10px;
+  margin: 15px 0 5px 0;
+}
+
+.right-side.archive dt:first-child {
+  margin-top: 0;
+}
+
+.right-side.archive dd {
+  margin: 0 0 5px 3px;
+}
