@@ -57,6 +57,11 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
      */
     protected function createUserFromResponse(UserResponseInterface $response)
     {
+        if (!$response->getUsername()) {
+            // TODO: Enumerate response errors?
+            throw new \RuntimeException('Unable to authenticate. An error occurred during OAuth authentication.');
+        }
+
         $group = $this->entityManager->getRepository('OrkestraApplicationBundle:Group')->findOneBy(array('role' => 'ROLE_USER'));
 
         if (!$group) {
