@@ -43,11 +43,29 @@ class HomeController extends Controller
      */
     public function rightSideAction()
     {
+        $posts = $this->getRepository('TylerSommerBlogBundle:Post')->createQueryBuilder('p')
+            ->where('p.datePublished >= :dateStart')
+            ->setParameters(array(
+                'dateStart' => new \DateTime('-1 year')
+            ))
+            ->orderBy('p.datePublished', 'DESC')
+            ->getQuery()->getResult();
         $tags = $this->getRepository('TylerSommerBlogBundle:Tag')->getSidebarData();
         $categories = $this->getRepository('TylerSommerBlogBundle:Category')->getSidebarData();
         $form = $this->createForm(new SearchType());
 
+        $archive = array();
+        foreach ($posts as $post) {
+            $month = $post->getDatePublished()->format('F Y');
+            if (!isset($archive[$month])) {
+                $archive[$month] = array();
+            }
+
+            $archive[$month][] = $post;
+        }
+
         return array(
+            'archive' => $archive,
             'tags' => $tags,
             'categories' => $categories,
             'form' => $form->createView()

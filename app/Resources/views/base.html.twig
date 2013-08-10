@@ -44,17 +44,17 @@
             <div class="span9 content-box">
                 {% if app.session.flashBag.has('success') %}
                     <div class="alert alert-success">
-                        {{ app.session.flashBag.get('success') }}
+                        {{ app.session.flashBag.get('success')[0] }}
                     </div>
                 {% endif %}
                 {% if app.session.flashBag.has('alert') %}
                     <div class="alert">
-                        {{ app.session.flashBag.get('alert') }}
+                        {{ app.session.flashBag.get('alert')[0] }}
                     </div>
                 {% endif %}
                 {% if app.session.flashBag.has('error') %}
                     <div class="alert alert-error">
-                        {{ app.session.flashBag.get('error') }}
+                        {{ app.session.flashBag.get('error')[0] }}
                     </div>
                 {% endif %}
                 {% block content %}
@@ -62,26 +62,7 @@
             </div>
             <div class="span3">
                 {% block right_side %}
-                <div class="right-side social">
-                    <h4>Social</h4>
-                    <a href="#" class="label label-primary"><span class="icon-rss"></span></a>
-                    <a href="#" class="label label-primary"><span class="icon-github"></span></a>
-                    <a href="#" class="label label-primary"><span class="icon-twitter"></span></a>
-                </div>
-                <div class="right-side archive">
-                    <h4>Archive</h4>
-                    <dl>
-                        <dt>November 2012</dt>
-                        <dd><a href="#">Whoa dude, another one?!</a></dd>
-                        <dd><a href="#">A title, this is what that is</a></dd>
-                        <dt>October 2012</dt>
-                        <dd><a href="#">A title, this is what that is</a></dd>
-                        <dd><a href="#">On Grammar and The Efficacy of the Nazi Regime</a></dd>
-                        <dd><a href="#">What is this I dont even</a></dd>
-                        <dd><a href="#">Damnit all to hell</a></dd>
-                        <dd><a href="#">The Final Postdown</a></dd>
-                    </dl>
-                </div>
+                {{ render(controller('TylerSommerBlogBundle:Home:rightSide')) }}
                 {% endblock %}
             </div>
             </div>

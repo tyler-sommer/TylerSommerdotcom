@@ -73,6 +73,21 @@ label, input, button, select, textarea {
   font-weight: 400;
 }
 
+.label.tag {
+  margin: 5px;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #0088cc;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #D5D5D5;
+  color: #333;
+}
+
 .label[href] {
   background-color: #0088cc;
   color: white;

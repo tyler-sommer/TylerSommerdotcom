@@ -1,27 +1,40 @@
-<h5>Tags</h5>
-<ul class="tags">
-{% for tag in tags %}
-    <li><a href="{{ path('search_tag', { name: tag.name }) }}">{{ tag }}</a></li>
-{% endfor %}
-</ul>
-
-<div class="clear spacer"></div>
-<h5>Categories</h5>
-<ul class="tags">
-{% for category in categories %}
-    <li><a href="{{ path('search_category', { name: category.name }) }}">{{ category }}</a></li>
-{% endfor %}
-</ul>
-
-<div class="clear spacer"></div>
-<h5>Search</h5>
-<div>
-    <form method="post" action="{{ path('search') }}" class="form-inline">
-        {{ form_widget(form.search, { attr: { class: 'input-medium' } }) }} <button class="btn btn-primary">GO</button>
-        <div class="hidden">
-            {{ form_rest(form) }}
-        </div>
-    </form>
+<div class="right-side social">
+    <h4>Social</h4>
+    <a href="#" class="label label-primary"><span class="icon-rss"></span></a>
+    <a href="https://github.com/tyler-sommer" class="label label-primary"><span class="icon-github"></span></a>
+    <a href="https://twitter.com/syncreticidiot" class="label label-primary"><span class="icon-twitter"></span></a>
 </div>
-
-<div class="clear spacer"></div>
+<div class="right-side search">
+    <h4>Search</h4>
+    <div>
+        <form method="post" action="{{ path('search') }}" class="form-inline">
+            {{ form_widget(form.search, { attr: { class: 'input-medium', placeholder: 'some words...' } }) }} <button class="btn btn-primary">GO</button>
+            <div class="hidden">
+                {{ form_rest(form) }}
+            </div>
+        </form>
+    </div>
+</div>
+<div class="right-side archive">
+    <h4>Archive</h4>
+    <dl>
+        {% for month,posts in archive %}
+        <dt>{{ month }}</dt>
+            {% for post in posts %}
+        <dd><a href="{{ path('page_or_post', { slug: post.slug }) }}">{{ post.title }}</a></dd>
+            {% endfor %}
+        {% endfor %}
+    </dl>
+</div>
+<div class="right-side tags">
+    <h4>Tags</h4>
+    {% for tag in tags %}
+        <a class="label label-inverse tag" href="{{ path('search_tag', { name: tag.name }) }}">{{ tag }}</a>
+    {% endfor %}
+</div>
+<div class="right-side categories">
+    <h4>Categories</h4>
+    {% for category in categories %}
+        <a class="label label-inverse tag" href="{{ path('search_category', { name: category.name }) }}">{{ category }}</a>
+    {% endfor %}
+</div>
