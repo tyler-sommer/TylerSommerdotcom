@@ -2,9 +2,9 @@
 
 {% block title %}An Error Occurred{% endblock %}
 
-{% block container %}
+{% block content %}
 <h1>{{ block('title') }}</h1>
 <p style="font-size: 12px; color: silver"></p>
-<p><span style="font-weight: bold">{{ status_code }} {{ status_text }}</span>: {% block message %}An unexpected error occurred and the operation could not be completed. Please try again later.{% endblock %}</p>
+<p>{% block message %}An unexpected error occurred and the operation could not be completed. Please try again later.{% endblock %}</p>
 <p class="spacer"></p>
 {% endblock %}
