@@ -3,6 +3,11 @@ tylersommer_search:
     type:     annotation
     prefix:   /
 
+tylersommer_comment:
+    resource: "@TylerSommerBlogBundle/Controller/CommentController.php"
+    type:     annotation
+    prefix:   /
+
 tylersommer_home:
     resource: "@TylerSommerBlogBundle/Controller/HomeController.php"
     type:     annotation

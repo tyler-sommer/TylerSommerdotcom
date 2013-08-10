@@ -16,6 +16,7 @@
 {{ render_twig(entity.body, { post: entity }) }}
 <div class="spacer"></div>
 <p>{% for tag in entity.tags %}<a href="{{ path('search_tag', { name: tag.name }) }}" class="label tag label-inverse">{{ tag }}</a>{% endfor %}{% for tag in entity.categories %}<a href="{{ path('search_category', { name: tag.name }) }}" class="label label-inverse tag">{{ tag }}</a>{% endfor %}</p>
+    {{ render(controller('TylerSommerBlogBundle:Comment:index', { postid: entity.id })) }}
 <div class="post-spacer"></div>
         </div>
     </div>

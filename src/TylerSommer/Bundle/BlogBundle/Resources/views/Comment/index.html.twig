@@ -1,0 +1,13 @@
+<h4>Comments</h4>
+{% if entities|length > 0 %}
+    <a class="add-comment" href="{{ path('post_comment_new', { postid: post.id }) }}">Share your thoughts</a>.
+    {% for entity in entities %}
+    <div>
+        <h5>{{ entity.author }}</h5>
+        {{ entity.body|raw }}
+    </div>
+    {% endfor %}
+{% else %}
+    No comments yet! <a class="add-comment" href="{{ path('post_comment_new', { postid: post.id }) }}">Say something</a>.
+{% endif %}
+

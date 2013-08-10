@@ -13,6 +13,12 @@ label, input, button, select, textarea {
   background-color: #FAFAFA;
 }
 
+.spacer {
+  clear: both;
+  height: 15px;
+  width: 100%;
+}
+
 .navbar {
   border-top: 5px solid #333333;
 }
