@@ -69,7 +69,7 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
         }
 
         $user = new User();
-        $user->setUsername($response->getUsername());
+        $user->setUsername(sprintf('%s-%s', $response->getResourceOwner()->getName(), $response->getUsername()));
         list ($firstName, $lastName) = explode(' ', $response->getRealName(), 2);
         $user->setFirstName($firstName);
         $user->setLastName($lastName);
@@ -99,7 +99,7 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         try {
-            $user = $this->loadUserByUsername($response->getUsername());
+            $user = $this->loadUserByUsername(sprintf('%s-%s', $response->getResourceOwner()->getName(), $response->getUsername()));
         } catch (UsernameNotFoundException $e) {
             $user = $this->createUserFromResponse($response);
         }

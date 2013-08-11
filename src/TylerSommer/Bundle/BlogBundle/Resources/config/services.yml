@@ -1,3 +1,6 @@
+parameters:
+  hwi_oauth.authentication.provider.oauth.class: TylerSommer\Bundle\BlogBundle\Security\OAuthProvider
+
 services:
   tylersommer.twig_extension.simple_cms:
     class: TylerSommer\Bundle\BlogBundle\TwigExtension\SimpleCmsExtension
