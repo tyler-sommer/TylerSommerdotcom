@@ -8,3 +8,17 @@ services:
     arguments: [ @doctrine.orm.entity_manager ]
     tags:
       - { name: form.type, alias: select2_tag }
+
+  tylersommer.menu_builder.simple_menu:
+    class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\SimpleMenuBuilder
+
+  tylersommer.menu_builder.registry:
+    class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\MenuBuilderRegistry
+    calls:
+      - [ registerBuilder, [ @tylersommer.menu_builder.simple_menu ] ]
+
+  tylersommer.entity.subscriber.menu_post_load:
+    class: TylerSommer\Bundle\BlogBundle\Entity\EventSubscriber\MenuPostLoadSubscriber
+    arguments: [ @tylersommer.menu_builder.registry ]
+    tags:
+      - { name: doctrine.event_subscriber }
