@@ -8,9 +8,9 @@
         {% endif %}
     </div>
     {% for entity in entities %}
-    <div>
+    <div class="comment">
         <h5>{{ entity.author }}</h5>
-        {{ entity.body }}
+        <p class="comment-body">{{ entity.body }}</p>
     </div>
     {% endfor %}
 {% else %}

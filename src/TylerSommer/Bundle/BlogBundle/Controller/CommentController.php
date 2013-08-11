@@ -31,7 +31,10 @@ class CommentController extends AbstractBlogController
     {
         $post = $this->getPost($postid);
 
-        $entities = $post->getComments();
+        $entities = $post->getComments()->toArray();
+        usort($entities, function(Comment $a, Comment $b) {
+            return $a->getDateCreated() < $b->getDateCreated();
+        });
 
         return array(
             'post'     => $post,
@@ -91,67 +94,6 @@ class CommentController extends AbstractBlogController
         return array(
             'entity' => $entity,
             'post'   => $post,
-            'form'   => $form->createView(),
-        );
-    }
-
-    /**
-     * Displays a form to edit an existing Comment entity.
-     *
-     * @Route("/{id}/edit", name="post_comment_edit")
-     * @Secure("ROLE_COMMENT_WRITE")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TylerSommerBlogBundle:Post')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
-        }
-
-        $form = $this->createForm(new PostType(), $entity);
-
-        return array(
-            'entity'      => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
-    /**
-     * Edits an existing Comment entity.
-     *
-     * @Route("/{id}/update", name="post_comment_update")
-     * @Secure("ROLE_COMMENT_WRITE")
-     * @Method("POST")
-     * @Template("TylerSommerBlogBundle:Comment:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TylerSommerBlogBundle:Post')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
-        }
-
-        $form = $this->createForm(new PostType(), $entity);
-        $form->bind($request);
-
-        if ($form->isValid()) {
-            $em->persist($entity);
-            $em->flush();
-
-            $this->getSession()->getFlashBag()->set('success', 'The post has been updated successfully.');
-
-            return $this->redirect($this->generateUrl('manage_post_show', array('id' => $id)));
-        }
-
-        return array(
-            'entity'      => $entity,
             'form'   => $form->createView(),
         );
     }

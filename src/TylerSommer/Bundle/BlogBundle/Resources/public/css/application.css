@@ -142,3 +142,10 @@ div.right-side {
   margin: 0 0 5px 3px;
 }
 
+.comment h5 {
+  margin-bottom: 0;
+}
+
+.comment .comment-body {
+  margin: 0 0 5px 0;
+}
