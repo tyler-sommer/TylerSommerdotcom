@@ -1,5 +1,9 @@
 {% extends 'TylerSommerBlogBundle::base.html.twig' %}
 
+{% if entities|length == 1 %}
+{% set title = entities[0].title %}
+{% endif %}
+
 {% block content %}
 {% for entity in entities %}
     <div class="row-fluid">

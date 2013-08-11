@@ -21,7 +21,7 @@ class PostController extends Controller
     /**
      * Lists all Post entities.
      *
-     * @Route("s", name="manage_posts")
+     * @Route("s/", name="manage_posts")
      * @Template()
      */
     public function indexAction()

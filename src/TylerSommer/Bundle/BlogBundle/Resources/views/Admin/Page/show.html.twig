@@ -1,7 +1,6 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-
-{% block title %}Page - {{ entity.title }}{% endblock %}
+{% set title = entity.title ~ ' - Page Summary' %}
 
 {% block content %}
 <table class="table summary">

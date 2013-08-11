@@ -1,7 +1,6 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-{% block title %}Edit Tag{% endblock %}
-
+{% set title = 'Edit Tag' %}
 {% block content %}
     <div class="well">
     <form action="{{ path('manage_tag_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>

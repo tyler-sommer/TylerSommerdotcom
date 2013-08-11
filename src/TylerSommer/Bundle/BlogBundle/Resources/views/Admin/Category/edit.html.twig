@@ -1,7 +1,6 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
-
+{% set title = 'Edit Category' %}
 {% block content %}
     <div class="well">
     <form action="{{ path('manage_category_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>

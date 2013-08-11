@@ -1,7 +1,7 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
 
-{% block title %}Author - {{ entity }}{% endblock %}
+{% set title = entity.title ~ ' - Author' %}
 
 {% block content %}
 <table class="table summary">

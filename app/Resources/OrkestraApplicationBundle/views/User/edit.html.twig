@@ -1,7 +1,6 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-
-{% block title %}Edit User{% endblock %}
+{% set title = 'Edit User' %}
 
 {% block content %}
 <form action="{{ path('orkestra_user_update', { 'id': user.id }) }}" method="post" {{ form_enctype(form) }}>

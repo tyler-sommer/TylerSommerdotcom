@@ -26,7 +26,7 @@ class HomeController extends Controller
             }
 
             $entities = array($entity);
-            
+
         } else {
             $entities = $em->getRepository('TylerSommerBlogBundle:Post')->findForHome();
         }

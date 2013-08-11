@@ -1,7 +1,6 @@
 {% extends 'TylerSommerBlogBundle:Admin/Page:new.html.twig' %}
 
-{% block title %}New Post{% endblock %}
-
+{% set title = 'New Post' %}
 {% block content %}
 <div class="well">
     <form action="{{ path('manage_post_create') }}" method="post" {{ form_enctype(form) }}>

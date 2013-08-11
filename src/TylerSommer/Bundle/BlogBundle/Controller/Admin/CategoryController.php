@@ -20,7 +20,7 @@ class CategoryController extends Controller
     /**
      * Lists all Category entities.
      *
-     * @Route("categories", name="manage_categories")
+     * @Route("categories/", name="manage_categories")
      * @Template()
      */
     public function indexAction()

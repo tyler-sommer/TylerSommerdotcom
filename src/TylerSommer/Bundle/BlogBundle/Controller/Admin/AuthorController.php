@@ -20,7 +20,7 @@ class AuthorController extends Controller
     /**
      * Lists all Author entities.
      *
-     * @Route("s", name="manage_authors")
+     * @Route("s/", name="manage_authors")
      * @Template()
      */
     public function indexAction()

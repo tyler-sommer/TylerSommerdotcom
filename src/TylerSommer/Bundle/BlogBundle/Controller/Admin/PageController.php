@@ -20,7 +20,7 @@ class PageController extends Controller
     /**
      * Lists all Page entities.
      *
-     * @Route("s", name="manage_pages")
+     * @Route("s/", name="manage_pages")
      * @Template()
      */
     public function indexAction()

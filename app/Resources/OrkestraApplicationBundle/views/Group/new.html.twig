@@ -1,7 +1,6 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-
-{% block title %}New Group{% endblock %}
+{% set title = 'New Group' %}
 
 {% block content %}
 <form action="{{ path('orkestra_group_create') }}" method="post" {{ form_enctype(form) }}>

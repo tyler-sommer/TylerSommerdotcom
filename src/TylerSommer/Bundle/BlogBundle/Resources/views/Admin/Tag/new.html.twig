@@ -1,7 +1,6 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-{% block title %}New Tag{% endblock %}
-
+{% set title = 'New Tag' %}
 {% block content %}
 <div class="well">
     <form action="{{ path('manage_tag_create') }}" method="post" {{ form_enctype(form) }}>
