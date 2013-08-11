@@ -19,6 +19,10 @@ label, input, button, select, textarea {
   width: 100%;
 }
 
+.table-striped tbody > tr:nth-child(2n+1) > td, .table-striped tbody > tr:nth-child(2n+1) > th {
+  background-color: #FAFAFA;
+}
+
 .navbar {
   border-top: 5px solid #333333;
 }
