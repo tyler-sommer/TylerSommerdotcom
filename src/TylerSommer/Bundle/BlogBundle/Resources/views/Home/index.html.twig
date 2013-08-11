@@ -22,3 +22,27 @@
     </div>
 {% endfor %}
 {% endblock %}
+
+{% block additional_javascripts %}
+    {% if is_granted('ROLE_COMMENT_WRITE') %}
+<script type="text/javascript">
+    $(function() {
+        $('.add-comment').click(function(e) {
+            e.preventDefault();
+
+            var $this = $(this);
+            $.ajax({
+                url: $this.attr('href'),
+                type: 'html',
+                success: function(response) {
+                    $this.closest('.comment-box').html(response);
+                },
+                error: function() {
+                    console.log(arguments);
+                }
+            });
+        })
+    });
+</script>
+    {% endif %}
+{% endblock %}

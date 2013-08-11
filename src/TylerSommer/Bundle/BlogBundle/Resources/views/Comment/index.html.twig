@@ -1,13 +1,24 @@
 <h4>Comments</h4>
 {% if entities|length > 0 %}
-    <a class="add-comment" href="{{ path('post_comment_new', { postid: post.id }) }}">Share your thoughts</a>.
+    <div class="comment-box">
+        {% if is_granted('ROLE_COMMENT_WRITE') %}
+            <a class="add-comment" href="{{ path('post_comment_new', { postid: post.id }) }}">Share your thoughts</a>.
+        {% else %}
+            <a href="{{ path('login') }}">Share your thoughts</a>.
+        {% endif %}
+    </div>
     {% for entity in entities %}
     <div>
         <h5>{{ entity.author }}</h5>
-        {{ entity.body|raw }}
+        {{ entity.body }}
     </div>
     {% endfor %}
 {% else %}
-    No comments yet! <a class="add-comment" href="{{ path('post_comment_new', { postid: post.id }) }}">Say something</a>.
+    No comments yet!
+    {% if is_granted('ROLE_COMMENT_WRITE') %}
+        <a class="add-comment" href="{{ path('post_comment_new', { postid: post.id }) }}">Say something</a>.
+    {% else %}
+        <a href="{{ path('login') }}">Say something</a>.
+    {% endif %}
 {% endif %}
 

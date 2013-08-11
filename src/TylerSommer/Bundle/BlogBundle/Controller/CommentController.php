@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use TylerSommer\Bundle\BlogBundle\Entity\Comment;
 use TylerSommer\Bundle\BlogBundle\Entity\Post;
 use TylerSommer\Bundle\BlogBundle\Form\CommentType;
@@ -41,6 +42,7 @@ class CommentController extends AbstractBlogController
      * Displays a form to create a new Comment entity.
      *
      * @Route("/new", name="post_comment_new")
+     * @Secure("ROLE_COMMENT_WRITE")
      * @Template()
      */
     public function newAction($postid)
@@ -61,6 +63,7 @@ class CommentController extends AbstractBlogController
      * Creates a new Comment entity.
      *
      * @Route("/create", name="post_comment_create")
+     * @Secure("ROLE_COMMENT_WRITE")
      * @Method("POST")
      * @Template("TylerSommerBlogBundle:Comment:new.html.twig")
      */
@@ -95,6 +98,7 @@ class CommentController extends AbstractBlogController
      * Displays a form to edit an existing Comment entity.
      *
      * @Route("/{id}/edit", name="post_comment_edit")
+     * @Secure("ROLE_COMMENT_WRITE")
      * @Template()
      */
     public function editAction($id)
@@ -119,6 +123,7 @@ class CommentController extends AbstractBlogController
      * Edits an existing Comment entity.
      *
      * @Route("/{id}/update", name="post_comment_update")
+     * @Secure("ROLE_COMMENT_WRITE")
      * @Method("POST")
      * @Template("TylerSommerBlogBundle:Comment:edit.html.twig")
      */

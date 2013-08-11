@@ -11,7 +11,9 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('body', 'ckeditor');
+            ->add('body', 'textarea', array(
+                'label' => 'Share your thoughts.'
+            ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
