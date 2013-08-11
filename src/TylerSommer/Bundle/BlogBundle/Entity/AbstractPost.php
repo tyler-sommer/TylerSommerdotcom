@@ -61,7 +61,7 @@ abstract class AbstractPost extends AbstractEntity
     /**
      * @var \TylerSommer\Bundle\BlogBundle\Entity\Author
      *
-     * @ORM\ManyToOne(targetEntity="TylerSommer\Bundle\BlogBundle\Entity\Author", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="TylerSommer\Bundle\BlogBundle\Entity\Author", cascade={"persist"}, inversedBy="posts")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     protected $author;
