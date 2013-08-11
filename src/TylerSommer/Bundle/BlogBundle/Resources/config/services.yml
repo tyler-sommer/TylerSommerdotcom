@@ -1,4 +1,9 @@
 services:
+  tylersommer.twig_extension.simple_cms:
+    class: TylerSommer\Bundle\BlogBundle\TwigExtension\SimpleCmsExtension
+    tags:
+      - { name: twig.extension }
+
   tylersommer.oauth.user_provider:
     class: TylerSommer\Bundle\BlogBundle\Security\OAuthUserProvider
     arguments: [ @doctrine.orm.entity_manager, @security.encoder_factory ]
