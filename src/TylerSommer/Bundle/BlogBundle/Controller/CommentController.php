@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use TylerSommer\Bundle\BlogBundle\Entity\AbstractPost;
 use TylerSommer\Bundle\BlogBundle\Entity\Comment;
 use TylerSommer\Bundle\BlogBundle\Entity\Post;
 use TylerSommer\Bundle\BlogBundle\Form\CommentType;
@@ -158,13 +159,13 @@ class CommentController extends AbstractBlogController
     /**
      * @param int $postid
      *
-     * @return Post
+     * @return AbstractPost
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     private function getPost($postid)
     {
-        $post = $this->getDoctrine()->getManager()->getRepository('TylerSommerBlogBundle:Post')
+        $post = $this->getDoctrine()->getManager()->getRepository('TylerSommerBlogBundle:AbstractPost')
             ->createQueryBuilder('p')
             ->addSelect('c')
             ->leftJoin('p.comments', 'c')

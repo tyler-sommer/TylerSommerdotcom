@@ -14,11 +14,13 @@
     </div>
     {% endfor %}
 {% else %}
+    <div class="comment-box">
     No comments yet!
     {% if is_granted('ROLE_COMMENT_WRITE') %}
         <a class="add-comment" href="{{ path('post_comment_new', { postid: post.id }) }}">Say something</a>.
     {% else %}
         <a href="{{ path('login') }}">Say something</a>.
     {% endif %}
+    </div>
 {% endif %}
 

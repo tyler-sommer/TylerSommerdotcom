@@ -16,7 +16,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('manage_post_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+            <td><a href="{{ path('manage_page_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
             <td>{{ entity.active ? entity.datePublished : 'No' }}</td>
             <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
             <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>

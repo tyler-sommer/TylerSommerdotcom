@@ -23,7 +23,7 @@ class Comment extends AbstractEntity
     /**
      * @var \TylerSommer\Bundle\BlogBundle\Entity\Post
      *
-     * @ORM\ManyToOne(targetEntity="TylerSommer\Bundle\BlogBundle\Entity\Post", inversedBy="comments", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="TylerSommer\Bundle\BlogBundle\Entity\AbstractPost", inversedBy="comments", cascade={"persist"})
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
     protected $post;
@@ -69,9 +69,9 @@ class Comment extends AbstractEntity
     }
 
     /**
-     * @param \TylerSommer\Bundle\BlogBundle\Entity\Post $post
+     * @param \TylerSommer\Bundle\BlogBundle\Entity\AbstractPost $post
      */
-    public function setPost(Post $post)
+    public function setPost(AbstractPost $post)
     {
         $this->post = $post;
     }
