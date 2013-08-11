@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * A post
  *
- * @ORM\Entity(repositoryClass="TylerSommer\Bundle\BlogBundle\Repository\TagRepository")
+ * @ORM\Entity(repositoryClass="TylerSommer\Bundle\BlogBundle\Entity\Repository\TagRepository")
  */
 class Tag extends AbstractTag
 {

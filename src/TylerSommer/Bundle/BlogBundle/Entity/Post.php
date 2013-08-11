@@ -10,7 +10,7 @@ use Orkestra\Common\Entity\AbstractEntity;
 /**
  * A page
  *
- * @ORM\Entity(repositoryClass="TylerSommer\Bundle\BlogBundle\Repository\PostRepository")
+ * @ORM\Entity(repositoryClass="TylerSommer\Bundle\BlogBundle\Entity\Repository\PostRepository")
  */
 class Post extends AbstractPost
 {
