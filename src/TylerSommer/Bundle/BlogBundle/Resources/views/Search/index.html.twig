@@ -12,7 +12,7 @@
         <h5>Showing results for all pages and posts with the tag "{{ terms['tag'] }}".</h5>
     {% endif %}
 <form method="post" action="{{ path('search') }}" class="form-inline">
-    {{ form_widget(form.search, { attr: { class: 'input-large' } }) }} <button class="btn btn-primary">Search</button>
+    {{ form_widget(form.search, { attr: { class: 'input-large', placeholder: 'Whatcha looking for?' } }) }} <button class="btn btn-primary">Search</button>
     <div class="hidden">
         {{ form_rest(form) }}
     </div>
