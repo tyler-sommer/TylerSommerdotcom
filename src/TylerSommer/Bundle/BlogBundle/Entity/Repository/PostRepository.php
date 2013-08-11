@@ -77,4 +77,27 @@ class PostRepository extends EntityRepository
     {
         return count($this->findByUnique(array('slug' => $slug))) === 0;
     }
+
+    public function findForHome()
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('p')
+            ->from('TylerSommerBlogBundle:Post', 'p')
+            ->where('p.datePublished IS NOT NULL')
+            ->orderBy('p.datePublished', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findBySlug($slug)
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('p')
+            ->from('TylerSommerBlogBundle:AbstractPost', 'p')
+            ->where('p.slug = :slug')
+            ->andWhere('p.datePublished IS NOT NULL')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

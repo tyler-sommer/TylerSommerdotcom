@@ -20,22 +20,18 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if ($slug) {
-            $entity = $em->getRepository('TylerSommerBlogBundle:Page')->findOneBy(array('active' => true, 'slug' => $slug));
-
+            $entity = $em->getRepository('TylerSommerBlogBundle:Page')->findOneBySlug($slug);
             if (!$entity) {
-                $entity = $em->getRepository('TylerSommerBlogBundle:Post')->findOneBy(array('active' => true, 'slug' => $slug));
-
-                if (!$entity) {
-                    throw $this->createNotFoundException('Unable to locate content');
-                }
+                throw $this->createNotFoundException('Unable to locate content');
             }
 
-            return $this->render('TylerSommerBlogBundle:Home:index.html.twig', array('entities' => array($entity)));
+            $entities = array($entity);
+            
         } else {
-            $entities = $em->getRepository('TylerSommerBlogBundle:Post')->findBy(array('active' => true), array('id' => 'DESC'));
-
-            return $this->render('TylerSommerBlogBundle:Home:index.html.twig', array('entities' => $entities));
+            $entities = $em->getRepository('TylerSommerBlogBundle:Post')->findForHome();
         }
+
+        return $this->render('TylerSommerBlogBundle:Home:index.html.twig', array('entities' => $entities));
     }
 
     /**
