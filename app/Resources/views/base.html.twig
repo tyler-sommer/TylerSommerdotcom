@@ -24,18 +24,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="{{ path('home') }}">Tyler Sommer dot com</a>
-                    <ul class="pull-right nav">
-                        <li{% if is_current_route('home') %} class="active"{% endif %}><a href="{{ path('home') }}">Home</a></li>
-                        <li{% if is_current_route('about') %} class="active"{% endif %}><a href="{{ path('about') }}">About</a></li>
-                        <li{% if is_current_route('contact') %} class="active"{% endif %}><a href="{{ path('contact') }}">Contact</a></li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <li{% if is_current_route('manage_posts') %} class="active"{% endif %}><a href="{{ path('manage_posts') }}"><i class="icon-cog"></i> Manage</a></li>
-                        {% elseif not is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li{% if is_current_route('login') %} class="active"{% endif %}><a href="{{ path('login') }}"><i class="icon-user"></i> Login</a></li>
-                        {% else %}
-                        <li><a href="{{ path('logout') }}"><i class="icon-signout"></i> Logout</a></li>
-                        {% endif %}
-                    </ul>
+                    {{ render_menu('main_nav') }}
                 </div>
             </div>
         </div>

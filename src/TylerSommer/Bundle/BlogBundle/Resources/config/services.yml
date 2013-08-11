@@ -1,6 +1,7 @@
 services:
   tylersommer.twig_extension.simple_cms:
     class: TylerSommer\Bundle\BlogBundle\TwigExtension\SimpleCmsExtension
+    arguments: [ @doctrine.orm.entity_manager ]
     tags:
       - { name: twig.extension }
 

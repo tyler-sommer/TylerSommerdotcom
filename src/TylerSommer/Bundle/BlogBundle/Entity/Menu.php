@@ -17,14 +17,14 @@ class Menu extends AbstractEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", unique=true)
      */
     protected $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="definition", type="string")
+     * @ORM\Column(name="definition", type="json_array")
      */
     protected $definition;
 
