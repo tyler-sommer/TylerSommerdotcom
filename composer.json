@@ -20,6 +20,7 @@
     "doctrine/doctrine-fixtures-bundle": "dev-master",
     "trsteel/ckeditor-bundle": "1.2.*",
     "hwi/oauth-bundle": "0.3.*@dev",
+    "suin/php-rss-writer": "~1.2",
     "orkestra/common": "1.0.*",
     "orkestra/application-bundle": "1.0.*@dev"
   },

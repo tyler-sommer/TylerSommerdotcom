@@ -3,12 +3,44 @@
 namespace TylerSommer\Bundle\BlogBundle\Controller;
 
 use Orkestra\Bundle\ApplicationBundle\Controller\Controller;
+use Suin\RSSWriter\Channel;
+use Suin\RSSWriter\Feed;
+use Suin\RSSWriter\Item;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use TylerSommer\Bundle\BlogBundle\Form\SearchType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class HomeController extends Controller
 {
+    /**
+     * @Route("/feed", name="feed")
+     */
+    public function feedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('TylerSommerBlogBundle:Post')->findForHome();
+
+        $feed = new Feed();
+        $channel = new Channel();
+        $channel->title('Tyler Sommer dot com')
+            ->description('Tyler Sommer\'s mark on the internets')
+            ->copyright(date('Y') . ' Tyler Sommer')
+            ->url($this->generateUrl('home', array(), UrlGeneratorInterface::ABSOLUTE_URL))
+            ->appendTo($feed);
+
+        foreach ($entities as $post) {
+            $item = new Item();
+            $item->title($post->getTitle())
+                ->pubDate($post->getDatePublished()->getTimestamp())
+                ->url($this->generateUrl('page_or_post', array('slug' => $post->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL))
+                ->appendTo($channel);
+        }
+
+        return new Response($feed->render(), 200, array('Content-type' => 'application/xml'));
+    }
+
     /**
      * @Route("/", name="home", defaults={"slug"=null})
      * @Route("/about", name="about", defaults={"slug"="about"})
