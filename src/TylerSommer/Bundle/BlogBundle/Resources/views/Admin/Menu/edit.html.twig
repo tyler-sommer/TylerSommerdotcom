@@ -8,6 +8,10 @@
         {{ form_errors(form) }}
         {{ form_row(form.name) }}
         {{ form_row(form.type) }}
+        <h5>Definition</h5>
+        {% for form in form.definition %}
+            {% include 'TylerSommerBlogBundle:Admin/Menu:_item_row.html.twig' with { form: form } %}
+        {% endfor %}
         <div class="spacer"></div>
         <div class="hidden">
             {{ form_rest(form) }}

@@ -5,6 +5,7 @@ namespace TylerSommer\Bundle\BlogBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use TylerSommer\Bundle\BlogBundle\Form\Transformer\MenuDefinitionTransformer;
 
 class MenuType extends AbstractType
 {
@@ -18,6 +19,14 @@ class MenuType extends AbstractType
                     'simple_menu' => 'Simple Menu'
                 )
             ));
+
+        $subBuilder = $builder->getFormFactory()
+            ->createNamedBuilder('definition', 'collection', null, array(
+                'type' => new MenuItemType()
+            ))
+            ->addModelTransformer(new MenuDefinitionTransformer());
+
+        $builder->add($subBuilder);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
