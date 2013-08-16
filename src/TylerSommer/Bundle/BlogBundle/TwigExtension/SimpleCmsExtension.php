@@ -35,10 +35,11 @@ class SimpleCmsExtension extends \Twig_Extension
      *
      * @param \Twig_Environment $environment
      * @param string $name The name of the menu
+     * @param array $options An array of options to pass to the menu
      *
      * @return string
      */
-    public function renderMenu(\Twig_Environment $environment, $name)
+    public function renderMenu(\Twig_Environment $environment, $name, array $options = array())
     {
         $menu = $this->loadMenu($name);
         $builder = $menu->getBuilder();
@@ -76,7 +77,7 @@ class SimpleCmsExtension extends \Twig_Extension
      */
     public function renderTwig(\Twig_Environment $environment, $template, array $parameters = array())
     {
-        $template = $this->loadTemplate($environment, $template);
+        $template = $this->loadStringTemplate($environment, $template);
 
         return $template->render($parameters);
     }
@@ -89,7 +90,7 @@ class SimpleCmsExtension extends \Twig_Extension
      *
      * @return \Twig_TemplateInterface
      */
-    private function loadTemplate(\Twig_Environment $environment, $template)
+    private function loadStringTemplate(\Twig_Environment $environment, $template)
     {
         $existingLoader = $environment->getLoader();
         $environment->setLoader($this->stringLoader);
