@@ -20,6 +20,7 @@
                 <li{% if is_currently_on('Admin\\Author') %} class="active" {% endif %}><a href="{{ path('manage_authors') }}">Authors</a></li>
                 <li{% if is_currently_on('Admin\\Tag') %} class="active" {% endif %}><a href="{{ path('manage_tags') }}">Tags</a></li>
                 <li{% if is_currently_on('Admin\\Category') %} class="active" {% endif %}><a href="{{ path('manage_categories') }}">Categories</a></li>
+                <li{% if is_currently_on('Admin\\Menu') %} class="active" {% endif %}><a href="{{ path('manage_menus') }}">Menus</a></li>
                 <li class="nav-header">My Account</li>
                 <li{% if is_currently_on('Profile') %} class="active" {% endif %}><a href="{{ path('orkestra_profile') }}">Profile</a></li>
                 <li><a href="{{ path('logout') }}">Logout</a></li>

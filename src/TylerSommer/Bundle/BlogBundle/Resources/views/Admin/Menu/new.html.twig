@@ -1,0 +1,20 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = 'New Menu' %}
+
+{% block content %}
+<div class="well">
+    <form action="{{ path('manage_menu_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.type) }}
+        <div class="spacer"></div>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Create Menu</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

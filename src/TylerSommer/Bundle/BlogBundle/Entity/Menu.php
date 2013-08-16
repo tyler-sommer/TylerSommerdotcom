@@ -26,7 +26,7 @@ class Menu extends AbstractEntity
      *
      * @ORM\Column(name="definition", type="json_array")
      */
-    protected $definition;
+    protected $definition = array();
 
     /**
      * @var string

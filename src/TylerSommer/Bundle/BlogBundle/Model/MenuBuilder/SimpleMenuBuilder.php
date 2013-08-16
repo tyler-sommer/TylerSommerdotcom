@@ -26,6 +26,4 @@ class SimpleMenuBuilder implements MenuBuilderInterface
     {
         return 'TylerSommerBlogBundle:Menu:simple.html.twig';
     }
-
-
 }
