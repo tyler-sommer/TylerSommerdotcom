@@ -1,5 +1,7 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
+{% use 'TylerSommerBlogBundle:Admin/Menu:_javascripts.html.twig' %}
+
 {% set title = 'Edit Menu' %}
 
 {% block content %}
@@ -26,55 +28,5 @@
         </div>
     </form>
 </div>
-<div class="hidden" id="empty_row">
-
-</div>
 {% endblock %}
 
-{% block additional_javascripts %}
-<script type="text/javascript">
-    (function($) {
-        var _$menuForm = $(document.getElementById('menu-form')),
-            _$definitions = $(document.getElementById('definitions')),
-            _rowPrototype = _$menuForm.data('prototype'),
-            _currentIndex = 0;
-
-        var _bindRowHandlers = function(row) {
-            console.log(row);
-            var $row = $(row);
-            $row.find('.remove').click(function() {
-                $row.slideUp('fast', function() { $row.remove(); });
-            });
-
-            $row.find('.move-up').click(function() {
-
-            });
-
-            $row.find('.move-down').click(function() {
-
-            });
-        };
-
-        $('.add-item', _$menuForm).click(function() {
-            _addRow();
-        });
-
-        var _addRow = function() {
-            var html = _rowPrototype.replace(/__name__/g, _currentIndex),
-                $row = $(html).hide().appendTo(_$definitions).slideDown('fast');
-
-            _bindRowHandlers($row);
-        };
-
-        $('.item-row', _$definitions).each(function(index, row) {
-            _currentIndex++;
-
-            _bindRowHandlers(row);
-        });
-
-        return {
-
-        };
-    })(jQuery);
-</script>
-{% endblock %}
