@@ -55,7 +55,6 @@
   };
 
   var _bindRowHandlers = function(row) {
-    console.log(row);
     var $row = $(row);
     $row.find('.remove').click(function() {
       $row.slideUp('fast', function() { $row.remove(); });
