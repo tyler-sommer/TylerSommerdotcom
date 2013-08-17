@@ -1,4 +1,4 @@
-<div class="row-fluid" data-row="{{ form.vars.name }}">
+<div class="row-fluid item-row" data-row="{{ form.vars.name }}">
     <div class="span2">
         {{ form_row(form.label, { attr: { class: 'input-small' } }) }}
     </div>
@@ -13,5 +13,11 @@
     </div>
     <div class="span2">
         {{ form_row(form.not_role, { attr: { class: 'input-small' } }) }}
+    </div>
+    <div class="span2">
+        <label>&nbsp;</label>
+        <a href="javascript:;" class="btn move-up"><span class="icon-arrow-up"></span></a>
+        <a href="javascript:;" class="btn move-down"><span class="icon-arrow-down"></span></a>
+        <a href="javascript:;" class="btn remove"><span class="icon-remove"></span></a>
     </div>
 </div>

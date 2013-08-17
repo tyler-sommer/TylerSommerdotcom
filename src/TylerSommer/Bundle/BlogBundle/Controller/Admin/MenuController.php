@@ -168,6 +168,7 @@ class MenuController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+            //die(print_r($entity->getDefinition()));
             $em->persist($entity);
             $em->flush();
 

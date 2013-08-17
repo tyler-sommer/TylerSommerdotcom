@@ -11,9 +11,9 @@ class MenuItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label', 'text', array())
+            ->add('label', 'text')
+            ->add('route', 'text')
             ->add('icon', 'text', array('required' => false))
-            ->add('route', 'text', array('required' => false))
             ->add('role', 'text', array('required' => false))
             ->add('not_role', 'text', array('required' => false));
     }
