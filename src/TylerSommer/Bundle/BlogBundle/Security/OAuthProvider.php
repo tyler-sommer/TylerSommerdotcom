@@ -64,7 +64,7 @@ class OAuthProvider implements AuthenticationProviderInterface
             try {
                 $user = $this->userProvider->loadUserByUsername($token->getUsername());
             } catch (\Exception $e) {
-                echo "excepted!";
+                // no op
             }
         }
 
