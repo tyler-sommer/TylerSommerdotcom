@@ -50,6 +50,11 @@ label, input, button, select, textarea {
   border-bottom: 1px solid #D5D5D5;
 }
 
+.copy-container, .copy {
+  font-size: 115%;
+  line-height: 1.3em;
+}
+
 #main {
   margin-top: 20px;
 }
