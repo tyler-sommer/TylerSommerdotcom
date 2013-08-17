@@ -1,6 +1,6 @@
 {% spaceless %}
 <ul class="pull-right nav">
-    {% for label,item in menu.definition %}
+    {% for item in menu.definition %}
         {% if not item.role|default or is_granted(item.role) %}
             {% if not item.not_role|default or not is_granted(item.not_role) %}
     <li{% if is_current_route(item.route) %} class="active"{% endif %}>
@@ -8,7 +8,7 @@
             {% if item.icon|default %}
             <i class="icon-{{ item.icon }}"></i>
             {% endif %}
-            {{ label }}
+            {{ item.label }}
         </a>
     </li>
             {% endif %}
