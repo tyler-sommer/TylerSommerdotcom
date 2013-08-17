@@ -82,20 +82,20 @@ class PostRepository extends EntityRepository
     {
         return $this->_em->createQueryBuilder()
             ->select('p')
-            ->from('TylerSommerBlogBundle:Post', 'p')
-            ->where('p.datePublished IS NOT NULL')
+            ->from($this->_entityName, 'p')
+            ->andWhere('p.active = true')
             ->orderBy('p.datePublished', 'DESC')
             ->getQuery()
             ->getResult();
     }
 
-    public function findBySlug($slug)
+    public function findOneBySlug($slug)
     {
         return $this->_em->createQueryBuilder()
             ->select('p')
             ->from('TylerSommerBlogBundle:AbstractPost', 'p')
             ->where('p.slug = :slug')
-            ->andWhere('p.datePublished IS NOT NULL')
+            ->andWhere('p.active = true')
             ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult();

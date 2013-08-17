@@ -11,7 +11,7 @@ use Orkestra\Common\Entity\AbstractEntity;
 /**
  * A post
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TylerSommer\Bundle\BlogBundle\Entity\Repository\PostRepository")
  * @ORM\Table(name="posts")
  * @ORM\HasLifecycleCallbacks
  * @ORM\InheritanceType("SINGLE_TABLE")

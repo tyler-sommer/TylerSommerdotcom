@@ -52,7 +52,7 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if ($slug) {
-            $entity = $em->getRepository('TylerSommerBlogBundle:Page')->findOneBySlug($slug);
+            $entity = $em->getRepository('TylerSommerBlogBundle:AbstractPost')->findOneBySlug($slug);
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to locate content');
             }
