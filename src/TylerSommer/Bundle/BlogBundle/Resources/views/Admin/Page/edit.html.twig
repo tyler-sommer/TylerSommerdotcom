@@ -12,6 +12,10 @@
         {{ form_row(form.author) }}
         {{ form_row(form.body, { attr: { class: 'input-xxlarge', style: 'height: 100px' } }) }}
         <div class="checkbox inline">
+            {{ form_widget(form.enableComments) }}
+            {{ form_label(form.enableComments, null, { label: 'Enable Comments' }) }}
+        </div>
+        <div class="checkbox inline">
             {{ form_widget(form.active) }}
             {{ form_label(form.active, null, { label: 'Published' }) }}
         </div>

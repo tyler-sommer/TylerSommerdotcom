@@ -15,6 +15,7 @@ class PostType extends AbstractType
             ->add('slug')
             ->add('body', 'ckeditor')
             ->add('author')
+            ->add('enableComments', 'checkbox', array('required' => false))
             ->add('active', null, array('required' => false, 'label' => 'Publish'))
             ->add('tags', 'select2_tag', array(
                 'class' => 'TylerSommer\Bundle\BlogBundle\Entity\Tag',

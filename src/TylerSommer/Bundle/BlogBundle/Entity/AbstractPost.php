@@ -52,6 +52,13 @@ abstract class AbstractPost extends AbstractEntity
     protected $datePublished;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="enable_comments", type="boolean")
+     */
+    protected $enableComments = true;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="TylerSommer\Bundle\BlogBundle\Entity\Comment", mappedBy="post")
@@ -248,6 +255,22 @@ abstract class AbstractPost extends AbstractEntity
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @param boolean $enableComments
+     */
+    public function setEnableComments($enableComments)
+    {
+        $this->enableComments = (bool) $enableComments;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnableComments()
+    {
+        return $this->enableComments;
     }
 
     /**
