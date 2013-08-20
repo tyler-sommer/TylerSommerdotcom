@@ -158,3 +158,7 @@ div.right-side {
 .comment .comment-body {
   margin: 0 0 5px 0;
 }
+
+.post-option .checkbox {
+  margin-top: 23px;
+}

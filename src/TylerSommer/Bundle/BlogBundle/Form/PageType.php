@@ -17,6 +17,7 @@ class PageType extends AbstractType
             ->add('author')
             ->add('enableComments', 'checkbox', array('required' => false))
             ->add('active', null, array('required' => false, 'label' => 'Publish'))
+            ->add('datePublished', null, array('required' => false, 'widget' => 'single_text'))
             ->add('tags', 'select2_tag', array(
                 'class' => 'TylerSommer\Bundle\BlogBundle\Entity\Tag',
                 'required' => false

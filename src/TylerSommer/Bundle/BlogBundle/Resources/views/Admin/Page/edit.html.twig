@@ -7,18 +7,30 @@
     <form action="{{ path('manage_page_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         {{ form_row(form.title) }}
-        {{ form_row(form.slug) }}
+        {{ form_row(form.slug, { attr: { 'data-uri': path('manage_post_is_slug_unique') } }) }}
         {{ form_row(form.tags) }}
         {{ form_row(form.categories) }}
         {{ form_row(form.author) }}
         {{ form_row(form.body, { attr: { class: 'input-xxlarge', style: 'height: 100px' } }) }}
-        <div class="checkbox inline">
-            {{ form_widget(form.enableComments) }}
-            {{ form_label(form.enableComments, null, { label: 'Enable Comments' }) }}
-        </div>
-        <div class="checkbox inline">
-            {{ form_widget(form.active) }}
-            {{ form_label(form.active, null, { label: 'Published' }) }}
+        <div class="row-fluid">
+            <div class="span2 post-option">
+                <div class="checkbox inline">
+                    {{ form_widget(form.enableComments) }}
+                    {{ form_label(form.enableComments, null, { label: 'Enable Comments' }) }}
+                </div>
+            </div>
+            <div class="span2 post-option">
+                <div class="checkbox inline">
+                    {{ form_widget(form.active, { attr: { class: 'js-publish' } }) }}
+                    {{ form_label(form.active, null, { label: 'Published' }) }}
+                </div>
+            </div>
+            <div class="span2 post-option js-date-published" style="display: none">
+                <div class="inline">
+                    {{ form_label(form.datePublished) }}
+                    {{ form_widget(form.datePublished, { attr: { class: 'input-small' } }) }}
+                </div>
+            </div>
         </div>
         <div class="spacer"></div>
         <div class="hidden">
