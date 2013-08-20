@@ -1,6 +1,7 @@
 {% extends 'TylerSommerBlogBundle:Admin/Page:new.html.twig' %}
 
 {% set title = 'Edit Page' %}
+
 {% block content %}
     <div class="well">
     <form action="{{ path('manage_page_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>

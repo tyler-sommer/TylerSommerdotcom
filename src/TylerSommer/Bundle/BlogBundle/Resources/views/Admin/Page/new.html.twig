@@ -1,6 +1,7 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-{% set title = 'New Page' %}
+{% set title = title|default('New Page') %}
+
 {% block content %}
 <div class="well">
     <form action="{{ path('manage_page_create') }}" method="post" {{ form_enctype(form) }}>
