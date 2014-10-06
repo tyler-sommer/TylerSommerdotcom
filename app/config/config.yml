@@ -22,7 +22,7 @@ twig:
   strict_variables: %kernel.debug%
   form:
     resources:
-      - 'OrkestraApplicationBundle:Form:fields.html.twig'
+      - 'OrkestraApplicationBundle::_form_fields.html.twig'
       - '::fields.html.twig'
 
 # Assetic Configuration
