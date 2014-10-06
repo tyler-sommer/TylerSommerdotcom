@@ -1,7 +1,7 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
 
-{% set title = entity.title ~ ' - Author' %}
+{% set title = entity.user ~ ' - Author' %}
 
 {% block content %}
 <table class="table summary">
@@ -12,15 +12,15 @@
         </tr>
         <tr>
             <th>First Name</th>
-            <td>{{ entity.user ? entity.user.firstName : entity.firstName }}</td>
+            <td>{{ entity.user.firstName }}</td>
         </tr>
         <tr>
             <th>Last Name</th>
-            <td>{{ entity.user ? entity.user.lastName : entity.lastName }}</td>
+            <td>{{ entity.user.lastName }}</td>
         </tr>
         <tr>
             <th>Email</th>
-            <td>{{ entity.email }}</td>
+            <td>{{ entity.user.email }}</td>
         </tr>
         <tr>
             <th>Active</th>

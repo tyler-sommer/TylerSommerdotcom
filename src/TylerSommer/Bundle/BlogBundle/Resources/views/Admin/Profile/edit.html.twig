@@ -1,18 +1,19 @@
 {% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
 
-{% set title = 'Edit Author' %}
+{% set title = 'Edit Profile' %}
+
 {% block content %}
-    <div class="well">
-    <form action="{{ path('manage_author_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>
+  <div class="well">
+    <form action="{{ path('profile_update') }}" method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
-        {{ form_row(form.user) }}
-        {{ form_row(form.active) }}
+        {{ form_widget(form) }}
         <div class="spacer"></div>
         <div class="hidden">
             {{ form_rest(form) }}
         </div>
         <div>
             <button class="btn btn-primary" type="submit">Save Changes</button>
+            <a style="margin-left: 10px" href="{{ path('orkestra_profile_password_edit') }}">Change Password</a>
         </div>
     </form>
 </div>

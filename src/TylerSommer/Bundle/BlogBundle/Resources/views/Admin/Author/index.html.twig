@@ -8,6 +8,7 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
+            <th></th>
             <th>Last Modified</th>
             <th>Date Created</th>
             <th></th>
@@ -18,6 +19,7 @@
         <tr>
             <td><a href="{{ path('manage_author_show', { 'id': entity.id }) }}">{{ entity }}</a></td>
             <td>{{ entity.user.email|default('n/a') }}</td>
+            <td>{{ entity.active ? 'Enabled' : 'Disabled' }}</td>
             <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
             <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
             <td>
@@ -27,7 +29,4 @@
     {% endfor %}
     </tbody>
 </table>
-    <a class="btn btn-primary" href="{{ path('manage_author_new') }}">
-    New Author
-</a>
 {% endblock %}

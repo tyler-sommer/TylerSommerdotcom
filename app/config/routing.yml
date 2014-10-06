@@ -20,13 +20,13 @@ logout:
   pattern: /logout
 
 # Bundle routes
+tylersommer_blog:
+    resource: "@TylerSommerBlogBundle/Resources/config/routing.yml"
+
 OrkestraBundle_routes:
   resource: "@OrkestraApplicationBundle/Controller"
   type:     annotation
   prefix: /manage
-
-tylersommer_blog:
-    resource: "@TylerSommerBlogBundle/Resources/config/routing.yml"
 
 # Internal routing configuration to handle ESI
 #_internal:
