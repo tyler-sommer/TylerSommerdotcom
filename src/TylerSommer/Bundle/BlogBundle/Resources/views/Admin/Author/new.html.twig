@@ -6,12 +6,7 @@
     <form action="{{ path('manage_author_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         {{ form_row(form.user) }}
-        <div class="no-user">
-        <p>- or -</p>
-            {{ form_row(form.firstName) }}
-            {{ form_row(form.lastName) }}
-            {{ form_row(form.email) }}
-        </div>
+        {{ form_row(form.active) }}
         <div class="spacer"></div>
         <div class="hidden">
             {{ form_rest(form) }}
