@@ -22,7 +22,7 @@
                 <li{% if is_currently_on('Admin\\Category') %} class="active" {% endif %}><a href="{{ path('manage_categories') }}">Categories</a></li>
                 <li{% if is_currently_on('Admin\\Menu') %} class="active" {% endif %}><a href="{{ path('manage_menus') }}">Menus</a></li>
                 <li class="nav-header">My Account</li>
-                <li{% if is_currently_on('Profile') %} class="active" {% endif %}><a href="{{ path('orkestra_profile') }}">Profile</a></li>
+                <li{% if is_currently_on('Profile') %} class="active" {% endif %}><a href="{{ path('orkestra_profile_edit') }}">Profile</a></li>
                 <li><a href="{{ path('logout') }}">Logout</a></li>
             </ul>
         </div>
