@@ -1,0 +1,14 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = 'Edit Group' %}
+
+{% block content %}
+<form action="{{ path('orkestra_group_update', { 'id': group.id }) }}" method="post" {{ form_enctype(form) }}>
+    <div class="well">
+        {{ form_widget(form) }}
+        <p class="form-buttons">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </p>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = 'Edit Tag' %}
+{% block content %}
+    <div class="well">
+    <form action="{{ path('manage_tag_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_row(form.name) }}
+        <div class="checkbox inline">
+            {{ form_widget(form.active) }}
+            {{ form_label(form.active) }}
+        </div>
+        <div class="spacer"></div>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Save Changes</button> &nbsp;
+        </div>
+    </form>
+</div>
+{% endblock %}

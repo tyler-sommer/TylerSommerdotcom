@@ -1,0 +1,96 @@
+imports:
+  - { resource: parameters.yml }
+  - { resource: security.yml }
+
+framework:
+  #esi:             ~
+  #translator:      { fallback: %locale% }
+  secret:          %secret%
+  router:
+    resource: "%kernel.root_dir%/config/routing.yml"
+    strict_requirements: %kernel.debug%
+  form:            true
+  csrf_protection: true
+  validation:      { enable_annotations: true }
+  templating:
+    engines: ['twig']
+    assets_version: %app.version%
+  default_locale:  %locale%
+  session:         ~
+
+# Twig Configuration
+twig:
+  debug:            %kernel.debug%
+  strict_variables: %kernel.debug%
+  form:
+    resources:
+      - 'OrkestraApplicationBundle::_form_fields.html.twig'
+      - '::fields.html.twig'
+
+# Assetic Configuration
+assetic:
+  debug:          %kernel.debug%
+  use_controller: false
+  bundles:        [ 'TylerSommerBlogBundle' ]
+  #java: /usr/bin/java
+  filters:
+    cssrewrite: ~
+    yui_js:
+      jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+    yui_css:
+      jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+  dbal:
+    driver:   %database_driver%
+    host:     %database_host%
+    port:     %database_port%
+    dbname:   %database_name%
+    user:     %database_user%
+    password: %database_password%
+    charset:  UTF8
+
+  orm:
+    auto_generate_proxy_classes: %kernel.debug%
+    entity_managers:
+      default:
+        mappings:
+          OrkestraCommon:
+            type: annotation
+            dir: %kernel.root_dir%/../vendor/orkestra/common/lib/Orkestra/Common/Entity
+            prefix: Orkestra\Common\Entity
+            is_bundle: false
+          OrkestraApplicationBundle: ~
+          TylerSommerBlogBundle: ~
+    resolve_target_entities:
+      Orkestra\Bundle\ApplicationBundle\Model\UserInterface: Orkestra\Bundle\ApplicationBundle\Entity\User
+      Orkestra\Bundle\ApplicationBundle\Model\GroupInterface: Orkestra\Bundle\ApplicationBundle\Entity\Group
+      Orkestra\Bundle\ApplicationBundle\Model\PreferencesInterface: Orkestra\Bundle\ApplicationBundle\Entity\Preferences
+      Orkestra\Bundle\ApplicationBundle\Model\Contact\AddressInterface: Orkestra\Bundle\ApplicationBundle\Entity\Contact\Address
+      Orkestra\Bundle\ApplicationBundle\Model\Contact\RegionInterface: Orkestra\Bundle\ApplicationBundle\Entity\Contact\Region
+      Orkestra\Bundle\ApplicationBundle\Model\Contact\CountryInterface: Orkestra\Bundle\ApplicationBundle\Entity\Contact\Country
+
+
+
+# Swiftmailer Configuration
+swiftmailer:
+  transport: %mailer_transport%
+  host:      %mailer_host%
+  username:  %mailer_user%
+  password:  %mailer_password%
+  spool:     { type: memory }
+
+
+# OAuth configuration
+hwi_oauth:
+  firewall_name: user_area
+  resource_owners:
+    github:
+      type:           github
+      client_id:      %github_client_id%
+      client_secret:  %github_client_secret%
+    twitter:
+      type:           twitter
+      client_id:      %twitter_client_id%
+      client_secret:  %twitter_client_secret%

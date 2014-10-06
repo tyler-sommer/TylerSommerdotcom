@@ -1,0 +1,38 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = 'New Author' %}
+{% block content %}
+<div class="well">
+    <form action="{{ path('manage_author_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_row(form.user) }}
+        <div class="no-user">
+        <p>- or -</p>
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.lastName) }}
+            {{ form_row(form.email) }}
+        </div>
+        <div class="spacer"></div>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Create Author</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block additional_javascripts %}
+<script type="text/javascript">
+    $(function() {
+        $('#{{ form.user.vars.id }}').change(function() {
+            if ($(this).val() != '') {
+                $('.no-user').slideUp('fast');
+            } else {
+                $('.no-user').slideDown('fast');
+            }
+        }).change();
+    });
+</script>
+{% endblock %}

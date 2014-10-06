@@ -1,0 +1,45 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+
+{% set title = entity.title ~ ' - Author' %}
+
+{% block content %}
+<table class="table summary">
+    <tbody>
+        <tr>
+            <th>ID</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>{{ entity.user ? entity.user.firstName : entity.firstName }}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{ entity.user ? entity.user.lastName : entity.lastName }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>Active</th>
+            <td>{{ entity.active ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>Date Modified</th>
+            <td>{{ entity.dateModified|default('Never') }}</td>
+        </tr>
+        <tr>
+            <th>Date Created</th>
+            <td>{{ entity.dateCreated }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="form-buttons">
+  <a href="{{ path('manage_author_edit', { 'id': entity.id }) }}">
+    <button class="btn">Edit Author</button>
+  </a>
+</p>
+{% endblock %}

@@ -1,0 +1,7 @@
+TylerSommer\Bundle\BlogBundle\Entity\Post:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: { fields: slug, message: 'Slug is already in use.', repositoryMethod: findByUnique }
+
+TylerSommer\Bundle\BlogBundle\Entity\Page:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: { fields: slug, message: 'Slug is already in use.', repositoryMethod: findByUnique }

@@ -1,0 +1,33 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = 'Pages' %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Published</th>
+            <th>Last Modified</th>
+            <th>Date Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('manage_page_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+            <td>{{ entity.active ? entity.datePublished : 'No' }}</td>
+            <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
+            <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
+            <td>
+                <a class="btn btn-mini" href="{{ path('manage_page_edit', { 'id': entity.id }) }}">EDIT</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-primary" href="{{ path('manage_page_new') }}">
+    New Page
+</a>
+{% endblock %}

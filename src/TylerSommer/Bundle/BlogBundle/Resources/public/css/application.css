@@ -1,0 +1,177 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  background-color: #FEFDFE;
+  color: #333;
+}
+
+label, input, button, select, textarea {
+  font-weight: 300;
+}
+
+.well {
+  background-color: #FAFAFA;
+}
+
+.spacer {
+  clear: both;
+  height: 15px;
+  width: 100%;
+}
+
+.table-striped tbody > tr:nth-child(2n+1) > td, .table-striped tbody > tr:nth-child(2n+1) > th {
+  background-color: #FAFAFA;
+}
+
+.navbar {
+  border-top: 5px solid #333333;
+}
+
+.navbar .brand {
+  font-family: 'Lobster Two', serif;
+  font-size: 35px;
+  color: #333333;
+  line-height: 35px;
+}
+
+.navbar .label {
+  margin-top: 5px;
+  background-color: #0088cc;
+  font-style: italic;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.navbar .nav li {
+  margin-top: -5px;
+  line-height: 35px;
+  border-top: 5px solid #333333;
+}
+
+.navbar .nav > .active, .navbar .nav > li:hover {
+  border-top: 5px solid #0088cc;
+  background-color: #D5D5D5;
+}
+
+#main h1, #main h2 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D5D5D5;
+}
+
+.copy-container, .copy {
+  font-size: 115%;
+  line-height: 1.3em;
+}
+
+#main {
+  margin-top: 20px;
+}
+
+#main .date-posted {
+  border-top: 5px solid #0088cc;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.date-posted p {
+  margin: 0;
+  padding: 5px;
+}
+
+.date-posted .month {
+  font-size: 14px;
+  background-color: #333333;
+  color: white;
+}
+
+.date-posted .day {
+  font-size: 20px;
+  background-color: #D5D5D5;
+}
+
+.label {
+  font-size: 13px;
+  line-height: 16px;
+  padding: 4px 8px;
+  font-weight: 400;
+}
+
+.label.tag {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #0088cc;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #D5D5D5;
+  color: #333;
+}
+
+.btn-primary:focus {
+  background-color: #0088cc;
+  color: white;
+}
+
+.label[href] {
+  background-color: #0088cc;
+  color: white;
+}
+
+.label[href]:hover {
+  background-color: #D5D5D5;
+  color: #333;
+}
+
+
+.post-spacer {
+  height: 50px;
+}
+
+.right-side.social span {
+  font-size: 24px;
+}
+
+div.right-side {
+  margin-bottom: 25px;
+}
+
+.right-side.social .label[href] {
+  border-top: 5px solid #333333;
+}
+
+.right-side.social .label[href]:hover {
+  border-top: 5px solid #0088CC;
+}
+
+.right-side.archive dt {
+  font-weight: 300;
+  background-color: #D5D5D5;
+  color: #333;
+  line-height: 30px;
+  padding-left: 10px;
+  margin: 15px 0 5px 0;
+}
+
+.right-side.archive dt:first-child {
+  margin-top: 0;
+}
+
+.right-side.archive dd {
+  margin: 0 0 5px 3px;
+}
+
+.comment h5 {
+  margin-bottom: 0;
+}
+
+.comment .comment-body {
+  margin: 0 0 5px 0;
+}
+
+.post-option .checkbox {
+  margin-top: 23px;
+}

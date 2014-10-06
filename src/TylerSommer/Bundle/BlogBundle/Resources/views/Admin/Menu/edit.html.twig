@@ -1,0 +1,32 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% use 'TylerSommerBlogBundle:Admin/Menu:_javascripts.html.twig' %}
+
+{% set title = 'Edit Menu' %}
+
+{% block content %}
+<div id="menu-form" class="well" data-prototype="{% filter escape %}{{ include('TylerSommerBlogBundle:Admin/Menu:_item_row.html.twig', { form: form.definition.vars.prototype }) }}{% endfilter %}">
+    <form action="{{ path('manage_menu_update', { id: entity.id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.type) }}
+        <div id="definitions">
+        <h5>Definition</h5>
+        {% for form in form.definition %}
+            {% include 'TylerSommerBlogBundle:Admin/Menu:_item_row.html.twig' with { form: form } %}
+        {% endfor %}
+        </div>
+        <div class="spacer"></div>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
+        <div class="pull-right span2">
+            <a href="javascript:;" class="btn add-item"><span class="icon-plus"></span> Add Item</a>
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

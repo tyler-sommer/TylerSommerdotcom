@@ -1,0 +1,47 @@
+jms_security_extra:
+  secure_all_services: false
+  expressions: true
+
+security:
+  role_hierarchy:
+    ROLE_USER_WRITE:  ROLE_USER_READ
+    ROLE_GROUP_WRITE: ROLE_GROUP_READ
+
+    ROLE_COMMENT_WRITE: ~
+
+    ROLE_USER:        [ ROLE_COMMENT_WRITE ]
+    ROLE_ADMIN:       [ ROLE_USER, ROLE_USER_WRITE, ROLE_GROUP_WRITE ]
+    ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+
+  encoders:
+    Orkestra\Bundle\ApplicationBundle\Entity\User: sha512
+
+  providers:
+    oauth:
+      id: tylersommer.oauth.user_provider
+
+  firewalls:
+    dev_and_assets:
+        pattern:  ^/(_(profiler|wdt)|css|images|js)/
+        security: false
+
+    user_area:
+      anonymous: true
+      logout: ~
+      form_login:
+        login_path: /connect
+        check_path: /login/check
+        username_parameter: "form[username]"
+        password_parameter: "form[password]"
+      oauth:
+        login_path: /connect
+        failure_path: /connect
+        resource_owners:
+          twitter:  "/login/check-twitter"
+          github:   "/login/check-github"
+        oauth_user_provider:
+          service: tylersommer.oauth.user_provider
+
+
+  access_control:
+    - { path: ^/manage, role: ROLE_ADMIN }

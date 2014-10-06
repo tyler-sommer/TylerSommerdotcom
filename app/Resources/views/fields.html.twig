@@ -1,0 +1,35 @@
+{% block form_row %}
+    {% spaceless %}
+    <div class="control-group {{ form.vars.errors|length > 0 ? 'error' : '' }}">
+        {{ form_label(form) }}
+        <div class="controls">
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+        </div>
+    </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+<span class="help-block error">
+        {% for error in errors %}
+        {{
+            error.messagePluralization is null
+            ? error.messageTemplate|trans(error.messageParameters, 'validators')
+            : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+            }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+</span>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+
+{% block select2_tag_widget %}
+    {% spaceless %}
+        {% set attr = attr|merge({ 'data-values': values }) %}
+        {{ block('form_widget_simple') }}
+    {% endspaceless %}
+{% endblock %}

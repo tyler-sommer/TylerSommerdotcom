@@ -1,0 +1,16 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = 'New User' %}
+
+{% block content %}
+<form action="{{ path('orkestra_user_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="well">
+    {{ form_widget(form) }}
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Create User</button>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}

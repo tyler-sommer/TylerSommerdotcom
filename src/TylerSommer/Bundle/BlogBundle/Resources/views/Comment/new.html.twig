@@ -1,0 +1,8 @@
+{{ form_start(form, { action: path('post_comment_create', { postid: post.id }) }) }}
+<div>
+    {{ form_row(form.body) }}
+</div>
+<div>
+    <button class="btn btn-primary" type="submit">Save Comment</button>
+</div>
+{{ form_end(form) }}

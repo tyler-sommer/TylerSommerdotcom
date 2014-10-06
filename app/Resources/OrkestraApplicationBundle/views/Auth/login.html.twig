@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% set title = 'Login' %}
+
+{% block content %}
+<h2>Login</h2>
+<div>
+    <p>Use your Twitter or GitHub account to login. Only your full name and OAuth identifier are stored.</p>
+    <div class="row-fluid">
+        <div class="span12">
+            <p><a href="{{ path('hwi_oauth_service_redirect', { service: 'twitter' }) }}" class="btn"><i class="icon-twitter"></i> Sign in with Twitter</a> &nbsp; or &nbsp;
+            <a href="{{ path('hwi_oauth_service_redirect', { service: 'github' }) }}" class="btn"><i class="icon-github"></i> Sign in with GitHub</a></p>
+        </div>
+    </div>
+    <h5>Sign in with Password</h5>
+    <div class="row-fluid">
+        <div class="span6">
+            <form action="{{ path('login_check')}}" method="post" {{ form_enctype(form) }}>
+                {{ form_errors(form) }}
+                {{ form_row(form.username, { attr: { class: 'input-medium' } }) }}
+                {{ form_row(form.password, { attr: { class: 'input-medium' } }) }}
+                <button class="btn btn-inverse" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

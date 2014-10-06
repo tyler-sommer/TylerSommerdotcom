@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>{% block title %}{% if title is defined %}{{ title }} - {% endif %}Tyler Sommer dot com{% endblock %}</title>
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300|Lobster+Two:400,700" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite, ?yui_css' output="css/application.css"
+                'bundles/tylersommerblog/css/bootstrap.css'
+                'bundles/tylersommerblog/css/bootstrap-responsive.css'
+                'bundles/tylersommerblog/css/select2.css'
+                'bundles/tylersommerblog/css/application.css'
+            %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="{{ path('home') }}">Tyler Sommer dot com</a> <span class="label label-primary">beta</span>
+                    {{ render_menu('main_nav') }}
+                </div>
+            </div>
+        </div>
+        <div id="main" class="container container-fluid">
+            {% block container %}
+            <div class="row-fluid">
+            <div class="span9 content-box">
+                {% if app.session.flashBag.has('success') %}
+                    <div class="alert alert-success">
+                        {{ app.session.flashBag.get('success')[0] }}
+                    </div>
+                {% endif %}
+                {% if app.session.flashBag.has('alert') %}
+                    <div class="alert">
+                        {{ app.session.flashBag.get('alert')[0] }}
+                    </div>
+                {% endif %}
+                {% if app.session.flashBag.has('error') %}
+                    <div class="alert alert-error">
+                        {{ app.session.flashBag.get('error')[0] }}
+                    </div>
+                {% endif %}
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="span3">
+                {% block right_side %}
+                {{ render(controller('TylerSommerBlogBundle:Home:rightSide')) }}
+                {% endblock %}
+            </div>
+            </div>
+            {% endblock %}
+        </div>
+        {% endblock %}
+        {% block main_javascripts %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+            {% javascripts filter='?yui_js' output="js/application.js"
+                'bundles/tylersommerblog/js/*.js'
+            %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        {% block additional_javascripts %}{% endblock %}
+    </body>
+</html>

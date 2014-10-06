@@ -1,0 +1,40 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = group %}
+
+{% block content %}
+<table class="table summary">
+    <tbody>
+        <tr>
+            <th>ID:</th>
+            <td>{{ group.id }}</td>
+        </tr>
+        <tr>
+            <th>Name:</th>
+            <td>{{ group.name }}</td>
+        </tr>
+        <tr>
+            <th>Role:</th>
+            <td>{{ group.role }}</td>
+        </tr>
+        <tr>
+            <th>Active?</th>
+            <td>{{ group.active ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>Last Modified:</th>
+            <td>{{ group.dateModified }}</td>
+        </tr>
+        <tr>
+            <th>Date Created:</th>
+            <td>{{ group.dateCreated }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="form-buttons">
+  <a href="{{ path('orkestra_group_edit', { 'id': group.id }) }}">
+    <button class="btn">Edit Group</button>
+  </a>
+</p>
+{% endblock %}

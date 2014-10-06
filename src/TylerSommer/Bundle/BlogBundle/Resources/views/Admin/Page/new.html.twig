@@ -1,0 +1,117 @@
+{% extends 'TylerSommerBlogBundle:Admin:base.html.twig' %}
+
+{% set title = title|default('New Page') %}
+
+{% block content %}
+<div class="well">
+    <form action="{{ path('manage_page_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.slug, { attr: { 'data-uri': path('manage_post_is_slug_unique') } }) }}
+        {{ form_row(form.tags) }}
+        {{ form_row(form.categories) }}
+        {{ form_row(form.author) }}
+        {{ form_row(form.body, { attr: { class: 'input-xxlarge', style: 'height: 100px' } }) }}
+        <div class="row-fluid">
+            <div class="span2 post-option">
+                <div class="checkbox inline">
+                    {{ form_widget(form.enableComments) }}
+                    {{ form_label(form.enableComments, null, { label: 'Enable Comments' }) }}
+                </div>
+            </div>
+            <div class="span2 post-option">
+                <div class="checkbox inline">
+                    {{ form_widget(form.active, { attr: { class: 'js-publish' } }) }}
+                    {{ form_label(form.active, null, { label: 'Published' }) }}
+                </div>
+            </div>
+            <div class="span2 post-option js-date-published" style="display: none">
+                <div class="inline">
+                    {{ form_label(form.datePublished) }}
+                    {{ form_widget(form.datePublished, { attr: { class: 'input-small' } }) }}
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="hidden">
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Create Page</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block additional_javascripts %}
+<script type="text/javascript">
+    $(function() {
+        var _$slug = $(document.getElementById('{{ form.slug.vars.id }}')),
+            _$slugControls = _$slug.closest('.control-group'),
+            _existingValue = '{{ form.slug.vars.value }}',
+            _generatedValue = _existingValue,
+            _changed = false;
+
+        var _$slugMessage = _$slugControls.find('.help-block');
+
+        if (_$slugMessage.length == 0) {
+            _$slugMessage = $('<span class="help-block" />').insertAfter(_$slug);
+        }
+
+        $(document.getElementById('{{ form.title.vars.id }}')).change(function() {
+            if (!_changed) {
+                _generatedValue = $(this).val().toLowerCase()
+                        .replace(/ /g,'-')
+                        .replace(/[^\w-]+/g,'');
+
+                _$slug.val(_generatedValue).change();
+            }
+        });
+
+        var _$publishCheckbox = $(document.getElementById('{{ form.active.vars.id }}')),
+            _$datePublishedField = $('.js-date-published');
+
+        _$publishCheckbox.change(function() {
+            if (_$publishCheckbox.is(':checked')) {
+                _$datePublishedField.slideDown('fast');
+            } else {
+                _$datePublishedField.slideUp('fast');
+            }
+        }).change();
+
+        _$slug.change(function() {
+            var value = $(this).val();
+
+            _changed = value != '' && value != _generatedValue;
+        }).change(function() {
+            var value = $(this).val();
+
+            if (value == '' || value == _existingValue) {
+                _$slugControls.removeClass('success').removeClass('error');
+                _$slugMessage.hide();
+
+                return;
+            }
+
+            $.ajax({
+                url: _$slug.data('uri'),
+                data: { slug: $(this).val() },
+                type: 'post',
+                dataType: 'json',
+                success: function(data) {
+                    if (!data.unique) {
+                        _$slugControls.removeClass('success').addClass('error');
+                        _$slugMessage.html('This slug is in use.').fadeIn('fast');
+                    } else {
+                        _$slugControls.removeClass('error').addClass('success');
+                        _$slugMessage.html('This slug is not in use.').fadeIn('fast');
+                    }
+                }
+            });
+        }).change();
+
+        $(document.getElementById('{{ form.tags.vars.id }}')).sf2select2();
+        $(document.getElementById('{{ form.categories.vars.id }}')).sf2select2();
+    });
+</script>
+{% endblock %}
