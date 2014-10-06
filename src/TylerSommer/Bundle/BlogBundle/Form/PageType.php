@@ -2,6 +2,7 @@
 
 namespace TylerSommer\Bundle\BlogBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -14,7 +15,12 @@ class PageType extends AbstractType
             ->add('title')
             ->add('slug')
             ->add('body', 'ckeditor')
-            ->add('author')
+            ->add('author', null, array(
+                'query_builder' => function(EntityRepository $entityRepository) {
+                    return $entityRepository->createQueryBuilder('a')
+                        ->where('a.active = true');
+                }
+            ))
             ->add('enableComments', 'checkbox', array('required' => false))
             ->add('active', null, array('required' => false, 'label' => 'Publish'))
             ->add('datePublished', null, array('required' => false, 'widget' => 'single_text'))
