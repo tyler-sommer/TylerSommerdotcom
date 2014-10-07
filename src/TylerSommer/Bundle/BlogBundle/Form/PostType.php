@@ -23,7 +23,7 @@ class PostType extends AbstractType
                 ))
             ->add('enableComments', 'checkbox', array('required' => false))
             ->add('active', null, array('required' => false, 'label' => 'Publish'))
-            ->add('datePublished', null, array('required' => false, 'widget' => 'single_text'))
+            ->add('datePublished', 'date', array('required' => false, 'format' => 'MM/dd/yyyy', 'widget' => 'single_text'))
             ->add('tags', 'select2_tag', array(
                 'class' => 'TylerSommer\Bundle\BlogBundle\Entity\Tag',
                 'required' => false

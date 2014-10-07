@@ -4,5 +4,11 @@
       selected = $(this).val();
 
     $(this).val(selected).select2({ tags: values.split(','), width: '220px' });
-  }
+  };
+  
+  $(function() {
+    $.fn.datepicker.defaults.format = "mm/dd/yyyy";
+    $.fn.datepicker.defaults.autoclose = true;
+    $('input.date').datepicker();
+  })
 })(jQuery);

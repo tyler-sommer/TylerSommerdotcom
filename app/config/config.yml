@@ -23,9 +23,7 @@ twig:
   debug:            %kernel.debug%
   strict_variables: %kernel.debug%
   form:
-    resources:
-      - 'OrkestraApplicationBundle::_form_fields.html.twig'
-      - '::fields.html.twig'
+    resources: [ '::fields.html.twig' ]
 
 # Assetic Configuration
 assetic:
@@ -101,3 +99,5 @@ trsteel_ckeditor:
   contents_css:  [ 'css/application.css', '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' ]
   startup_outline_blocks: false
   custom_config: bundles/tylersommerblog/js/module/config.js
+  filebrowser_upload_url:
+    route: ckeditor_upload

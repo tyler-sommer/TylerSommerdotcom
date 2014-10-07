@@ -2,5 +2,6 @@
 /app/bootstrap*
 /app/cache/*
 /app/logs/*
+/app/files/*
 /vendor/
 /app/config/parameters.yml

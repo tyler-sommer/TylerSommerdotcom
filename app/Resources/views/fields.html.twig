@@ -1,3 +1,77 @@
+{% block date_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {% set type = 'text' %}
+            {% set attr = attr|merge({ class: (attr.class|default ~ ' date')|trim }) %}
+            {% set append = 'calendar' %}
+            {{ block('form_widget_simple') }}
+        {% else %}
+            <div {{ block('widget_container_attributes') }}>
+            {{ date_pattern|replace({
+            '{{ year }}':  form_widget(form.year),
+            '{{ month }}': form_widget(form.month),
+            '{{ day }}':   form_widget(form.day),
+            })|raw }}
+        </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock date_widget %}
+
+{% block datetime_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {% set type = 'text' %}
+          {% set attr = attr|merge({ class: (attr.class|default ~ ' datetime')|trim }) %}
+            {% set append = 'calendar' %}
+            {{ block('form_widget_simple') }}
+        {% else %}
+            <div {{ block('widget_container_attributes') }}>
+            {{ form_errors(form.date) }}
+                {{ form_errors(form.time) }}
+                {{ form_widget(form.date) }}
+                {{ form_widget(form.time) }}
+        </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock datetime_widget %}
+
+{% block time_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {% set type = 'text' %}
+          {% set attr = attr|merge({ class: (attr.class|default ~ ' time')|trim }) %}
+            {% set append = 'time' %}
+            {{ block('form_widget_simple') }}
+        {% else %}
+            <div {{ block('widget_container_attributes') }}>
+            {{ form_widget(form.hour, { 'attr': { 'size': '1' } }) }}:{{ form_widget(form.minute, { 'attr': { 'size': '1' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { 'attr': { 'size': '1' } }) }}{% endif %}
+        </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock time_widget %}
+
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% if append|default %}{{ block('form_widget_simple_pre_append') }}{% endif %}
+        {% set type = type|default('text') %}
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        {% if append|default %}{{ block('form_widget_simple_post_append') }}{% endif %}
+    {% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block form_widget_simple_pre_append %}
+    {% spaceless %}
+    <div class="input-append picker">
+    {% endspaceless %}
+{% endblock form_widget_simple_pre_append %}
+
+{% block form_widget_simple_post_append %}
+    {% spaceless %}
+        <span class="add-on"><i class="icon-{{ append }}"></i></span>
+    </div>
+    {% endspaceless %}
+{% endblock form_widget_simple_post_append %}
+
 {% block form_row %}
     {% spaceless %}
     <div class="control-group {{ form.vars.errors|length > 0 ? 'error' : '' }}">
@@ -25,7 +99,6 @@
         {% endif %}
     {% endspaceless %}
 {% endblock form_errors %}
-
 
 {% block select2_tag_widget %}
     {% spaceless %}
