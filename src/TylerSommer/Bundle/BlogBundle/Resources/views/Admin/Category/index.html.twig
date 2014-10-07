@@ -7,7 +7,7 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Status</th>
+            <th></th>
             <th>Last Modified</th>
             <th>Date Created</th>
             <th></th>
@@ -17,7 +17,7 @@
     {% for entity in entities %}
         <tr>
             <td>{{ entity }}</td>
-            <td>{{ entity.active ? 'Active' : 'Inactive' }}</td>
+            <td>{{ entity.active ? 'Enabled' : 'Disabled' }}</td>
             <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
             <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
             <td>

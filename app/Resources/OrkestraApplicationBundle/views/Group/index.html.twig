@@ -8,7 +8,7 @@
         <tr>
             <th>Name</th>
             <th>Role</th>
-            <th>Active</th>
+            <th></th>
             <th>Date Modified</th>
             <th>Date Created</th>
             <th></th>
@@ -19,7 +19,7 @@
         <tr>
             <td><a href="{{ path('orkestra_group_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.role }}</td>
-            <td>{{ entity.active }}</td>
+            <td>{{ entity.active ? 'Enabled' : 'Disabled' }}</td>
             <td>{% if entity.dateModified %}{{ entity.dateModified }}{% endif %}</td>
             <td>{% if entity.dateCreated %}{{ entity.dateCreated }}{% endif %}</td>
             <td>

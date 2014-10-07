@@ -175,3 +175,20 @@ div.right-side {
 .post-option .checkbox {
   margin-top: 23px;
 }
+
+.widget {
+  height: 100%;
+  border-top: 5px solid #333333;
+}
+
+.widget .me {
+  border-radius: 100%;
+  border: 2px solid white;
+}
+
+.widget.blue {
+  background-color: #0088cc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}

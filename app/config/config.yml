@@ -94,3 +94,10 @@ hwi_oauth:
       type:           twitter
       client_id:      %twitter_client_id%
       client_secret:  %twitter_client_secret%
+
+# Ckeditor configuration
+trsteel_ckeditor:
+  transformers:  []
+  contents_css:  [ 'css/application.css', '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' ]
+  startup_outline_blocks: false
+  custom_config: bundles/tylersommerblog/js/module/config.js
