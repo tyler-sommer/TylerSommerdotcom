@@ -34,7 +34,8 @@
 
 <p class="form-buttons">
   <a href="{{ path('manage_post_edit', { 'id': entity.id }) }}">
-    <button class="btn">Edit Post</button>
+    <button class="btn">Edit Post</button> &nbsp;
+    <a href="{{ path('manage_post_preview', { id: entity.id }) }}" target="_blank">Preview</a>
   </a>
 </p>
 {% endblock %}
