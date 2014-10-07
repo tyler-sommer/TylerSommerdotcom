@@ -113,7 +113,10 @@ abstract class AbstractPost extends AbstractEntity
     {
         if ($active) {
             $this->active = true;
-            $this->datePublished = new DateTime();
+            if (!$this->datePublished || $this->datePublished instanceof NullDateTime) {
+                $this->datePublished = new DateTime();
+            }
+            
         } else {
             $this->active = false;
             $this->datePublished = new NullDateTime();
@@ -123,9 +126,12 @@ abstract class AbstractPost extends AbstractEntity
     /**
      * @param \DateTime $datePublished
      */
-    public function setDatePublished(\DateTime $datePublished)
+    public function setDatePublished(\DateTime $datePublished = null)
     {
-        $this->datePublished = $datePublished;
+        $this->datePublished = $datePublished ?: new NullDateTime();
+        if (!$datePublished) {
+            $this->active = false;
+        }
     }
 
     /**
@@ -271,25 +277,5 @@ abstract class AbstractPost extends AbstractEntity
     public function getEnableComments()
     {
         return $this->enableComments;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        parent::prePersist();
-
-        $this->datePublished = $this->active ? new DateTime() : new NullDateTime();
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        parent::preUpdate();
-
-        $this->datePublished = $this->active ? new DateTime() : new NullDateTime();
     }
 }

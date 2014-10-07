@@ -49,8 +49,8 @@
         var _$slug = $(document.getElementById('{{ form.slug.vars.id }}')),
             _$slugControls = _$slug.closest('.control-group'),
             _existingValue = '{{ form.slug.vars.value }}',
-            _generatedValue = _existingValue,
-            _changed = false;
+            _generatedValue = {{ form.vars.data.id ? "''" : '_existingValue' }},
+            _changed = {{ form.vars.data.id ? 'true' : 'false' }};
 
         var _$slugMessage = _$slugControls.find('.help-block');
 
