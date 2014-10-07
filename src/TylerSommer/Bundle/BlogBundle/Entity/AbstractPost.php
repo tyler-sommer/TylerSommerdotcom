@@ -42,7 +42,7 @@ abstract class AbstractPost extends AbstractEntity
      *
      * @ORM\Column(name="body", type="text")
      */
-    protected $body;
+    protected $body = '';
 
     /**
      * @var \DateTime
@@ -163,7 +163,7 @@ abstract class AbstractPost extends AbstractEntity
      */
     public function setBody($body)
     {
-        $this->body = $body;
+        $this->body = (string) $body;
     }
 
     /**
