@@ -98,4 +98,6 @@ hwi_oauth:
 # Ckeditor configuration
 trsteel_ckeditor:
   transformers:  []
+  contents_css:  [ 'css/application.css' ]
+  startup_outline_blocks: false
   custom_config: bundles/tylersommerblog/js/module/config.js
