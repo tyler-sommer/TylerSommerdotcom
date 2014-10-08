@@ -20,9 +20,28 @@ class TagRepository extends EntityRepository
      */
     public function getSidebarData()
     {
+        if ($this->_entityName === 'TylerSommer\Bundle\BlogBundle\Entity\Category') {
+            $join = 'JOIN posts_categories pt ON pt.category_id = t.id ';
+        } else {
+            $join = 'JOIN posts_tags pt ON pt.tag_id = t.id ';
+        }
+        
+        $stmt = $this->_em->getConnection()->executeQuery(
+            "SELECT t.id FROM tags t 
+                  {$join}
+                  JOIN posts p ON pt.post_id = p.id 
+                WHERE p.active = TRUE 
+                  AND t.active = TRUE
+                GROUP BY t.id
+                ORDER BY COUNT(p.id) DESC
+                LIMIT 10"
+        );
+        $results = $stmt->fetchAll(\PDO::FETCH_COLUMN);
+        
         return $this->createQueryBuilder('t')
-            ->where('t.active = true')
-            ->setMaxResults(10)
+            ->join('TylerSommerBlogBundle:AbstractPost', 'p')
+            ->where('t.id IN (:ids)')
+            ->setParameter('ids', $results)
             ->getQuery()
             ->getResult();
     }
