@@ -10,7 +10,7 @@ services:
 
   tylersommer.twig_extension.post:
     class: TylerSommer\Bundle\BlogBundle\TwigExtension\PostExtension
-    calls: 
+    calls:
       - [ setRequest, [ "@?request=" ]]
     tags:
       - { name: twig.extension }
@@ -24,7 +24,7 @@ services:
     arguments: [ @doctrine.orm.entity_manager ]
     tags:
       - { name: form.type, alias: select2_tag }
-      
+
   tylersommer.form.menu_type:
     class: TylerSommer\Bundle\BlogBundle\Form\MenuType
     arguments: [ @tylersommer.menu_builder.registry ]
@@ -33,7 +33,7 @@ services:
 
   tylersommer.menu_builder.simple_menu:
     class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\SimpleMenuBuilder
-    
+
   tylersommer.menu_builder.main_nav:
     class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\MainNavMenuBuilder
 

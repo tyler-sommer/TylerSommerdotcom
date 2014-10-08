@@ -10,7 +10,6 @@
 namespace TylerSommer\Bundle\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Orkestra\Bundle\ApplicationBundle\Entity\User;
 use Orkestra\Common\Entity\AbstractEntity;

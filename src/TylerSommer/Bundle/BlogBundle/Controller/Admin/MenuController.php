@@ -10,13 +10,11 @@
 namespace TylerSommer\Bundle\BlogBundle\Controller\Admin;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Orkestra\Bundle\ApplicationBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TylerSommer\Bundle\BlogBundle\Entity\Menu;
-use TylerSommer\Bundle\BlogBundle\Form\MenuType;
 
 /**
  * Menu controller.

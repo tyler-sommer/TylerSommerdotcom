@@ -8,11 +8,9 @@
  */
 
 namespace TylerSommer\Bundle\BlogBundle\TwigExtension;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityRepository;
+
 use Symfony\Component\HttpFoundation\Request;
 use TylerSommer\Bundle\BlogBundle\Entity\AbstractPost;
-use TylerSommer\Bundle\BlogBundle\Entity\Menu;
 use TylerSommer\Bundle\BlogBundle\Entity\Page;
 use TylerSommer\Bundle\BlogBundle\Entity\Post;
 
@@ -25,7 +23,7 @@ class PostExtension extends \Twig_Extension
      * @var Request|null
      */
     private $request;
-    
+
     public function setRequest(Request $request = null)
     {
         $this->request = $request;
@@ -41,7 +39,7 @@ class PostExtension extends \Twig_Extension
         if (!$this->request) {
             return false;
         }
-        
+
         return $slug === $this->request->get('slug');
     }
 

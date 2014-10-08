@@ -14,7 +14,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\PropertyAccess\StringUtil;
 use TylerSommer\Bundle\BlogBundle\Entity\Menu;
 use TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\MenuBuilderRegistry;
 
@@ -28,21 +27,21 @@ class MenuType extends AbstractType
 
     /**
      * Constructor
-     * 
+     *
      * @param MenuBuilderRegistry $registry
      */
     public function __construct(MenuBuilderRegistry $registry)
     {
         $this->registry = $registry;
     }
-    
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $menuTypes = array_keys($this->registry->getBuilders());
-        $names = array_map(function($name) {
+        $names = array_map(function ($name) {
                 return ucwords(str_replace(array('_', '.'), ' ', $name));
             }, $menuTypes);
-        
+
         $builder
             ->add('name')
             ->add('type', 'choice', array(
@@ -54,7 +53,7 @@ class MenuType extends AbstractType
                 'by_reference' => false,
                 'type' => new MenuItemType()
             ))
-            ->addEventListener(FormEvents::POST_BIND, function(FormEvent $event) {
+            ->addEventListener(FormEvents::POST_BIND, function (FormEvent $event) {
                 $menu = $event->getData();
 
                 if (! ($menu instanceof Menu)) {

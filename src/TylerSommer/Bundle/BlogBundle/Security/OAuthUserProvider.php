@@ -11,10 +11,7 @@ namespace TylerSommer\Bundle\BlogBundle\Security;
 
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\Security\User\EntityUserProvider;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Orkestra\Bundle\ApplicationBundle\Entity\User;
@@ -42,7 +39,7 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
     /**
      * Constructor
      *
-     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @param \Doctrine\ORM\EntityManager                                      $entityManager
      * @param \Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface $encoderFactory
      */
     public function __construct(EntityManager $entityManager, EncoderFactoryInterface $encoderFactory)

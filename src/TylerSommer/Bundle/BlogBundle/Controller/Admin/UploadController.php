@@ -25,10 +25,10 @@ class UploadController extends Controller
 {
     const CKEDITOR_UPLOAD_DIR = '/files/ckeditor';
     const FILE_SIZE_MAX = 102400;
-    
+
     /**
      * Handles ckeditor uploads
-     * 
+     *
      * @Route("/ckeditor", name="ckeditor_upload", defaults={"_format"="json"})
      * @Secure(roles="ROLE_ADMIN")
      */
@@ -45,7 +45,7 @@ class UploadController extends Controller
 
             if (!in_array($file->getMimeType(), $supportedTypes)) {
                 return $this->getCkeditorResponse('The given file type is not supported', '', $funcNumber);
-                
+
             } elseif ($file->getSize() > static::FILE_SIZE_MAX) {
                 return $this->getCkeditorResponse(
                     'The given file is too large. Please limit the file to under 100kb.',

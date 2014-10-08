@@ -8,12 +8,10 @@
  */
 
 namespace TylerSommer\Bundle\BlogBundle\TwigExtension;
+
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use TylerSommer\Bundle\BlogBundle\Entity\AbstractPost;
 use TylerSommer\Bundle\BlogBundle\Entity\Menu;
-use TylerSommer\Bundle\BlogBundle\Entity\Page;
-use TylerSommer\Bundle\BlogBundle\Entity\Post;
 
 /**
  * Provides useful basic CMS functionality within Twig
@@ -44,8 +42,8 @@ class SimpleCmsExtension extends \Twig_Extension
      * Renders a menu
      *
      * @param \Twig_Environment $environment
-     * @param string $name The name of the menu
-     * @param array $options An array of options to pass to the menu
+     * @param string            $name        The name of the menu
+     * @param array             $options     An array of options to pass to the menu
      *
      * @return string
      */
@@ -80,8 +78,8 @@ class SimpleCmsExtension extends \Twig_Extension
      * Renders raw Twig
      *
      * @param \Twig_Environment $environment
-     * @param string $template The raw twig template
-     * @param array $parameters
+     * @param string            $template    The raw twig template
+     * @param array             $parameters
      *
      * @return string
      */
@@ -96,7 +94,7 @@ class SimpleCmsExtension extends \Twig_Extension
      * Loads raw Twig using the given Environment
      *
      * @param \Twig_Environment $environment
-     * @param string $template The raw twig template
+     * @param string            $template    The raw twig template
      *
      * @return \Twig_TemplateInterface
      */
@@ -136,7 +134,7 @@ class SimpleCmsExtension extends \Twig_Extension
             )
         );
     }
-    
+
     /**
      * Returns the name of the extension.
      *

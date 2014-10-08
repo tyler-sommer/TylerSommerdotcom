@@ -50,7 +50,7 @@ class Select2TagType extends AbstractType
 
         $resolver->setDefaults(array(
             'property' => 'name',
-            'values' => function(Options $options) use ($entityManager, $propertyAccessor) {
+            'values' => function (Options $options) use ($entityManager, $propertyAccessor) {
                 $propertyPath = $options['property'];
                 $class = $options['class'];
 
@@ -62,7 +62,7 @@ class Select2TagType extends AbstractType
                     ->getQuery()
                     ->getResult();
 
-                $values = array_map(function($value) use ($propertyAccessor, $propertyPath) {
+                $values = array_map(function ($value) use ($propertyAccessor, $propertyPath) {
                     return $propertyAccessor->getValue($value, $propertyPath);
                 }, $entities);
 

@@ -77,12 +77,14 @@ class SearchController extends Controller
     protected function getByTag($tag)
     {
         $entities = $this->getRepository('TylerSommerBlogBundle:Post')->findByTag($tag);
+
         return array_merge($entities, $this->getRepository('TylerSommerBlogBundle:Page')->findByTag($tag));
     }
 
     protected function getByCategory($category)
     {
         $entities = $this->getRepository('TylerSommerBlogBundle:Post')->findByCategory($category);
+
         return array_merge($entities, $this->getRepository('TylerSommerBlogBundle:Page')->findByCategory($category));
     }
 
