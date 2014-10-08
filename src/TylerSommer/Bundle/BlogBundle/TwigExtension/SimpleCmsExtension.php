@@ -10,7 +10,10 @@
 namespace TylerSommer\Bundle\BlogBundle\TwigExtension;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use TylerSommer\Bundle\BlogBundle\Entity\AbstractPost;
 use TylerSommer\Bundle\BlogBundle\Entity\Menu;
+use TylerSommer\Bundle\BlogBundle\Entity\Page;
+use TylerSommer\Bundle\BlogBundle\Entity\Post;
 
 /**
  * Provides useful basic CMS functionality within Twig
@@ -131,6 +134,17 @@ class SimpleCmsExtension extends \Twig_Extension
                     'is_safe' => array('html')
                 )
             )
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function getTests()
+    {
+        return array(
+            new \Twig_SimpleTest('post', function (AbstractPost $post) { return $post instanceof Post; }),
+            new \Twig_SimpleTest('page', function (AbstractPost $post) { return $post instanceof Page; })
         );
     }
 
