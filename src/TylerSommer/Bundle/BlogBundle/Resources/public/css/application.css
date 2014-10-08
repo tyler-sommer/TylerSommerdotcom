@@ -175,6 +175,7 @@ div.right-side {
 
 .comment .comment-body {
   margin: 0 0 5px 0;
+  font-weight: 300;
 }
 
 .post-option .checkbox {
