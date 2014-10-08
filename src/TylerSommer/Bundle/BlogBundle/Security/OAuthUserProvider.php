@@ -78,8 +78,8 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
         $user = new User();
         $user->setUsername(sprintf('%s-%s', $response->getResourceOwner()->getName(), $response->getUsername()));
         list ($firstName, $lastName) = explode(' ', $response->getRealName(), 2);
-        $user->setFirstName($firstName);
-        $user->setLastName($lastName);
+        $user->setFirstName((string) $firstName);
+        $user->setLastName((string) $lastName);
         $user->setGroups($group);
 
         $factory = $this->encoderFactory->getEncoder($user);
