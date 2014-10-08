@@ -7,11 +7,13 @@
 {% block content %}
 {% for entity in entities %}
     <div class="row-fluid">
+{% if entity is post %}
     <div class="span1 date-posted">
         <p class="month">{{ entity.datePublished.toUserTime.format('M') }}</p>
         <p class="day">{{ entity.datePublished.toUserTime.format('d') }}</p>
     </div>
-    <div class="span11">
+{% endif %}
+    <div class="{{ entity is post ? 'span11' : 'span12' }}">
     {% if loop.first %}
 <h1>{{ entity.title }}</h1>
     {% else %}
