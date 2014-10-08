@@ -24,6 +24,12 @@ services:
     arguments: [ @doctrine.orm.entity_manager ]
     tags:
       - { name: form.type, alias: select2_tag }
+      
+  tylersommer.form.menu_type:
+    class: TylerSommer\Bundle\BlogBundle\Form\MenuType
+    arguments: [ @tylersommer.menu_builder.registry ]
+    tags:
+      - { name: form.type, alias: menu }
 
   tylersommer.menu_builder.simple_menu:
     class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\SimpleMenuBuilder

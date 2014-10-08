@@ -19,7 +19,12 @@ class MenuItemType extends AbstractType
     {
         $builder
             ->add('label', 'text')
-            ->add('route', 'text')
+            ->add('route', 'text', array('label' => 'Target', 'required' => false))
+            ->add('type', 'choice', array('choices' => array(
+                    'route' => 'Route-based',
+                    'page' => 'Slug-based',
+                    'group' => 'Group Title'
+                )))
             ->add('icon', 'text', array('required' => false))
             ->add('role', 'text', array('required' => false))
             ->add('not_role', 'text', array('required' => false));

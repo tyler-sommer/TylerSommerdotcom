@@ -11,13 +11,24 @@ namespace TylerSommer\Bundle\BlogBundle\Model\MenuBuilder;
 
 class MenuBuilderRegistry
 {
+    /**
+     * @var array|MenuBuilderInterface[]
+     */
     private $builders = array();
 
+    /**
+     * @param MenuBuilderInterface $builder
+     */
     public function registerBuilder(MenuBuilderInterface $builder)
     {
         $this->builders[$builder->getName()] = $builder;
     }
 
+    /**
+     * @param $name
+     *
+     * @return MenuBuilderInterface
+     */
     public function getBuilder($name)
     {
         if (!isset($this->builders[$name])) {
@@ -25,5 +36,13 @@ class MenuBuilderRegistry
         }
 
         return $this->builders[$name];
+    }
+
+    /**
+     * @return array|MenuBuilderInterface[]
+     */
+    public function getBuilders()
+    {
+        return $this->builders;
     }
 }

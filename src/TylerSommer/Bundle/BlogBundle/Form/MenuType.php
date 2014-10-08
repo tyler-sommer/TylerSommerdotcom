@@ -14,19 +14,39 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\PropertyAccess\StringUtil;
 use TylerSommer\Bundle\BlogBundle\Entity\Menu;
+use TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\MenuBuilderRegistry;
 
 class MenuType extends AbstractType
 {
+
+    /**
+     * @var MenuBuilderRegistry
+     */
+    private $registry;
+
+    /**
+     * Constructor
+     * 
+     * @param MenuBuilderRegistry $registry
+     */
+    public function __construct(MenuBuilderRegistry $registry)
+    {
+        $this->registry = $registry;
+    }
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $menuTypes = array_keys($this->registry->getBuilders());
+        $names = array_map(function($name) {
+                return ucwords(str_replace(array('_', '.'), ' ', $name));
+            }, $menuTypes);
+        
         $builder
             ->add('name')
             ->add('type', 'choice', array(
-                'choices' => array(
-                    // TODO: Use something to get available menus
-                    'simple_menu' => 'Simple Menu'
-                )
+                'choices' => array_combine($menuTypes, $names)
             ))
             ->add('definition', 'collection', array(
                 'allow_add' => true,
