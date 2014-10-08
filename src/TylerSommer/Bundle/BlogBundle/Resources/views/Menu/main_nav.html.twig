@@ -3,12 +3,12 @@
     {% for item in menu.definition %}
         {% if not item.role|default or is_granted(item.role) %}
             {% if not item.not_role|default or not is_granted(item.not_role) %}
-    <li{% if is_current_route(item.route) %} class="active"{% endif %}>
+    <li class="{% if is_current_route(item.route) %}active{% endif %} {% if item.icon|default %}has-icon{% endif %}">
         <a href="{{ path(item.route) }}">
             {% if item.icon|default %}
             <i class="icon-{{ item.icon }}"></i>
             {% endif %}
-            {{ item.label }}
+            <span>{{ item.label }}</span>
         </a>
     </li>
             {% endif %}
