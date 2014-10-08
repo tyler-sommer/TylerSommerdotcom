@@ -1,16 +1,26 @@
 {% spaceless %}
-<ul class="pull-right nav">
+<ul class="nav nav-list">
     {% for item in menu.definition %}
         {% if not item.role|default or is_granted(item.role) %}
             {% if not item.not_role|default or not is_granted(item.not_role) %}
-    <li{% if is_current_route(item.route) %} class="active"{% endif %}>
-        <a href="{{ path(item.route) }}">
+              {% set type = item.type|default('route') %}
+              {% if type == 'group' %}
+    <li class="nav-header">
+      {{ item.label }}
+    </li>
+              {% else %}
+                {% set route = type == 'route' ? item.route : 'page_or_post' %}
+                {% set params = type == 'route' ? null : { slug: item.route } %}
+    <li{% if (type == 'route' and is_current_route(item.route)) or (type == 'page' and is_current_slug(item.route)) %} class="active"{% endif %}>
+        <a href="{{ path(route, params) }}">
             {% if item.icon|default %}
-            <i class="icon-{{ item.icon }}"></i>
+              <i class="icon-{{ item.icon }}"></i>
             {% endif %}
-            {{ item.label }}
+          {{ item.label }}
         </a>
     </li>
+              {% endif %}
+
             {% endif %}
         {% endif %}
     {% endfor %}

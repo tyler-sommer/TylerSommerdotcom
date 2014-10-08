@@ -12,7 +12,6 @@ namespace TylerSommer\Bundle\BlogBundle\Form\Transformer;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Form\Util\PropertyPath;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
@@ -30,8 +29,8 @@ class TagTransformer implements DataTransformerInterface
 
     /**
      * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param string $class
-     * @param string $property
+     * @param string                      $class
+     * @param string                      $property
      */
     public function __construct(EntityManager $entityManager, $class, $property = 'name')
     {
@@ -62,7 +61,7 @@ class TagTransformer implements DataTransformerInterface
 
         $propertyAccessor = $this->propertyAccessor;
         $property = $this->property;
-        $values = array_map(function($value) use ($propertyAccessor, $property) {
+        $values = array_map(function ($value) use ($propertyAccessor, $property) {
             return $propertyAccessor->getValue($value, $property);
         }, $values);
 

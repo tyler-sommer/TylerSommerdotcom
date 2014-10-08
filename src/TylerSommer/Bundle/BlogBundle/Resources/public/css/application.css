@@ -27,6 +27,10 @@ label, input, button, select, textarea {
   border-top: 5px solid #333333;
 }
 
+.navbar-inner {
+  min-height: inherit;
+}
+
 .navbar .brand {
   font-family: 'Lobster Two', serif;
   font-size: 35px;
@@ -175,6 +179,7 @@ div.right-side {
 
 .comment .comment-body {
   margin: 0 0 5px 0;
+  font-weight: 300;
 }
 
 .post-option .checkbox {
@@ -196,4 +201,88 @@ div.right-side {
   color: white;
   text-align: center;
   padding: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  .navbar .brand {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  
+  .navbar .nav li, .navbar .small-brand {
+    line-height: 30px;
+    border-top: 5px solid transparent;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .navbar .brand {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .navbar .nav li, .navbar .small-brand {
+    line-height: 20px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .navbar .brand {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .navbar .nav li, .navbar .small-brand {
+    line-height: 20px;
+  }
+}
+
+@media only screen and (min-width: 751px) {
+  .navbar .small-brand {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .navbar .brand {
+    display: none;
+  }
+
+  .navbar .small-brand {
+    color: white;
+    display: inline-block;
+    padding: 5px 10px 10px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #0088cc;
+    text-decoration: none;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .navbar .nav li i {
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .navbar .nav li.has-icon span {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .navbar .brand {
+    font-size: 15px;
+    line-height: 15px;
+  }
+
+  .navbar .nav li, .navbar .small-brand {
+    line-height: 15px;
+  }
+  
+  .navbar .small-brand {
+    padding: 5px 5px 10px;
+    font-size: 20px;
+  }
 }

@@ -10,7 +10,6 @@
 namespace TylerSommer\Bundle\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -19,7 +18,6 @@ use TylerSommer\Bundle\BlogBundle\Entity\AbstractPost;
 use TylerSommer\Bundle\BlogBundle\Entity\Comment;
 use TylerSommer\Bundle\BlogBundle\Entity\Post;
 use TylerSommer\Bundle\BlogBundle\Form\CommentType;
-use TylerSommer\Bundle\BlogBundle\Form\PostType;
 
 /**
  * Comment controller.
@@ -39,7 +37,7 @@ class CommentController extends AbstractBlogController
         $post = $this->getPost($postid);
 
         $entities = $post->getComments()->toArray();
-        usort($entities, function(Comment $a, Comment $b) {
+        usort($entities, function (Comment $a, Comment $b) {
             return $a->getDateCreated() < $b->getDateCreated();
         });
 

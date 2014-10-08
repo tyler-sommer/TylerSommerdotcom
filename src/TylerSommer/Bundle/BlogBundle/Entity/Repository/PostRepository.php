@@ -88,8 +88,10 @@ class PostRepository extends EntityRepository
     public function findForHome()
     {
         return $this->_em->createQueryBuilder()
-            ->select('p')
+            ->select('p, t, c')
             ->from($this->_entityName, 'p')
+            ->leftJoin('p.tags', 't')
+            ->leftJoin('p.categories', 'c')
             ->andWhere('p.active = true')
             ->orderBy('p.datePublished', 'DESC')
             ->getQuery()
@@ -99,8 +101,10 @@ class PostRepository extends EntityRepository
     public function findOneBySlug($slug)
     {
         return $this->_em->createQueryBuilder()
-            ->select('p')
+            ->select('p, t, c')
             ->from('TylerSommerBlogBundle:AbstractPost', 'p')
+            ->leftJoin('p.tags', 't')
+            ->leftJoin('p.categories', 'c')
             ->where('p.slug = :slug')
             ->andWhere('p.active = true')
             ->setParameter('slug', $slug)

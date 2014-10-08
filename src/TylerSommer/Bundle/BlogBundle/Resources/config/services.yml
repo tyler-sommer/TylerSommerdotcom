@@ -8,6 +8,13 @@ services:
     tags:
       - { name: twig.extension }
 
+  tylersommer.twig_extension.post:
+    class: TylerSommer\Bundle\BlogBundle\TwigExtension\PostExtension
+    calls:
+      - [ setRequest, [ "@?request=" ]]
+    tags:
+      - { name: twig.extension }
+
   tylersommer.oauth.user_provider:
     class: TylerSommer\Bundle\BlogBundle\Security\OAuthUserProvider
     arguments: [ @doctrine.orm.entity_manager, @security.encoder_factory ]
@@ -18,13 +25,23 @@ services:
     tags:
       - { name: form.type, alias: select2_tag }
 
+  tylersommer.form.menu_type:
+    class: TylerSommer\Bundle\BlogBundle\Form\MenuType
+    arguments: [ @tylersommer.menu_builder.registry ]
+    tags:
+      - { name: form.type, alias: menu }
+
   tylersommer.menu_builder.simple_menu:
     class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\SimpleMenuBuilder
+
+  tylersommer.menu_builder.main_nav:
+    class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\MainNavMenuBuilder
 
   tylersommer.menu_builder.registry:
     class: TylerSommer\Bundle\BlogBundle\Model\MenuBuilder\MenuBuilderRegistry
     calls:
       - [ registerBuilder, [ @tylersommer.menu_builder.simple_menu ] ]
+      - [ registerBuilder, [ @tylersommer.menu_builder.main_nav ] ]
 
   tylersommer.entity.subscriber.menu_post_load:
     class: TylerSommer\Bundle\BlogBundle\Entity\EventSubscriber\MenuPostLoadSubscriber

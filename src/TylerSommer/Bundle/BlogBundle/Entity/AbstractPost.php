@@ -124,7 +124,7 @@ abstract class AbstractPost extends AbstractEntity
             if (!$this->datePublished || $this->datePublished instanceof NullDateTime) {
                 $this->datePublished = new DateTime();
             }
-            
+
         } else {
             $this->active = false;
             $this->datePublished = new NullDateTime();

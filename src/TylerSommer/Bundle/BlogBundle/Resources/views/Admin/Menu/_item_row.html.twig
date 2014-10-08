@@ -2,17 +2,27 @@
     <div class="span2">
         {{ form_row(form.label, { attr: { class: 'input-small' } }) }}
     </div>
-    <div class="span2">
-        {{ form_row(form.route, { attr: { class: 'input-small' } }) }}
+    <div class="span3">
+      <div class="control-group">
+        {{ form_label(form.route) }}
+        <div class="controls">
+          {{ form_widget(form.type, { attr: { class: 'input-small item-type' } }) }}
+          {{ form_widget(form.route, { attr: { class: 'input-small item-target' } }) }}
+        </div>
+      </div>
     </div>
     <div class="span2">
         {{ form_row(form.icon, { attr: { class: 'input-small' } }) }}
     </div>
-    <div class="span2">
-        {{ form_row(form.role, { attr: { class: 'input-small' } }) }}
-    </div>
-    <div class="span2">
-        {{ form_row(form.not_role, { attr: { class: 'input-small' } }) }}
+    <div class="span3">
+      <div class="control-group">
+        <label>Security</label>
+        <div class="controls">
+          {{ form_widget(form.role, { attr: { class: 'input-small', placeholder: 'Roles' } }) }}
+          {{ form_widget(form.not_role, { attr: { class: 'input-small', placeholder: 'Not roles' } }) }}
+        </div>
+      </div>
+
     </div>
     <div class="span2">
         <label>&nbsp;</label>

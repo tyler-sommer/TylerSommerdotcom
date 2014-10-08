@@ -51,30 +51,36 @@ class InitialBlogData extends AbstractFixture implements OrderedFixtureInterface
         return array(
             array(
                 'label' => 'Home',
+                'type'  => 'route',
                 'route' => 'home',
             ),
             array(
                 'label' => 'About',
+                'type'  => 'route',
                 'route' => 'about',
             ),
             array(
                 'label' => 'Contact',
+                'type'  => 'route',
                 'route' => 'contact',
             ),
             array(
                 'label' => 'Manage',
+                'type'  => 'route',
                 'route' => 'manage_posts',
                 'role' => 'ROLE_ADMIN',
                 'icon' => 'cog',
             ),
             array(
                 'label' => 'Login',
+                'type'  => 'route',
                 'route' => 'login',
                 'not_role' => 'ROLE_USER',
                 'icon' => 'user',
             ),
             array(
                 'label' => 'Logout',
+                'type'  => 'route',
                 'route' => 'logout',
                 'role' => 'ROLE_USER',
                 'icon' => 'signout',

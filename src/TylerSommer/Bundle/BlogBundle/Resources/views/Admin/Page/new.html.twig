@@ -71,7 +71,7 @@
         var _$publishCheckbox = $(document.getElementById('{{ form.active.vars.id }}')),
             _$datePublished = $(document.getElementById('{{ form.datePublished.vars.id }}')),
             _$datePublishedField = $('.js-date-published');
-      
+
         if (_$datePublished.val() == '12/31/1969' || _$datePublished.val() == '01/01/1970') {
           _$datePublished.datepicker('update', new Date);
         }

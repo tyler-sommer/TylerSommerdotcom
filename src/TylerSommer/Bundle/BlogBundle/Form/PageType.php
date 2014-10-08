@@ -23,7 +23,7 @@ class PageType extends AbstractType
             ->add('slug')
             ->add('body', 'ckeditor')
             ->add('author', null, array(
-                'query_builder' => function(EntityRepository $entityRepository) {
+                'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('a')
                         ->where('a.active = true');
                 }

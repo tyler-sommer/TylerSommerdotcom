@@ -9,7 +9,6 @@
 
 namespace TylerSommer\Bundle\BlogBundle\Security;
 
-use HWI\Bundle\OAuthBundle\Security\Core\Authentication\Provider\OAuthProvider as BaseProvider;
 use HWI\Bundle\OAuthBundle\Security\Core\Authentication\Token\OAuthToken;
 use HWI\Bundle\OAuthBundle\Security\Core\Exception\OAuthAwareExceptionInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;

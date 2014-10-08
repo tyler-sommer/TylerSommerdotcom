@@ -77,6 +77,8 @@
     var html = _rowPrototype.replace(/__name__/g, _currentIndex),
       $row = $(html).hide().appendTo(_$definitions).slideDown('fast');
 
+    _currentIndex++;
+    
     _bindRowHandlers($row);
   };
 
