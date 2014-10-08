@@ -1,7 +1,7 @@
 CKEDITOR.editorConfig = function(config) {
   config.forcePasteAsPlainText = false;
-  config.basicEntities = true;
-  config.entities = true;
+  config.basicEntities = false;
+  config.entities = false;
   config.entities_latin = false;
   config.entities_greek = false;
   config.entities_processNumerical = false;
