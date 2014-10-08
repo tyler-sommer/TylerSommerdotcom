@@ -8,6 +8,13 @@ services:
     tags:
       - { name: twig.extension }
 
+  tylersommer.twig_extension.post:
+    class: TylerSommer\Bundle\BlogBundle\TwigExtension\PostExtension
+    calls: 
+      - [ setRequest, [ "@?request=" ]]
+    tags:
+      - { name: twig.extension }
+
   tylersommer.oauth.user_provider:
     class: TylerSommer\Bundle\BlogBundle\Security\OAuthUserProvider
     arguments: [ @doctrine.orm.entity_manager, @security.encoder_factory ]

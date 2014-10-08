@@ -136,18 +136,7 @@ class SimpleCmsExtension extends \Twig_Extension
             )
         );
     }
-
-    /**
-     * @return array
-     */
-    public function getTests()
-    {
-        return array(
-            new \Twig_SimpleTest('post', function (AbstractPost $post) { return $post instanceof Post; }),
-            new \Twig_SimpleTest('page', function (AbstractPost $post) { return $post instanceof Page; })
-        );
-    }
-
+    
     /**
      * Returns the name of the extension.
      *
