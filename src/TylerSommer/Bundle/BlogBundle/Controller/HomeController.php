@@ -80,6 +80,7 @@ class HomeController extends Controller
     {
         $posts = $this->getRepository('TylerSommerBlogBundle:Post')->createQueryBuilder('p')
             ->where('p.datePublished >= :dateStart')
+            ->andWhere('p.active = true')
             ->setParameters(array(
                 'dateStart' => new \DateTime('-1 year')
             ))

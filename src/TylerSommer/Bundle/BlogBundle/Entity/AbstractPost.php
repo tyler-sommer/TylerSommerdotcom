@@ -63,7 +63,7 @@ abstract class AbstractPost extends AbstractEntity
      *
      * @ORM\Column(name="enable_comments", type="boolean")
      */
-    protected $enableComments = true;
+    protected $enableComments = false;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -111,6 +111,7 @@ abstract class AbstractPost extends AbstractEntity
         $this->tags          = new ArrayCollection();
         $this->categories    = new ArrayCollection();
         $this->datePublished = new NullDateTime();
+        $this->active        = false;
     }
 
     /**
