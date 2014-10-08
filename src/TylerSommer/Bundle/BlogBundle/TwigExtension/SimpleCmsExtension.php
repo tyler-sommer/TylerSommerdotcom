@@ -103,7 +103,13 @@ class SimpleCmsExtension extends \Twig_Extension
         $existingLoader = $environment->getLoader();
         $environment->setLoader($this->stringLoader);
 
-        $template = $environment->loadTemplate($template);
+        try {
+            $template = $environment->loadTemplate($template);
+        } catch (\Exception $e) {
+            $environment->setLoader($existingLoader);
+            
+            throw $e;
+        }
 
         $environment->setLoader($existingLoader);
 
