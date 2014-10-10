@@ -36,7 +36,7 @@ class InitialBlogData extends AbstractFixture implements OrderedFixtureInterface
 
         $menu = new Menu();
         $menu->setName('main_nav');
-        $menu->setType('simple_menu');
+        $menu->setType('main_nav');
         $menu->setDefinition($this->getMainNavDefinition());
         $manager->persist($menu);
 
@@ -56,12 +56,12 @@ class InitialBlogData extends AbstractFixture implements OrderedFixtureInterface
             ),
             array(
                 'label' => 'About',
-                'type'  => 'route',
+                'type'  => 'page',
                 'route' => 'about',
             ),
             array(
                 'label' => 'Contact',
-                'type'  => 'route',
+                'type'  => 'page',
                 'route' => 'contact',
             ),
             array(

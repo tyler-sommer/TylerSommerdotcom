@@ -50,8 +50,6 @@ class HomeController extends Controller
 
     /**
      * @Route("/", name="home", defaults={"slug"=null})
-     * @Route("/about", name="about", defaults={"slug"="about"})
-     * @Route("/contact", name="contact", defaults={"slug"="contact"})
      * @Route("/{slug}", name="page_or_post")
      */
     public function indexAction($slug)
