@@ -1,5 +1,25 @@
 {% extends 'TylerSommerBlogBundle::base.html.twig' %}
 
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite, ?yui_css' output="css/highlighter.css"
+  'bundles/tylersommerblog/css/highlighter/shCore.css'
+  'bundles/tylersommerblog/css/highlighter/shTheme.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block main_javascripts %}
+{{ parent() }}
+{% javascripts filter='?yui_js' output="js/highlighter.js"
+  'bundles/tylersommerblog/js/highlighter/shCore.js'
+  'bundles/tylersommerblog/js/highlighter/*'
+%}
+<script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}
+{% endblock %}
+
 {% if entities|length == 1 %}
 {% set title = entities[0].title %}
 {% endif %}
@@ -46,12 +66,11 @@
                 type: 'html',
                 success: function(response) {
                     $this.closest('.comment-box').html(response);
-                },
-                error: function() {
-                    console.log(arguments);
                 }
             });
-        })
+        });
+      
+        SyntaxHighlighter.all();
     });
 </script>
     {% endif %}
