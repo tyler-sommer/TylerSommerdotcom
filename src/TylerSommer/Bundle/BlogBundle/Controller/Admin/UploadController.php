@@ -43,12 +43,9 @@ class UploadController extends Controller
                 'image/png'
             );
 
-            if (!in_array($file->getMimeType(), $supportedTypes)) {
-                return $this->getCkeditorResponse('The given file type is not supported', '', $funcNumber);
-
-            } elseif ($file->getSize() > static::FILE_SIZE_MAX) {
+            if ($file->getSize() > static::FILE_SIZE_MAX) {
                 return $this->getCkeditorResponse(
-                    'The given file is too large. Please limit the file to under 100kb.',
+                    'The uploaded file is too large. Please limit the file to under ' . (self::FILE_SIZE_MAX / 1024) . 'KiB',
                     '',
                     $funcNumber
                 );
