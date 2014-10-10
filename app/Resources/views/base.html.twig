@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>{% block title %}{% if title is defined %}{{ title }} - {% endif %}Tyler Sommer dot com{% endblock %}</title>
-        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300|Lobster+Two:400,700" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300|Lobster+Two:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
         {% block stylesheets %}
             {% stylesheets filter='cssrewrite, ?yui_css' output="css/application.css"
