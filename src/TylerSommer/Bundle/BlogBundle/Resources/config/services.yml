@@ -14,6 +14,12 @@ services:
       - [ setRequest, [ "@?request=" ]]
     tags:
       - { name: twig.extension }
+      
+  tylersommer.twig_extension.analytics:
+    class: TylerSommer\Bundle\BlogBundle\TwigExtension\AnalyticsExtension
+    arguments: [ %tracking_id% ]
+    tags:
+      - { name: twig.extension }
 
   tylersommer.oauth.user_provider:
     class: TylerSommer\Bundle\BlogBundle\Security\OAuthUserProvider

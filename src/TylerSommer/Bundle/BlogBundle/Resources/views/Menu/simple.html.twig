@@ -10,7 +10,7 @@
     </li>
               {% else %}
                 {% set route = type == 'route' ? item.route : 'page_or_post' %}
-                {% set params = type == 'route' ? null : { slug: item.route } %}
+                {% set params = type == 'route' ? {} : { slug: item.route } %}
     <li{% if (type == 'route' and is_current_route(item.route)) or (type == 'page' and is_current_slug(item.route)) %} class="active"{% endif %}>
         <a href="{{ path(route, params) }}">
             {% if item.icon|default %}
