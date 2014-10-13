@@ -252,7 +252,7 @@ div.right-side {
     color: white;
     display: inline-block;
     padding: 5px 10px 10px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     background-color: #0088cc;
     text-decoration: none;
@@ -284,6 +284,12 @@ div.right-side {
   .navbar .small-brand {
     padding: 5px 5px 10px;
     font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .navbar .small-brand {
+    display: none;
   }
 }
 
