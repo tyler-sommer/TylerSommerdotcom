@@ -13,6 +13,18 @@ label, input, button, select, textarea {
   background-color: #FAFAFA;
 }
 
+.well.well-note {
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 5px solid #0088cc;
+  color: #333;
+}
+
+.well h1, .well h2, .well h3, .well h4, .well h5, .well h6 {
+  margin-top: 0;
+}
+
 .spacer {
   clear: both;
   height: 15px;
@@ -251,6 +263,7 @@ div.right-side {
   .navbar .small-brand {
     color: white;
     display: inline-block;
+    float: left;
     padding: 5px 10px 10px;
     font-size: 25px;
     font-weight: bold;
