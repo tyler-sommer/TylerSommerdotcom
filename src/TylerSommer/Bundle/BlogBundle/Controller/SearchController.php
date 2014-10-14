@@ -76,16 +76,12 @@ class SearchController extends Controller
 
     protected function getByTag($tag)
     {
-        $entities = $this->getRepository('TylerSommerBlogBundle:Post')->findByTag($tag);
-
-        return array_merge($entities, $this->getRepository('TylerSommerBlogBundle:Page')->findByTag($tag));
+        return $this->getRepository('TylerSommerBlogBundle:AbstractPost')->findByTag($tag);
     }
 
     protected function getByCategory($category)
     {
-        $entities = $this->getRepository('TylerSommerBlogBundle:Post')->findByCategory($category);
-
-        return array_merge($entities, $this->getRepository('TylerSommerBlogBundle:Page')->findByCategory($category));
+        return $this->getRepository('TylerSommerBlogBundle:AbstractPost')->findByCategory($category);
     }
 
     protected function getSearchResults($searchTerms)
@@ -94,21 +90,15 @@ class SearchController extends Controller
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $qb->select('p')
-            ->from('TylerSommerBlogBundle:Post', 'p')
+            ->from('TylerSommerBlogBundle:AbstractPost', 'p')
             ->where('p.active = true')
             ->andWhere($qb->expr()->orX(
                 $qb->expr()->like('p.title', ':terms'),
                 $qb->expr()->like('p.body', ':terms')
             ))
-            ->setParameter('terms', '%' . $searchTerms . '%');
+            ->setParameter('terms', '%' . $searchTerms . '%')
+            ->orderBy('p.datePublished', 'DESC');
 
-        $entities = $qb->getQuery()->getResult();
-
-        $qb->resetDQLPart('from')
-            ->from('TylerSommerBlogBundle:Page', 'p');
-
-        $entities = array_merge($entities, $qb->getQuery()->getResult());
-
-        return $entities;
+        return $qb->getQuery()->getResult();
     }
 }
