@@ -10,6 +10,7 @@
 namespace TylerSommer\Bundle\BlogBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use TylerSommer\Bundle\BlogBundle\Entity\AbstractPost;
 
 class PostRepository extends EntityRepository
 {
@@ -18,7 +19,7 @@ class PostRepository extends EntityRepository
      *
      * @param string $category
      *
-     * @return array
+     * @return array|AbstractPost[]
      */
     public function findByCategory($category)
     {
@@ -27,6 +28,7 @@ class PostRepository extends EntityRepository
             ->where('p.active = true')
             ->andWhere('c.name = :name')
             ->setParameter('name', $category)
+            ->orderBy('p.datePublished', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -36,7 +38,7 @@ class PostRepository extends EntityRepository
      *
      * @param string $tag
      *
-     * @return array
+     * @return array|AbstractPost[]
      */
     public function findByTag($tag)
     {
@@ -45,6 +47,7 @@ class PostRepository extends EntityRepository
             ->where('p.active = true')
             ->andWhere('t.name = :name')
             ->setParameter('name', $tag)
+            ->orderBy('p.datePublished', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -85,26 +88,41 @@ class PostRepository extends EntityRepository
         return count($this->findByUnique(array('slug' => $slug))) === 0;
     }
 
+    /**
+     * Find all posts for the home page
+     * 
+     * @return array|AbstractPost[]
+     */
     public function findForHome()
     {
         return $this->_em->createQueryBuilder()
-            ->select('p, t, c')
+            ->select('p, t, c, co')
             ->from($this->_entityName, 'p')
             ->leftJoin('p.tags', 't')
             ->leftJoin('p.categories', 'c')
+            ->leftJoin('p.comments', 'co')
             ->andWhere('p.active = true')
             ->orderBy('p.datePublished', 'DESC')
             ->getQuery()
             ->getResult();
     }
 
+    /**
+     * Find one post by its slug
+     * 
+     * @param string $slug
+     *
+     * @return AbstractPost
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function findOneBySlug($slug)
     {
         return $this->_em->createQueryBuilder()
-            ->select('p, t, c')
+            ->select('p, t, c, co')
             ->from('TylerSommerBlogBundle:AbstractPost', 'p')
             ->leftJoin('p.tags', 't')
             ->leftJoin('p.categories', 'c')
+            ->leftJoin('p.comments', 'co')
             ->where('p.slug = :slug')
             ->andWhere('p.active = true')
             ->setParameter('slug', $slug)
