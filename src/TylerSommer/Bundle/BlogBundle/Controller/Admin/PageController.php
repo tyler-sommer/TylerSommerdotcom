@@ -34,7 +34,12 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TylerSommerBlogBundle:Page')->findAll();
+        $entities = $em->getRepository('TylerSommerBlogBundle:Page')
+            ->createQueryBuilder('p')
+            ->orderBy('p.active', 'ASC')
+            ->addOrderBy('p.datePublished', 'DESC')
+            ->getQuery()
+            ->getResult();
 
         return array(
             'entities' => $entities,

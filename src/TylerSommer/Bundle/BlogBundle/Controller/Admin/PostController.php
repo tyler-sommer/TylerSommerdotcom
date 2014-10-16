@@ -35,7 +35,12 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TylerSommerBlogBundle:Post')->findAll();
+        $entities = $em->getRepository('TylerSommerBlogBundle:Post')
+            ->createQueryBuilder('p')
+            ->orderBy('p.active', 'ASC')
+            ->addOrderBy('p.datePublished', 'DESC')
+            ->getQuery()
+            ->getResult();
 
         return array(
             'entities' => $entities,
