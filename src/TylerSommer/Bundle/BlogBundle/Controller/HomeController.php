@@ -13,6 +13,7 @@ use Orkestra\Bundle\ApplicationBundle\Controller\Controller;
 use Suin\RSSWriter\Channel;
 use Suin\RSSWriter\Feed;
 use Suin\RSSWriter\Item;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use TylerSommer\Bundle\BlogBundle\Form\SearchType;
@@ -104,5 +105,48 @@ class HomeController extends Controller
             'categories' => $categories,
             'form' => $form->createView()
         );
+    }
+
+    /**
+     * Outputs a file
+     *
+     * @Route("/file/{id}/view", name="file_view")
+     */
+    public function viewAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var $file \Orkestra\Bundle\ApplicationBundle\Entity\File */
+        $file = $em->find('Orkestra\Bundle\ApplicationBundle\Entity\File', $id);
+
+        if (!$file || !file_exists($file->getPath())) {
+            throw $this->createNotFoundException('Unable to locate File');
+        }
+
+        $securityContext = $this->get('security.context');
+
+        foreach ($file->getGroups() as $group) {
+            if (!$securityContext->isGranted($group->getRole())) {
+                throw $this->createNotFoundException('Unable to locate File');
+            }
+        }
+
+        $response = new Response();
+        $response->setLastModified(new \DateTime('@' . filemtime($file->getPath())));
+        $response->setPublic();
+        if (($hash = $file->getMd5()) !== '') {
+            $response->setEtag($hash);
+        }
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        $response->setContent($file->getContent());
+        $response->headers->add(array(
+                'Content-Type' => $file->getMimeType(),
+            ));
+
+        return $response;
     }
 }

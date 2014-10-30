@@ -67,7 +67,7 @@ class UploadController extends Controller
             return $this->getCkeditorResponse('There was an error while uploading the file. The file was not copied to the upload directory', '', $funcNumber);
         }
 
-        $src = $this->generateUrl('view_file', array('id' => $file->getId()), true);
+        $src = $this->generateUrl('file_view', array('id' => $file->getId()), true);
 
         return $this->getCkeditorResponse('Upload Successful', $src, $funcNumber);
     }
