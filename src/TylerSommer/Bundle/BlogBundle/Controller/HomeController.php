@@ -84,7 +84,7 @@ class HomeController extends Controller
                 'dateStart' => new \DateTime('-1 year')
             ))
             ->orderBy('p.datePublished', 'DESC')
-            ->getQuery()->getResult();
+            ->getQuery()->setMaxResults(10)->getResult();
         $tags = $this->getRepository('TylerSommerBlogBundle:Tag')->getSidebarData();
         $categories = $this->getRepository('TylerSommerBlogBundle:Category')->getSidebarData();
         $form = $this->createForm(new SearchType());
