@@ -5,7 +5,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    const VERSION = '1.2.6';
+    const VERSION = '2.0.0-DEV';
     
     public function registerBundles()
     {
@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Orkestra\Bundle\ApplicationBundle\OrkestraApplicationBundle(),
             new TylerSommer\Bundle\BlogBundle\TylerSommerBlogBundle(),
+            new Veonik\Bundle\BlogBundle\VeonikBlogBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

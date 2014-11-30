@@ -8,11 +8,11 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
         {% block stylesheets %}
             {% stylesheets filter='cssrewrite, ?yui_css' output="css/application.css"
-                'bundles/tylersommerblog/css/bootstrap.css'
-                'bundles/tylersommerblog/css/bootstrap-responsive.css'
-                'bundles/tylersommerblog/css/select2.css'
-                'bundles/tylersommerblog/css/bootstrap-datepicker.css'
-                'bundles/tylersommerblog/css/application.css'
+                'bundles/veonikblog/css/bootstrap.css'
+                'bundles/veonikblog/css/bootstrap-responsive.css'
+                'bundles/veonikblog/css/select2.css'
+                'bundles/veonikblog/css/bootstrap-datepicker.css'
+                'bundles/veonikblog/css/application.css'
             %}
         <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
@@ -54,7 +54,7 @@
             </div>
             <div class="span3">
                 {% block right_side %}
-                {{ render(controller('TylerSommerBlogBundle:Home:rightSide')) }}
+                {{ render(controller('VeonikBlogBundle:Home:rightSide')) }}
                 {% endblock %}
             </div>
             </div>
@@ -65,7 +65,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
             {% javascripts filter='?yui_js' output="js/application.js"
-                'bundles/tylersommerblog/js/*.js'
+                'bundles/veonikblog/js/*.js'
             %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}

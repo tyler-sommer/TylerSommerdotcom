@@ -29,7 +29,7 @@ twig:
 assetic:
   debug:          %kernel.debug%
   use_controller: false
-  bundles:        [ 'TylerSommerBlogBundle' ]
+  bundles:        [ 'VeonikBlogBundle' ]
   #java: /usr/bin/java
   filters:
     cssrewrite: ~
@@ -60,7 +60,7 @@ doctrine:
             prefix: Orkestra\Common\Entity
             is_bundle: false
           OrkestraApplicationBundle: ~
-          TylerSommerBlogBundle: ~
+          VeonikBlogBundle: ~
     resolve_target_entities:
       Orkestra\Bundle\ApplicationBundle\Model\UserInterface: Orkestra\Bundle\ApplicationBundle\Entity\User
       Orkestra\Bundle\ApplicationBundle\Model\GroupInterface: Orkestra\Bundle\ApplicationBundle\Entity\Group
