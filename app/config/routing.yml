@@ -20,8 +20,8 @@ logout:
   pattern: /logout
 
 # Bundle routes
-tylersommer_blog:
-    resource: "@TylerSommerBlogBundle/Resources/config/routing.yml"
+BlogBundle_routes:
+    resource: "@VeonikBlogBundle/Resources/config/routing.yml"
 
 OrkestraBundle_routes:
   resource: "@OrkestraApplicationBundle/Controller"
