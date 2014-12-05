@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fd49a2866be91c502083002daab5da49",
+    "hash": "823252cff38c2cba67d5cd57710486c0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1966,16 +1966,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.3.0",
+            "version": "v5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "b86b927dfefdb56ab0b22d1350033d9a38e9f205"
+                "reference": "c5f963e7f9d6f6438fda4f22d5cc2db296ec621a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/b86b927dfefdb56ab0b22d1350033d9a38e9f205",
-                "reference": "b86b927dfefdb56ab0b22d1350033d9a38e9f205",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/c5f963e7f9d6f6438fda4f22d5cc2db296ec621a",
+                "reference": "c5f963e7f9d6f6438fda4f22d5cc2db296ec621a",
                 "shasum": ""
             },
             "require": {
@@ -2014,7 +2014,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-10-04 05:53:18"
+            "time": "2014-12-05 14:17:14"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -2527,16 +2527,16 @@
         },
         {
             "name": "veonik/blog-bundle",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veonik/VeonikBlogBundle.git",
-                "reference": "d8486b748b6a882fb5eff209a6c6ac2c0427496c"
+                "reference": "251ec6582f1952b7e1448f2eb54d26804a319028"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veonik/VeonikBlogBundle/zipball/d8486b748b6a882fb5eff209a6c6ac2c0427496c",
-                "reference": "d8486b748b6a882fb5eff209a6c6ac2c0427496c",
+                "url": "https://api.github.com/repos/veonik/VeonikBlogBundle/zipball/251ec6582f1952b7e1448f2eb54d26804a319028",
+                "reference": "251ec6582f1952b7e1448f2eb54d26804a319028",
                 "shasum": ""
             },
             "require": {
@@ -2561,7 +2561,7 @@
                 "MIT"
             ],
             "description": "Provides blogging functionality for Symfony 2 applications",
-            "time": "2014-11-30 11:15:02"
+            "time": "2014-12-05 16:39:07"
         }
     ],
     "packages-dev": [],
@@ -2570,8 +2570,7 @@
     "stability-flags": {
         "doctrine/doctrine-fixtures-bundle": 20,
         "hwi/oauth-bundle": 20,
-        "orkestra/application-bundle": 20,
-        "veonik/blog-bundle": 20
+        "orkestra/application-bundle": 20
     },
     "prefer-stable": true,
     "platform": {

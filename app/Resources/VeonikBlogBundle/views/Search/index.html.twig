@@ -1,0 +1,40 @@
+{% extends 'VeonikBlogBundle::base.html.twig' %}
+
+{% set title = 'Search Results' %}
+
+{% block content %}
+<h1>Search Results</h1>
+    {% if terms['terms']|default %}
+        <h5>Showing results for all pages and posts containing "{{ terms['terms'] }}".</h5>
+    {% elseif terms['category']|default %}
+        <h5>Showing results for all pages and posts with the category "{{ terms['category'] }}".</h5>
+    {% elseif terms['tag']|default %}
+        <h5>Showing results for all pages and posts with the tag "{{ terms['tag'] }}".</h5>
+    {% endif %}
+<form method="post" action="{{ path('search') }}" class="form-inline">
+    {{ form_widget(form.search, { attr: { class: 'input-large', placeholder: 'Whatcha looking for?' } }) }} <button class="btn btn-primary">Search</button>
+    <div class="hidden">
+        {{ form_rest(form) }}
+    </div>
+</form>
+    {% if entities|length > 0 %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date Posted <i class="icon-caret-down"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('page_or_post', { slug: entity.slug }) }}">{{ entity.title }}</a></td>
+            <td>{{ entity.datePublished }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h4>No results.</h4>
+{% endif %}
+{% endblock %}
