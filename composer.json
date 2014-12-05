@@ -22,9 +22,9 @@
     "trsteel/ckeditor-bundle": "~1.4",
     "hwi/oauth-bundle": "0.3.*@dev",
     "suin/php-rss-writer": "~1.2",
-    "orkestra/common": "1.0.*",
+    "orkestra/common": "~1.0",
     "orkestra/application-bundle": "1.0.*@dev",
-    "veonik/blog-bundle": "1.0.*@dev"
+    "veonik/blog-bundle": "~1.0"
   },
   "scripts": {
     "post-install-cmd": [
