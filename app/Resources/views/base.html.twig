@@ -8,10 +8,10 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
         {% block stylesheets %}
             {% stylesheets filter='cssrewrite, ?yui_css' output="css/application.css"
-                'bundles/veonikblog/css/bootstrap.css'
-                'bundles/veonikblog/css/bootstrap-responsive.css'
-                'bundles/veonikblog/css/select2.css'
-                'bundles/veonikblog/css/bootstrap-datepicker.css'
+                'components/bootstrap/css/bootstrap.css'
+                'components/select2/select2.css'
+                'components/select2/select2-bootstrap.css'
+                'components/bootstrap-datepicker/css/datepicker3.css'
                 'bundles/veonikblog/css/application.css'
             %}
         <link rel="stylesheet" href="{{ asset_url }}" />
@@ -21,7 +21,7 @@
     </head>
     <body>
         {% block body %}
-        <div class="navbar navbar-static-top">
+        <div class="navbar navbar-static-top navbar-default">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="{{ path('home') }}">Tyler Sommer dot com</a>
@@ -32,8 +32,8 @@
         </div>
         <div id="main" class="container container-fluid">
             {% block container %}
-            <div class="row-fluid">
-            <div class="span9 content-box">
+            <div class="row">
+            <div class="col-md-9 content-box">
                 {% if app.session.flashBag.has('success') %}
                     <div class="alert alert-success">
                         {{ app.session.flashBag.get('success')[0] }}
@@ -52,7 +52,7 @@
                 {% block content %}
                 {% endblock %}
             </div>
-            <div class="span3">
+            <div class="col-md-3">
                 {% block right_side %}
                 {{ render(controller('VeonikBlogBundle:Home:rightSide')) }}
                 {% endblock %}
@@ -62,10 +62,12 @@
         </div>
         {% endblock %}
         {% block main_javascripts %}
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
             {% javascripts filter='?yui_js' output="js/application.js"
-                'bundles/veonikblog/js/*.js'
+                'components/jquery/jquery.js'
+                'components/bootstrap/js/bootstrap.js'
+                'components/bootstrap-datepicker/js/bootstrap-datepicker.js'
+                'components/select2/select2.js'
+                'bundles/veonikblog/js/application.js'
             %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}

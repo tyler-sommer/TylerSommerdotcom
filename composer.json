@@ -24,7 +24,7 @@
     "suin/php-rss-writer": "~1.2",
     "orkestra/common": "~1.0",
     "orkestra/application-bundle": "1.0.*@dev",
-    "veonik/blog-bundle": "~1.0"
+    "veonik/blog-bundle": "1.0.x-dev"
   },
   "scripts": {
     "post-install-cmd": [
@@ -43,5 +43,8 @@
   "extra": {
     "symfony-app-dir": "app",
     "symfony-web-dir": "web"
+  },
+  "config": {
+    "component-dir": "web/components"
   }
 }
