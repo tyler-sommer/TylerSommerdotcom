@@ -1,0 +1,4 @@
+tsblog_home:
+    resource: "@TylerSommerBlogBundle/Controller/HomeController.php"
+    type:     annotation
+    prefix:   /
