@@ -31,10 +31,10 @@
         </tr>
     </tbody>
 </table>
+{% endblock %}
 
-<p class="form-buttons">
-  <a href="{{ path('orkestra_group_edit', { 'id': group.id }) }}">
-    <button class="btn">Edit Group</button>
-  </a>
-</p>
+{% block page_controls %}
+<div class="btn-group">
+    <a class="btn btn-primary" href="{{ path('orkestra_group_edit', { id: group.id }) }}">Edit Group</a>
+</div>
 {% endblock %}

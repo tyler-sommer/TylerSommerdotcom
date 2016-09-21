@@ -98,6 +98,6 @@ trsteel_ckeditor:
   transformers:  []
   contents_css:  [ 'css/application.css', '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' ]
   startup_outline_blocks: false
-  custom_config: bundles/tylersommerblog/js/module/config.js
+  custom_config: bundles/veonikblog/js/module/config.js
   filebrowser_upload_url:
     route: ckeditor_upload

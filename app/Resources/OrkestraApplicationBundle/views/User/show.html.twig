@@ -43,13 +43,11 @@
         </tr>
     </tbody>
 </table>
-<div class="spacer"></div>
-<p class="form-buttons">
-  <a href="{{ path('orkestra_user_edit', { 'id': user.id }) }}">
-    <button class="btn">Edit User</button>
-  </a>
-  <a href="{{ path('orkestra_user_password_reset', { 'id': user.id }) }}">
-    <button class="btn">Reset Password</button>
-  </a>
-</p>
+{% endblock %}
+
+{% block page_controls %}
+    <div class="btn-group">
+        <a class="btn btn-primary" href="{{ path('orkestra_user_edit', { id: user.id }) }}">Edit User</a>
+        <a class="btn" href="{{ path('orkestra_user_password_reset', { id: user.id }) }}">Reset Password</a>
+    </div>
 {% endblock %}
