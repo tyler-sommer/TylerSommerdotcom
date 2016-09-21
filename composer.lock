@@ -3174,16 +3174,16 @@
         },
         {
             "name": "veonik/blog-bundle",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veonik/VeonikBlogBundle.git",
-                "reference": "8fdfa1e3ce720743eee16947b8e1800ec123d7d0"
+                "reference": "976bfc7cc814a957ce909d135cb922ca8175ea33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veonik/VeonikBlogBundle/zipball/8fdfa1e3ce720743eee16947b8e1800ec123d7d0",
-                "reference": "8fdfa1e3ce720743eee16947b8e1800ec123d7d0",
+                "url": "https://api.github.com/repos/veonik/VeonikBlogBundle/zipball/976bfc7cc814a957ce909d135cb922ca8175ea33",
+                "reference": "976bfc7cc814a957ce909d135cb922ca8175ea33",
                 "shasum": ""
             },
             "require": {
@@ -3208,7 +3208,7 @@
                 "MIT"
             ],
             "description": "Provides blogging functionality for Symfony 2 applications",
-            "time": "2016-09-21 11:55:00"
+            "time": "2016-09-21 12:16:54"
         }
     ],
     "packages-dev": [],
