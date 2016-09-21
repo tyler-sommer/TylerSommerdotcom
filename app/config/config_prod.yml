@@ -1,11 +1,17 @@
 imports:
     - { resource: config.yml }
 
-#doctrine:
-#    orm:
-#        metadata_cache_driver: apc
-#        result_cache_driver: apc
-#        query_cache_driver: apc
+doctrine:
+    orm:
+        metadata_cache_driver:
+          type: service
+          id: veonik.file_cache.default
+        result_cache_driver:
+          type: service
+          id: veonik.file_cache.result
+        query_cache_driver:
+          type: service
+          id: veonik.file_cache.default
 
 monolog:
     handlers:
