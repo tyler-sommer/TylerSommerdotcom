@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Orkestra\Bundle\ApplicationBundle\Entity\User;
-use TylerSommer\Bundle\BlogBundle\Entity\Author;
+use Veonik\Bundle\BlogBundle\Entity\Author;
 use Doctrine\ORM\EntityManager;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 
