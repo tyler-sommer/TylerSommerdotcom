@@ -1,7 +1,9 @@
 Tyler Sommer dot com
 ====================
 
-My personal website and blog.
+The blog engine that powers my personal website.
+
+Uses [VeonikBlogBundle](https://github.com/veonik/VeonikBlogBundle) for most blogging capabilities.
 
 
 Installation
